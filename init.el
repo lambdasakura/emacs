@@ -1,4 +1,3 @@
-
 ;;Warning: `mapcar' called for effect; use `mapc' or `dolist' instead を防ぐ
 (setq byte-compile-warnings '(free-vars 
 			      unresolved 
@@ -10,7 +9,6 @@
 			      interactive-only 
 			      make-local))
 
-;; utils
 (defun add-to-load-path (&rest paths)
   "ロードパスにpathを追加する" 
   (mapc '(lambda (path)
@@ -19,13 +17,20 @@
 
 (add-to-load-path "~/.emacs.d/elisp" "~/.emacs.d/conf")
 (add-to-load-path "/usr/local/share/emacs/site-lisp")
+
+;; Initialize auto-install
+(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/auto-install"))
+(require 'auto-install)
+(setq auto-install-directory "~/.emacs.d/auto-install/")
+;;(auto-install-update-emacswiki-package-name t)
+
 ;; Detect OS
 (defvar run-unix
   (or (equal system-type 'gnu/linux)
       (or (equal system-type 'usg-unix-v)
           (or  (equal system-type 'berkeley-unix)
                (equal system-type 'cygwin)))))
-
 (defvar run-linux
   (equal system-type 'gnu/linux))
 (defvar run-system-v
@@ -34,12 +39,10 @@
   (equal system-type 'berkeley-unix))
 (defvar run-cygwin 
   (equal system-type 'cygwin))
-
 (defvar run-w32
   (and (null run-unix)
        (or (equal system-type 'windows-nt)
            (equal system-type 'ms-dos))))
-
 (defvar run-darwin (equal system-type 'darwin))
 
 ;; Detect Emacsen 
@@ -64,27 +67,17 @@
   (and run-xemacs (not (featurep 'mule))))
 (defvar run-carbon-emacs (and run-darwin window-system))
 
-;; Windows
-(when run-w32
+;; Meadow
+(when run-meadow
   (load "init-meadow"))
 
-(when (and run-emacs23 run-linux)
-  (when window-system
-    (progn
-      (set-default-font "DejaVu Sans Mono-12")
-      (set-face-font 'variable-pitch "DejaVu Sans Mono-12") ;tooltipとtabbarのフォント
-      ;; (set-fontset-font (frame-parameter nil 'font)
-      ;; 			'japanese-jisx0208
-      ;; 			'("M+2VM+IPAG circle" . "unicode-bmp"))
-)))
-;; Debian
+;; for Debian
 (when (boundp 'debian-emacs-flavor)
   (defadvice find-function-search-for-symbol (around debian activate)
     ""
     (if (string-match (symbol-name debian-emacs-flavor) library)
         (setq library (replace-match "emacs" nil nil library)))
     ad-do-it))
-
 
 ;; Woman 
 (setq woman-manpath '("/opt/local/share/man"
@@ -94,18 +87,9 @@
 (setq woman-use-own-frame nil)
 (setq man-use-own-frame nil)
 
-
-;; Initialize auto-install
-(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/auto-install"))
-(require 'auto-install)
-(setq auto-install-directory "~/.emacs.d/auto-install/")
-;;(auto-install-update-emacswiki-package-name t)
-
 ;; Loading elisps
 (when run-darwin
   (load "init-mac"))
-
 (load "init-common")
 
 ;; utils
@@ -145,28 +129,61 @@
 ;;(load "init-caede")
 
 
-;; (setenv "HTTP_PROXY" "http://proxy.rdc.toshiba.co.jp:8080/")
-;; (setenv "NO_PROXY" "localhost,127.0.0.0/8,*.toshiba.co.jp,*.toshiba.local")
-;; (setq http-proxy-server "proxy.rdc.toshiba.co.jp"
-;;      http-proxy-port "8080"
-;;      url-proxy-services
-;;      '(("http" . "proxy.rdc.toshiba.co.jp:8080")
-;; 	("https" . "proxy.rdc.toshiba.co.jp:8080")))
+(defun proxy-on ()
+  "PROXY_SERVERを設定する。
+NO_PROXYが正しく動作するのか未検証
+url-proxy-servicesあたりをいじるとNO_PROXYの設定もうまくいくかも。"
+  (interactive)
+  (setenv "HTTP_PROXY" "http://proxy.rdc.toshiba.co.jp:8080/")
+  (setenv "NO_PROXY" "localhost,127.0.0.0/8,*.toshiba.co.jp,*.toshiba.local")
+  (setq http-proxy-server "proxy.rdc.toshiba.co.jp"
+	http-proxy-port "8080"
+	url-proxy-services
+	'(("http" . "proxy.rdc.toshiba.co.jp:8080")
+	  ("https" . "proxy.rdc.toshiba.co.jp:8080"))))
+(defun proxy-off ()
+  "PROXY_SERVERを解除する。"
+  (interactive)
+  (setenv "HTTP_PROXY" "")
+  (setenv "NO_PROXY" "")
+  (setq http-proxy-server nil
+	http-proxy-port nil
+	url-proxy-services nil	))
+
+(when (and run-emacs23 run-linux)
+  (when window-system
+    (progn
+      (set-default-font "DejaVu Sans Mono-12")
+      (set-face-font 'variable-pitch "DejaVu Sans Mono-12") ;tooltipとtabbarのフォント
+      ;; (set-fontset-font (frame-parameter nil 'font)
+      ;; 			'japanese-jisx0208
+      ;; 			'("M+2VM+IPAG circle" . "unicode-bmp"))
+)))
+
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
- '(menu-bar-mode t)
+ '(menu-bar-mode nil)
  '(show-paren-mode t))
+
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "black" :foreground "#cccccc" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 122 :width normal :foundry "unknown" :family "TakaoExゴシック")))))
+ '(default 
+    ((t
+      (:inherit nil 
+	:stipple nil
+	:background "black" 
+	:foreground "#cccccc"
+	:inverse-video nil
+	:box nil 
+	:strike-through nil 
+	:overline nil 
+	:underline nil
+	:slant normal
+	:weight normal 
+	:height 122 
+	:width normal
+	:foundry "unknown" 
+	:family "TakaoExゴシック")))))
 
 
 (when (eq system-type 'darwin)
@@ -178,5 +195,4 @@
 			       (font-spec :family "Hiragino Maru Gothic ProN" :size 14)
 			       nil
 			       'append)
-	     (add-to-list 'default-frame-alist '(font . "fontset-menlomarugo"))
-	     ))))
+	     (add-to-list 'default-frame-alist '(font . "fontset-menlomarugo"))))))
