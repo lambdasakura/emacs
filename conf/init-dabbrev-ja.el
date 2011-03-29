@@ -1,0 +1,1 @@
+(load "dabbrev-ja")
