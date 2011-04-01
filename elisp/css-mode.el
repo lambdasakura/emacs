@@ -7,7 +7,7 @@
 (defvar cssm-version "0.11"
   "The current version number of css-mode.")
 ;;; copyright (c) 1998 Lars Marius Garshol, larsga@ifi.uio.no
-;;; $Id: css-mode.el,v 1.1.1.1 2008-12-08 04:48:41 sakura Exp $
+;;; $Id: css-mode.el,v 1.9 2000/01/05 21:21:56 larsga Exp $
 
 ;;; css-mode is free software; you can redistribute it and/or modify
 ;;; it under the terms of the GNU General Public License as published

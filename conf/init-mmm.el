@@ -1,90 +1,53 @@
-;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
-
 ;; mmm-mode
-;; HTML内のJavaScriptを書くとき等に、複数のメジャーモードを使用可能にする。
 (add-to-load-path "~/.emacs.d/elisp/mmm-mode")
 
 (require 'mmm-mode)
-(require 'mmm-auto)
+(setq mmm-global-mode 'maybe)
 
+;; Setting from http://www.bookshelf.jp/soft/meadow_13.html#SEC101
+(require 'mmm-auto)
+(require 'mmm-vars)
+(require 'mmm-compat)
 (setq mmm-global-mode 'maybe)
 (setq mmm-submode-decoration-level 2)
-(set-face-background 'mmm-output-submode-face  nil)
-;;(set-face-background 'mmm-output-submode-face  "LightBlue")
-(set-face-background 'mmm-code-submode-face    nil)
-;(set-face-background 'mmm-code-submode-face    "DarkGray")
-(set-face-background 'mmm-comment-submode-face "LightYellow")
-(set-face-background 'mmm-special-submode-face "Yellow")
+;; mmm-mode の色設定
+(set-face-background 'mmm-default-submode-face "gray15")
 
+;; html + css
 (mmm-add-classes
- '((php-output
-    :submode php-mode
-    :front "<\\?php *echo "
-    :back "\\?>"
-    :include-front t
-    :front-offset 5
-    :insert ((?e php-echo nil @ "<?php" @ " echo " _ " " @ "?>" @))
-    )))
+ '((mmm-css
+    :submode css-mode
+    :front "<style[^>]*>"
+    :back "</style>")))
+(mmm-add-mode-ext-class nil "\\.html?\\'" 'mmm-css)
 
+;; html + js
 (mmm-add-classes
- '((php-code
+ '((mmm-js
+    :submode javascript-mode
+    :front "<script[^>]*>[^<]"
+    :front-offset -1
+    :back "\n?[ \t]*</script>")))
+(mmm-add-mode-ext-class nil "\\.html?\\'" 'mmm-js)
+
+;; php + html + js + css
+;;(add-to-list 'auto-mode-alist '("\\.php?\\'" . html-helper-mode))
+(mmm-add-classes
+ '((mmm-php
     :submode php-mode
     :front "<\\?\\(php\\)?"
-    :back "\\?>"
-    :insert ((?p php-section nil @ "<?php" @ " " _ " " @ "?>" @)
-             (?b php-block nil @ "<?php" @ "\n" _ "\n" @ "?>" @))
-    )))
+    :back "\\?>")))
+;; (mmm-add-mode-ext-class nil "\\.php\\'" 'mmm-php-in-html)
+(mmm-add-mode-ext-class nil "\\.php\\'" 'mmm-css)
+;; (mmm-add-mode-ext-class nil "\\.php\\'" 'mmm-js-in-html)
+(mmm-add-mode-ext-class nil "\\.yml\\'" 'mmm-php)
+;; インデントが効かなくなるのを解消
+(defun save-mmm-c-locals ()
+  (with-temp-buffer
+    (php-mode)
+    (dolist (v (buffer-local-variables))
+      (when (string-match "\\`c-" (symbol-name (car v)))
+        (add-to-list 'mmm-save-local-variables `(,(car v) nil
+                                                 ,mmm-c-derived-modes))))))
+(save-mmm-c-locals)
 
-(mmm-add-classes
- '((erb-code
-    :submode ruby-mode
-    :match-face (("<%#" . mmm-comment-submode-face)
-                 ("<%=" . mmm-output-submode-face)
-                 ("<%"  . mmm-code-submode-face))
-    :front "<%[#=]?"
-    :back "-?%>"
-    :insert ((?% erb-code       nil @ "<%"  @ " " _ " " @ "%>" @)
-             (?# erb-comment    nil @ "<%#" @ " " _ " " @ "%>" @)
-             (?= erb-expression nil @ "<%=" @ " " _ " " @ "%>" @))
-    )))
-
-(mmm-add-classes
- '((html-script
-    :submode js2-mode
-    :delimiter-mode nil
-    :front "<script\[^>\]*\\(language=\"javascript\\([0-9.]*\\)\"\\|type=\"text/javascript\"\\)\[^>\]*>"
-    :back"</script>"
-    :insert ((?j js-tag nil @ "<script type=\"text/javascript\">"
-                 @ "\n" _ "\n" @ "</script>" @))
-    )))
-
-(global-set-key [F8] 'mmm-parse-buffer)
-(add-hook 'html-mode-hook
-          '(lambda ()
-             (setq mmm-classes '(erb-code php-code erb-code html-script html-js embedded-css))
-             (mmm-mode-on)))
-
-;; rhtmlの時は、html-helper-modeの代りにhtml-modeを使う。
-;; emacs-railsでスニペットを利用するには、html-modeじゃないとダメらしい。
-(add-to-list 'auto-mode-alist '("\\.rhtml$" . html-mode))
-
-
-;; mmm-mode
-;;(require 'mmm-mode)
-;;(setq mmm-global-mode 'maybe)
-;; 色設定．これは，好みで．色をつけたくないなら nil にします．
-;;(set-face-background 'mmm-default-submode-face "navy")
-
-;; (mmm-add-classes
-;;  '((eruby
-;;     :submode ruby-mode
-;;     :front "<%"
-;;     :back "%>"
-;;     :insert ((?c eruby nil @ "<%" @ " " _ " " @ "%>" @)
-;; 	     (?e eruby nil @ "<%=" @ " " _ " " @ "%>" @)))))
-;; (add-hook 'html-mode-hook 
-;; 	  (lambda ()
-;; 	    (setq mmm-classes '(eruby))
-;; 	    (mmm-mode-on)))
-
-;; (mmm-add-mode-ext-class nil "\\.rhtml?\\'" 'texi-elisp)
