@@ -132,16 +132,19 @@
 
 (defun proxy-on ()
   "PROXY_SERVER‚ğİ’è‚·‚éB
-NO_PROXY‚ª³‚µ‚­“®ì‚·‚é‚Ì‚©–¢ŒŸØ
-url-proxy-services‚ ‚½‚è‚ğ‚¢‚¶‚é‚ÆNO_PROXY‚Ìİ’è‚à‚¤‚Ü‚­‚¢‚­‚©‚àB"
+NO_PROXY‚ª³‚µ‚­“®ì‚·‚é‚Ì‚©–¢ŒŸØ"
   (interactive)
   (setenv "HTTP_PROXY" "http://proxy.rdc.toshiba.co.jp:8080/")
   (setenv "NO_PROXY" "localhost,127.0.0.0/8,*.toshiba.co.jp,*.toshiba.local")
   (setq http-proxy-server "proxy.rdc.toshiba.co.jp"
 	http-proxy-port "8080"
 	url-proxy-services
-	'(("http" . "proxy.rdc.toshiba.co.jp:8080")
+	'(("no_proxy" , "localhost")
+	  ("no_proxy" , "*.toshiba.local")
+	  ("no_proxy" , "*.toshiba.co.jp")
+	  ("http" . "proxy.rdc.toshiba.co.jp:8080")
 	  ("https" . "proxy.rdc.toshiba.co.jp:8080"))))
+
 (defun proxy-off ()
   "PROXY_SERVER‚ğ‰ğœ‚·‚éB"
   (interactive)
