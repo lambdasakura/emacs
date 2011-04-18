@@ -166,28 +166,21 @@ NO_PROXYが正しく動作するのか未検証"
 
 
 (custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(menu-bar-mode nil)
+ '(safe-local-variable-values (quote ((package . asdf))))
  '(show-paren-mode t))
 
 (custom-set-faces
- '(default 
-    ((t
-      (:inherit nil 
-	:stipple nil
-	:background "black" 
-	:foreground "#cccccc"
-	:inverse-video nil
-	:box nil 
-	:strike-through nil 
-	:overline nil 
-	:underline nil
-	:slant normal
-	:weight normal 
-	:height 122 
-	:width normal
-	:foundry "unknown" 
-	:family "TakaoExゴシック")))))
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "black" :foreground "#cccccc" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 122 :width normal :foundry "unknown" :family "TakaoExゴシック")))))
 
 
 (when (eq system-type 'darwin)

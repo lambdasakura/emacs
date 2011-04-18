@@ -22,12 +22,18 @@
 (mmm-add-mode-ext-class nil "\\.html?\\'" 'mmm-css)
 
 ;; html + js
+;; (mmm-add-classes
+;;  '((mmm-js
+;;     :submode javascript-mode
+;;     :front "<script[^>]*>[^<]"
+;;     :front-offset -1
+;;     :back "\n?[ \t]*</script>")))
 (mmm-add-classes
  '((mmm-js
     :submode javascript-mode
-    :front "<script[^>]*>[^<]"
+    :front "<script[^>]*>"
     :front-offset -1
-    :back "\n?[ \t]*</script>")))
+    :back "</script>")))
 (mmm-add-mode-ext-class nil "\\.html?\\'" 'mmm-js)
 
 ;; php + html + js + css
