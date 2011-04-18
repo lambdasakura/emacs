@@ -24,7 +24,6 @@
 (require 'auto-install)
 (setq auto-install-directory "~/.emacs.d/auto-install/")
 
-
 ;; Detect OS
 (defvar run-unix
   (or (equal system-type 'gnu/linux)
@@ -67,6 +66,14 @@
   (and run-xemacs (not (featurep 'mule))))
 (defvar run-carbon-emacs (and run-darwin window-system))
 
+;; Woman 
+(setq woman-manpath '("/opt/local/share/man"
+		      "/usr/local/share/man"
+		      "/usr/share/man"
+		      "/usr/X11/man"))
+(setq woman-use-own-frame nil)
+(setq man-use-own-frame nil)
+
 ;; Meadow
 (when run-meadow
   (load "init-meadow"))
@@ -79,17 +86,11 @@
         (setq library (replace-match "emacs" nil nil library)))
     ad-do-it))
 
-;; Woman 
-(setq woman-manpath '("/opt/local/share/man"
-		      "/usr/local/share/man"
-		      "/usr/share/man"
-		      "/usr/X11/man"))
-(setq woman-use-own-frame nil)
-(setq man-use-own-frame nil)
-
-;; Loading elisps
+;; for Mac
 (when run-darwin
   (load "init-mac"))
+
+;; Loading elisps
 (load "init-common")
 (load "init-networking")
 
@@ -119,6 +120,7 @@
 (load "init-python")
 (load "init-slime")
 (load "init-weblogger")
+
 ;; Extra
 ;;(load "init-skk")
 ;;(load "init-dired")
@@ -130,35 +132,13 @@
 ;;(load "init-linkd")
 ;;(load "init-caede")
 
-
+;;;; フォントの設定
 (when (and run-emacs23 run-linux)
   (when window-system
     (progn
       (set-default-font "DejaVu Sans Mono-12")
       (set-face-font 'variable-pitch "DejaVu Sans Mono-12") ;tooltipとtabbarのフォント
-      ;; (set-fontset-font (frame-parameter nil 'font)
-      ;; 			'japanese-jisx0208
-      ;; 			'("M+2VM+IPAG circle" . "unicode-bmp"))
-)))
-
-
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(column-number-mode t)
- '(menu-bar-mode nil)
- '(safe-local-variable-values (quote ((package . asdf))))
- '(show-paren-mode t))
-
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "black" :foreground "#cccccc" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 122 :width normal :foundry "unknown" :family "TakaoExゴシック")))))
-
+      )))
 
 (when (eq system-type 'darwin)
   (if (>= emacs-major-version 23)
@@ -170,3 +150,31 @@
 			       nil
 			       'append)
 	     (add-to-list 'default-frame-alist '(font . "fontset-menlomarugo"))))))
+
+(custom-set-faces
+ '(default ((t (:inherit nil 
+			 :stipple nil
+			 :background "black"
+			 :foreground "#cccccc" 
+			 :inverse-video nil
+			 :box nil 
+			 :strike-through nil 
+			 :overline nil 
+			 :underline nil 
+			 :slant normal 
+			 :weight normal
+			 :height 122 
+			 :width normal
+			 :foundry "unknown" 
+			 :family "TakaoExゴシック")))))
+
+;; その他の設定
+(custom-set-variables
+ '(column-number-mode t)
+ '(menu-bar-mode nil)
+ '(safe-local-variable-values (quote ((package . asdf))))
+ '(show-paren-mode t))
+
+
+
+
