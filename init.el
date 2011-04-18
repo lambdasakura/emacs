@@ -23,7 +23,7 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/auto-install"))
 (require 'auto-install)
 (setq auto-install-directory "~/.emacs.d/auto-install/")
-;;(auto-install-update-emacswiki-package-name t)
+
 
 ;; Detect OS
 (defvar run-unix
@@ -91,6 +91,7 @@
 (when run-darwin
   (load "init-mac"))
 (load "init-common")
+(load "init-networking")
 
 ;; utils
 (load "init-sense-region")
@@ -129,30 +130,6 @@
 ;;(load "init-linkd")
 ;;(load "init-caede")
 
-
-(defun proxy-on ()
-  "PROXY_SERVERÇê›íËÇ∑ÇÈÅB
-NO_PROXYÇ™ê≥ÇµÇ≠ìÆçÏÇ∑ÇÈÇÃÇ©ñ¢åüèÿ"
-  (interactive)
-  (setenv "HTTP_PROXY" "http://proxy.rdc.toshiba.co.jp:8080/")
-  (setenv "NO_PROXY" "localhost,127.0.0.0/8,*.toshiba.co.jp,*.toshiba.local")
-  (setq http-proxy-server "proxy.rdc.toshiba.co.jp"
-	http-proxy-port "8080"
-	url-proxy-services
-	'(("no_proxy" , "localhost")
-	  ("no_proxy" , "*.toshiba.local")
-	  ("no_proxy" , "*.toshiba.co.jp")
-	  ("http" . "proxy.rdc.toshiba.co.jp:8080")
-	  ("https" . "proxy.rdc.toshiba.co.jp:8080"))))
-
-(defun proxy-off ()
-  "PROXY_SERVERÇâèúÇ∑ÇÈÅB"
-  (interactive)
-  (setenv "HTTP_PROXY" "")
-  (setenv "NO_PROXY" "")
-  (setq http-proxy-server nil
-	http-proxy-port nil
-	url-proxy-services nil	))
 
 (when (and run-emacs23 run-linux)
   (when window-system
