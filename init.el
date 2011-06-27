@@ -99,7 +99,7 @@
 (load "init-keymap")
 (load "init-killring")
 (load "init-color")
-;;(load "init-elscreen")
+(load "init-elscreen")
 (load "init-anything")
 ;;(load "init-migemo")
 (load "init-yasnippet")
@@ -151,22 +151,22 @@
 			       'append)
 	     (add-to-list 'default-frame-alist '(font . "fontset-menlomarugo"))))))
 
-(custom-set-faces
- '(default ((t (:inherit nil 
-			 :stipple nil
-			 :background "black"
-			 :foreground "#cccccc" 
-			 :inverse-video nil
-			 :box nil 
-			 :strike-through nil 
-			 :overline nil 
-			 :underline nil 
-			 :slant normal 
-			 :weight normal
-			 :height 122 
-			 :width normal
-			 :foundry "unknown" 
-			 :family "TakaoExゴシック")))))
+;; (custom-set-faces
+;;  '(default ((t (:inherit nil 
+;; 			 :stipple nil
+;; 			 :background "black"
+;; 			 :foreground "#cccccc" 
+;; 			 :inverse-video nil
+;; 			 :box nil 
+;; 			 :strike-through nil 
+;; 			 :overline nil 
+;; 			 :underline nil 
+;; 			 :slant normal 
+;; 			 :weight normal
+;; 			 :height 122 
+;; 			 :width normal
+;; 			 :foundry "unknown" 
+;; 			 :family "TakaoExゴシック")))))
 
 ;; その他の設定
 (custom-set-variables
