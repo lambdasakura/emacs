@@ -1,6 +1,5 @@
 ;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
-<<<<<<< HEAD
 ;; 色の設定
 ;; http://norainu.net/mt/archives/2007/05/emacs_22.html
 ;; (set-background-color "black")
