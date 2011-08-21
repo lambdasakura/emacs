@@ -3,6 +3,8 @@ produced by `texinfo-format-buffer'
 from file `emacs-w3m-ja.texi'
 using `texinfmt.el' version 2.42 of  7 Jul 2006.
 
+
+
 INFO-DIR-SECTION GNU Emacs Lisp
 START-INFO-DIR-ENTRY
 * Emacs-w3m-ja: (emacs-w3m-ja).  An Emacs interface to w3m (Japanese)
@@ -14,9 +16,9 @@ This file documents emacs-w3m, an Emacs interface to w3m.
 このファイルは Emacs で動く w3m のインタフェースである emacs-w3m に関す
 る説明書です。
 
-This edition is for emacs-w3m version 1.4.436.
+This edition is for emacs-w3m version 1.4.437.
 
-この版は emacs-w3m バージョン 1.4.436 に対応します。
+この版は emacs-w3m バージョン 1.4.437 に対応します。
 
 
 
@@ -29,7 +31,7 @@ Emacs-w3m ユーザマニュアル
 
                                                   Emacs-w3m 開発チーム
 
-この文書は emacs-w3m バージョン 1.4.436 に対応します。
+この文書は emacs-w3m バージョン 1.4.437 に対応します。
 
 
 
@@ -394,8 +396,8 @@ Emacs-w3m の取得に関しては公式ページ `http://emacs-w3m.namazu.org/' を
   1. $B最初に、配布された emacs-w3m の tarball を以下のように適当な場所で
      展開して、先頭のディレクトリに入ってください:
 
-          % tar zxf emacs-w3m-1.4.436.tar.gz
-          % cd emacs-w3m-1.4.436
+          % tar zxf emacs-w3m-1.4.437.tar.gz
+          % cd emacs-w3m-1.4.437
 
      Emacs-w3m を CVS で取得したのならば、`configure' スクリプトを生成
      するために (引数無しで) `autoconf' を実行しなければなりません。
@@ -6928,107 +6930,107 @@ File: emacs-w3m-ja.info, Node: Function Index, Prev: Variable Index, Up: Index
 * w3m-zoom-out-image:           Inline Images.          (line  81)
 
 Tag table:
-Node: Top512
-Node: Introduction5489
-Node: Getting Started6127
-Node: Required Emacs Version6773
-Node: You Need w3m7573
-Node: Other Requirements7986
-Node: Installing Emacs-w3m11662
-Node: Non-UNIX-like systems14252
-Node: Minimal Settings14815
-Node: Basic Usage16587
-Node: Browsing Web Pages17140
-Node: Key Binding17702
-Node: Launching and Jumping18679
-Node: Moving in a page21860
-Node: Moving over pages24553
-Node: Browsing With Mouse Operations28003
-Node: Going back to daily hacking and/or daily writing29386
-Node: Inline Images30138
-Node: Tracing History32419
-Node: Managing Bookmarks35727
-Node: Adding Bookmarks36168
-Node: Consulting Bookmarks37127
-Node: Editing Bookmarks37642
-Node: Using Tabs38338
-Node: Working with buffers40673
-Node: Creating and killing buffers41099
-Node: Moving across buffers41816
-Node: Selecting buffers43434
-Node: Downloading44974
-Node: Submitting Forms45824
-Node: HTML File Information46963
-Node: Pretty Good Features48504
-Node: Using Search Engines49158
-Node: The Search Interface50131
-Node: Quick Searching51164
-Node: Adding New Search Engines52713
-Node: Grouping URLs54490
-Node: Weather Information55250
-Node: Using Antenna55413
-Node: Setting up Antenna55885
-Node: Daily web tracking56358
-Node: Showing Directory Tree57301
-Node: Viewing Perl Documents58554
-Node: Using Namazu58732
-Node: Octet60150
-Node: Frame Local Buffers60515
-Node: Session Manager61551
-Node: Customizable Variables63160
-Node: General Variables65216
-Node: Image Variables87453
-Node: Form Variables91360
-Node: Cookie Variables92254
-Node: Bookmark Variables92875
-Node: Search Variables93671
-Node: Weather Variables94819
-Node: Dtree Variables95403
-Node: Antenna Variables96360
-Node: Perldoc Variables97639
-Node: Namazu Variables98551
-Node: Octet Variables100255
-Node: Session Manager Variables100498
-Node: Hooks101155
-Node: Other Variables102952
-Node: Hooking into MUAs105433
-Node: Gnus106231
-Node: Mew109975
-Node: SEMI MUAs111622
-Node: VM113569
-Node: Frequently Asked Questions113870
-Node: General FAQ114160
-Node: Trouble FAQ115561
-Node: Shimbun FAQ122566
-Node: Known Problems123124
-Node: Shimbun Library123283
-Node: Nnshimbun125053
-Node: Mew Shimbun134019
-Node: Shimbun with Wanderlust141492
-Node: Shimbun local mode141815
-Node: Shimbun Sites143006
-Node: Newspapers Supported by Shimbun143428
-Node: News Sites Supported by Shimbun153112
-Node: Mailing Lists Supported by Shimbun161615
-Node: Sport Sites Supported by Shimbun174605
-Node: Misc Sites Supported by Shimbun175350
-Node: Shimbun Basics185614
-Node: Overview186237
-Node: Getting web page and header information188515
-Node: Displaying an article193187
-Node: Inheriting shimbun module195202
-Node: Making text/plain articles197090
-Node: Zenkaku to hankaku conversion198757
-Node: Coding convention of Shimbun199400
-Node: Tips200244
-Node: Mailing List204342
-Node: Emacs-w3m Functions205232
-Node: External Packages205392
-Node: Authors206259
-Node: Index206494
-Node: Concept Index206730
-Node: Key Index212484
-Node: Variable Index219810
-Node: Function Index234951
+Node: Top514
+Node: Introduction5491
+Node: Getting Started6129
+Node: Required Emacs Version6775
+Node: You Need w3m7575
+Node: Other Requirements7988
+Node: Installing Emacs-w3m11664
+Node: Non-UNIX-like systems14254
+Node: Minimal Settings14817
+Node: Basic Usage16589
+Node: Browsing Web Pages17142
+Node: Key Binding17704
+Node: Launching and Jumping18681
+Node: Moving in a page21862
+Node: Moving over pages24555
+Node: Browsing With Mouse Operations28005
+Node: Going back to daily hacking and/or daily writing29388
+Node: Inline Images30140
+Node: Tracing History32421
+Node: Managing Bookmarks35729
+Node: Adding Bookmarks36170
+Node: Consulting Bookmarks37129
+Node: Editing Bookmarks37644
+Node: Using Tabs38340
+Node: Working with buffers40675
+Node: Creating and killing buffers41101
+Node: Moving across buffers41818
+Node: Selecting buffers43436
+Node: Downloading44976
+Node: Submitting Forms45826
+Node: HTML File Information46965
+Node: Pretty Good Features48506
+Node: Using Search Engines49160
+Node: The Search Interface50133
+Node: Quick Searching51166
+Node: Adding New Search Engines52715
+Node: Grouping URLs54492
+Node: Weather Information55252
+Node: Using Antenna55415
+Node: Setting up Antenna55887
+Node: Daily web tracking56360
+Node: Showing Directory Tree57303
+Node: Viewing Perl Documents58556
+Node: Using Namazu58734
+Node: Octet60152
+Node: Frame Local Buffers60517
+Node: Session Manager61553
+Node: Customizable Variables63162
+Node: General Variables65218
+Node: Image Variables87455
+Node: Form Variables91362
+Node: Cookie Variables92256
+Node: Bookmark Variables92877
+Node: Search Variables93673
+Node: Weather Variables94821
+Node: Dtree Variables95405
+Node: Antenna Variables96362
+Node: Perldoc Variables97641
+Node: Namazu Variables98553
+Node: Octet Variables100257
+Node: Session Manager Variables100500
+Node: Hooks101157
+Node: Other Variables102954
+Node: Hooking into MUAs105435
+Node: Gnus106233
+Node: Mew109977
+Node: SEMI MUAs111624
+Node: VM113571
+Node: Frequently Asked Questions113872
+Node: General FAQ114162
+Node: Trouble FAQ115563
+Node: Shimbun FAQ122568
+Node: Known Problems123126
+Node: Shimbun Library123285
+Node: Nnshimbun125055
+Node: Mew Shimbun134021
+Node: Shimbun with Wanderlust141494
+Node: Shimbun local mode141817
+Node: Shimbun Sites143008
+Node: Newspapers Supported by Shimbun143430
+Node: News Sites Supported by Shimbun153114
+Node: Mailing Lists Supported by Shimbun161617
+Node: Sport Sites Supported by Shimbun174607
+Node: Misc Sites Supported by Shimbun175352
+Node: Shimbun Basics185616
+Node: Overview186239
+Node: Getting web page and header information188517
+Node: Displaying an article193189
+Node: Inheriting shimbun module195204
+Node: Making text/plain articles197092
+Node: Zenkaku to hankaku conversion198759
+Node: Coding convention of Shimbun199402
+Node: Tips200246
+Node: Mailing List204344
+Node: Emacs-w3m Functions205234
+Node: External Packages205394
+Node: Authors206261
+Node: Index206496
+Node: Concept Index206732
+Node: Key Index212486
+Node: Variable Index219812
+Node: Function Index234953
 
 End tag table
