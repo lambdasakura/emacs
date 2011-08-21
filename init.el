@@ -75,16 +75,16 @@
 (setq man-use-own-frame nil)
 
 ;; Meadow
-(when run-meadow
-  (load "init-meadow"))
+;; (when run-meadow
+;;   (load "init-meadow"))
 
-;; for Debian
-(when (boundp 'debian-emacs-flavor)
-  (defadvice find-function-search-for-symbol (around debian activate)
-    ""
-    (if (string-match (symbol-name debian-emacs-flavor) library)
-        (setq library (replace-match "emacs" nil nil library)))
-    ad-do-it))
+;; ;; for Debian
+;; (when (boundp 'debian-emacs-flavor)
+;;   (defadvice find-function-search-for-symbol (around debian activate)
+;;     ""
+;;     (if (string-match (symbol-name debian-emacs-flavor) library)
+;;         (setq library (replace-match "emacs" nil nil library)))
+;;     ad-do-it))
 
 ;; for Mac
 (when run-darwin
@@ -101,9 +101,10 @@
 (load "init-color")
 ;; (load "init-elscreen")
 (load "init-anything")
-;;(load "init-migemo")
-(load "init-yasnippet")
+;; ;;(load "init-migemo")
+;; (load "init-yasnippet")
 (load "init-hatena")
+(load "init-auto-complete")
 
 ;; Programming Environment
 (load "init-c")
@@ -114,23 +115,28 @@
 (load "init-javascript")
 (load "init-mmm")
 (load "init-scala")
-;;(load "init-js2")
-;; (load "init-ruby")
-;; (load "init-scheme")
+;; (load "init-js2")
+(load "init-ruby")
+(load "init-scheme")
 (load "init-python")
+
+
 (load "init-slime")
+;;(load "init-ac-slime")
+(load "init-popwin")
 (load "init-weblogger")
 
 ;; Extra
 ;;(load "init-skk")
-;;(load "init-dired")
-(load "init-dabbrev-ja")
+(load "init-dired")
+;;(load "init-dabbrev-ja")
 (load "init-hiki")
-;;(load "init-hilighting")
-;;(load "init-yatex")
+(load "init-hilighting")
+(load "init-yatex")
 (load "init-w3m")
 ;;(load "init-linkd")
 ;;(load "init-caede")
+
 
 ;;;; フォントの設定
 (when (and run-emacs23 run-linux)
@@ -179,7 +185,6 @@
 (add-hook 'speedbar-mode-hook
           '(lambda ()
              (speedbar-add-supported-extension '("js" "as" "html" "css" "php" "lisp"))))
-
 
 
 ;; Backslashes

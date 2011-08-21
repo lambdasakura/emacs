@@ -1,0 +1,5 @@
+(add-to-list 'load-path "/Users/sakura/.emacs.d/elisp/")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "/Users/sakura/.emacs.d/elisp/ac-dict")
+(ac-config-default)
+(ac-set-trigger-key "TAB")

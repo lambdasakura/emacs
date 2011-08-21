@@ -23,6 +23,8 @@
 
 (require 'slime-autoloads)
 (require 'slime)
+(require 'ac-slime)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Lisp実装の設定
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -51,11 +53,26 @@
 (setq slime-net-coding-system 'utf-8-unix)
 ;; slimeの起動オプションの設定
 (slime-setup '(slime-fancy slime-banner slime-autodoc))
+
+;; 雑多な設定
 ;;(eval-after-load "slime"
 ;;  '(slime-setup '(slime-fancy slime-banner)))
 ;; (setq slime-truncate-lines nil)
 ;; (setq slime-enable-evaluate-in-emacs t)
 ;; (slime-autodoc-mode)
+;; slime使っていると入力モード切り替えが上手くいかない
+;; 環境があるので、そのための対処
+(defun ime-onoff-slime ()
+  (interactive)
+  (if slime-mode
+      (progn
+	(slime-mode nil)
+	(toggle-input-method))
+    (if (string= major-mode "lisp-mode")
+	(progn
+	  (slime-mode t)
+	  (toggle-input-method))
+      (toggle-input-method))))
 
 ;; emacs lisp用のlisp-modeはemacs-lisp-modeを使用する設定に
 (setq auto-mode-alist
@@ -69,29 +86,42 @@
 	  (lambda ()
 	    (cond ((featurep 'slime)
 		   (slime-mode t) 
-		   (show-paren-mode 1) 
+		   (show-paren-mode 1)
+		   auto-complete-mode
 		   (local-set-key "\t" 'slime-indent-and-complete-symbol)
 		   (global-set-key "\C-cH" 'hyperspec-lookup)
 		   (global-set-key "\C-\\" 'ime-onoff-slime))
 		  (t
 		   (normal-mode)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; slime-modeのhook
-;; cltl2を利用する
-;; (でも今見つからないのでコメントアウトしている)
-(add-hook 'slime-mode-hook
-	  (lambda ()
-	    (setq lisp-indent-function 'common-lisp-indent-function)
-	    ;;(require 'cltl2)
-	    ;;(local-set-key "\C-c\C-dc" 'cltl2-lookup))
-	    ))
-(add-hook 'slime-connected-hook
-	  (lambda ()
-	    (slime-cd "~")))
-(add-hook 'inferior-lisp-mode-hook
-          (lambda ()
-            (slime-mode t)
-	    (inferior-slime-mode t)
-            (show-paren-mode)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
+(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+(define-globalized-minor-mode real-global-auto-complete-mode
+  auto-complete-mode (lambda ()
+         (if (not (minibufferp (current-buffer)))
+      (auto-complete-mode 1))))
+(real-global-auto-complete-mode t)
+
+;; (add-hook 'slime-mode-hook
+;; 	  (lambda ()
+;; 	    (setq lisp-indent-function 'common-lisp-indent-function)
+;; 	    auto-complete-mode))
+
+;; (add-hook 'slime-connected-hook
+;; 	  (lambda ()
+;; 	    (slime-cd "~")
+;; 	    auto-complete-mode))
+
+;; (add-hook 'inferior-lisp-mode-hook
+;;           (lambda ()
+;;             (slime-mode t)
+;; 	    (inferior-slime-mode t)
+;;             (show-paren-mode)))
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; インデントの設定
@@ -134,23 +164,10 @@
 		     (set-window-configuration ,window-configuration)))
 		 (use-local-map hs-map)))))
       ad-do-it)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 起動用の関数群
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; slime使っていると入力モード切り替えが上手くいかない
-;; 環境があるので、そのための対処
-(defun ime-onoff-slime ()
-  (interactive)
-  (if slime-mode
-      (progn
-	(slime-mode nil)
-	(toggle-input-method))
-    (if (string= major-mode "lisp-mode")
-	(progn
-	  (slime-mode t)
-	  (toggle-input-method))
-      (toggle-input-method))))
-
 (defun cmucl-start ()
   (interactive)
   (shell-command ""))
@@ -170,3 +187,4 @@
 (defun slime-sbcl ()
   (interactive)
   (slime-on "sbcl"))
+
