@@ -1,4 +1,4 @@
-;;Warning: `mapcar' called for effect; use `mapc' or `dolist' instead ‚ğ–h‚®
+;;Warning: `mapcar' called for effect; use `mapc' or `dolist' instead ã‚’é˜²ã
 (setq byte-compile-warnings '(free-vars 
 			      unresolved 
 			      callargs
@@ -10,7 +10,7 @@
 			      make-local))
 
 (defun add-to-load-path (&rest paths)
-  "ƒ[ƒhƒpƒX‚Épath‚ğ’Ç‰Á‚·‚é" 
+  "ãƒ­ãƒ¼ãƒ‰ãƒ‘ã‚¹ã«pathã‚’è¿½åŠ ã™ã‚‹" 
   (mapc '(lambda (path)
            (add-to-list 'load-path path))
         (mapcar 'expand-file-name paths)))
@@ -99,7 +99,7 @@
 (load "init-keymap")
 (load "init-killring")
 (load "init-color")
-(load "init-elscreen")
+;; (load "init-elscreen")
 (load "init-anything")
 ;;(load "init-migemo")
 (load "init-yasnippet")
@@ -132,12 +132,12 @@
 ;;(load "init-linkd")
 ;;(load "init-caede")
 
-;;;; ƒtƒHƒ“ƒg‚Ìİ’è
+;;;; ãƒ•ã‚©ãƒ³ãƒˆã®è¨­å®š
 (when (and run-emacs23 run-linux)
   (when window-system
     (progn
       (set-default-font "DejaVu Sans Mono-12")
-      (set-face-font 'variable-pitch "DejaVu Sans Mono-12") ;tooltip‚Ætabbar‚ÌƒtƒHƒ“ƒg
+      (set-face-font 'variable-pitch "DejaVu Sans Mono-12") ;tooltipã¨tabbarã®ãƒ•ã‚©ãƒ³ãƒˆ
       )))
 
 (when (eq system-type 'darwin)
@@ -166,9 +166,9 @@
 ;; 			 :height 122 
 ;; 			 :width normal
 ;; 			 :foundry "unknown" 
-;; 			 :family "TakaoExƒSƒVƒbƒN")))))
+;; 			 :family "TakaoExã‚´ã‚·ãƒƒã‚¯")))))
 
-;; ‚»‚Ì‘¼‚Ìİ’è
+;; ãã®ä»–ã®è¨­å®š
 (custom-set-variables
  '(column-number-mode t)
  '(menu-bar-mode nil)
