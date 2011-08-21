@@ -1,5 +1,6 @@
 ;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
+<<<<<<< HEAD
 ;; 色の設定
 ;; http://norainu.net/mt/archives/2007/05/emacs_22.html
 ;; (set-background-color "black")
@@ -29,3 +30,11 @@
 
 ;; ミニバッファのプロンプトの色
 ;;(set-face-foreground 'minibuffer-prompt "Green")
+
+;; ;; ウィンドウを複数開いた時、アクティヴでない方のモードラインの色
+;; (set-face-foreground 'mode-line-inactive "gray")
+;; (set-face-background 'mode-line-inactive "black")
+
+;; ;; ミニバッファのプロンプトの色
+;; (set-face-foreground 'minibuffer-prompt "Green")
+

@@ -99,7 +99,7 @@
 (load "init-keymap")
 (load "init-killring")
 (load "init-color")
-;;(load "init-elscreen")
+(load "init-elscreen")
 (load "init-anything")
 ;;(load "init-migemo")
 (load "init-yasnippet")
