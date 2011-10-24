@@ -137,6 +137,10 @@
 ;;(load "init-linkd")
 ;;(load "init-caede")
 
+(add-to-list 'load-path 
+	     "/Users/sakura/.emacs.d/elisp/magit/magit-compiled/share/emacs/site-lisp")
+(require 'magit)
+
 
 ;;;; フォントの設定
 (when (and run-emacs23 run-linux)
@@ -184,7 +188,8 @@
 ;;
 (add-hook 'speedbar-mode-hook
           '(lambda ()
-             (speedbar-add-supported-extension '("js" "as" "html" "css" "php" "lisp"))))
+             (speedbar-add-supported-extension
+	      '("js" "as" "html" "css" "php" "lisp"))))
 
 
 ;; Backslashes

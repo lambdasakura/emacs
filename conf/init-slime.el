@@ -23,6 +23,9 @@
 
 (require 'slime-autoloads)
 (require 'slime)
+(add-to-list 'load-path
+"/Users/sakura/quicklisp/dists/quicklisp/software/cl-annot-20110418-git/misc")
+(require 'slime-annot)
 (require 'ac-slime)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
