@@ -92,7 +92,7 @@
 
 ;; Loading elisps
 (load "init-common")
-(load "init-networking")
+;;(load "init-networking")
 
 ;; utils
 (load "init-sense-region")
@@ -105,6 +105,7 @@
 ;; (load "init-yasnippet")
 (load "init-hatena")
 (load "init-auto-complete")
+(load "init-moccur")
 
 ;; Programming Environment
 (load "init-c")
@@ -133,7 +134,7 @@
 (load "init-hiki")
 (load "init-hilighting")
 (load "init-yatex")
-(load "init-w3m")
+;;(load "init-w3m")
 ;;(load "init-linkd")
 ;;(load "init-caede")
 
@@ -196,3 +197,13 @@
 (define-key function-key-map [67109029] [?\C-\\])
 (define-key function-key-map [134217893] [?\M-\\])
 (define-key function-key-map [201326757] [?\C-\M-\\])
+
+
+(setq auto-mode-alist
+      (append '(("\\.C$"  . c++-mode)
+                ("\\.cc$" . c++-mode)
+                ("\\.cpp$". c++-mode)
+                ("\\.hh$" . c++-mode)
+                ("\\.c$"  . c-mode)
+                ("\\.h$"  . c++-mode))
+              auto-mode-alist))

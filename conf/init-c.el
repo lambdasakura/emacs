@@ -9,6 +9,15 @@
 ;; M - .     CTAGSで関数にジャンプ
 ;; M - +     CTAGSでジャンプしてた時に元の場所に戻る
 
+(setq auto-mode-alist
+      (append '(("\\.C$"  . c++-mode)
+                ("\\.cc$" . c++-mode)
+                ("\\.cpp$". c++-mode)
+                ("\\.hh$" . c++-mode)
+                ("\\.c$"  . c-mode)
+                ("\\.h$"  . c++-mode))
+              auto-mode-alist))
+
 (add-hook 'c-mode-common-hook
  '(lambda ()))
 
@@ -21,41 +30,42 @@
 
 ;; ;; C++
 ;; ;; http://d.hatena.ne.jp/pyopyopyo/20070715/
-(defun flymake-cc-init ()
-  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-         (local-file  (file-relative-name
-                       temp-file
-                       (file-name-directory buffer-file-name))))
-;;-Wall -Wextra -Wformat=2 -Wstrict-aliasing=2 -Wcast-qual -Wcast-align \
-;;-Wwrite-strings -Wconversion -Wfloat-equal -Wpointer-arith -Wswitch-enum \
-    (list "g++" (list 
-		 "-Wall"
-		 "-Wextra"
-		 ;; "-Wformat=2"
-		 ;; "-Wstrict-aliasing=2"
-		 ;; "-Wcast-qual"
-		 ;; "-Wcast-align"
-		 ;; "-Wwrite-strings"
-		 ;; "-Wconversion"
-		 ;; "-Wfloat-equal"
-		 ;; "-Wpointer-arith"
-		 ;; "-Wswitch-enum"
-		 ;;"-fsyntax-only"
-		 "-W" 
-		 "-Wall"
-		 "-Wextra"
-		  local-file))))
+;; (defun flymake-cc-init ()
+;;   (let* ((temp-file   (flymake-init-create-temp-buffer-copy
+;;                        'flymake-create-temp-inplace))
+;;          (local-file  (file-relative-name
+;;                        temp-file
+;;                        (file-name-directory buffer-file-name))))
+;; ;;-Wall -Wextra -Wformat=2 -Wstrict-aliasing=2 -Wcast-qual -Wcast-align \
+;; ;;-Wwrite-strings -Wconversion -Wfloat-equal -Wpointer-arith -Wswitch-enum \
+;;     (list "g++" (list 
+;; 		 "-Wall"
+;; 		 "-Wextra"
+;; 		 ;; "-Wformat=2"
+;; 		 ;; "-Wstrict-aliasing=2"
+;; 		 ;; "-Wcast-qual"
+;; 		 ;; "-Wcast-align"
+;; 		 ;; "-Wwrite-strings"
+;; 		 ;; "-Wconversion"
+;; 		 ;; "-Wfloat-equal"
+;; 		 ;; "-Wpointer-arith"
+;; 		 ;; "-Wswitch-enum"
+;; 		 ;;"-fsyntax-only"
+;; 		 "-W" 
+;; 		 "-Wall"
+;; 		 "-Wextra"
+;; 		  local-file))))
 
-(push '("\\.cc$" flymake-cc-init) flymake-allowed-file-name-masks)
-(push '("\\.h$" flymake-cc-init) flymake-allowed-file-name-masks)
+;; (push '("\\.cc$" flymake-cc-init) flymake-allowed-file-name-masks)
+;; (push '("\\.h$" flymake-cc-init) flymake-allowed-file-name-masks)
 
-(add-hook 'c++-mode-hook
-          '(lambda ()
-             (flymake-mode t)))
+;; (add-hook 'c++-mode-hook
+;;           '(lambda ()
+;;              (flymake-mode t)))
 
 
 
 (add-hook 'c++-mode-hook
   '(lambda ()
-      (flymake-mode t)))
+     ;; (flymake-mode t)
+     ))
