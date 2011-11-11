@@ -1,4 +1,5 @@
 ;;Warning: `mapcar' called for effect; use `mapc' or `dolist' instead を防ぐ
+(setq warning-suppress-types nil)
 (setq byte-compile-warnings '(free-vars 
 			      unresolved 
 			      callargs
@@ -123,7 +124,7 @@
 
 
 (load "init-slime")
-;;(load "init-ac-slime")
+(load "init-ac-slime")
 (load "init-popwin")
 (load "init-weblogger")
 
@@ -137,10 +138,6 @@
 ;;(load "init-w3m")
 ;;(load "init-linkd")
 ;;(load "init-caede")
-
-(add-to-list 'load-path 
-	     "/Users/sakura/.emacs.d/elisp/magit/magit-compiled/share/emacs/site-lisp")
-(require 'magit)
 
 
 ;;;; フォントの設定
