@@ -159,22 +159,6 @@
 			       'append)
 	     (add-to-list 'default-frame-alist '(font . "fontset-menlomarugo"))))))
 
-;; (custom-set-faces
-;;  '(default ((t (:inherit nil 
-;; 			 :stipple nil
-;; 			 :background "black"
-;; 			 :foreground "#cccccc" 
-;; 			 :inverse-video nil
-;; 			 :box nil 
-;; 			 :strike-through nil 
-;; 			 :overline nil 
-;; 			 :underline nil 
-;; 			 :slant normal 
-;; 			 :weight normal
-;; 			 :height 122 
-;; 			 :width normal
-;; 			 :foundry "unknown" 
-;; 			 :family "TakaoExゴシック")))))
 
 ;; その他の設定
 (custom-set-variables
@@ -183,7 +167,7 @@
  '(safe-local-variable-values (quote ((package . asdf))))
  '(show-paren-mode t))
 
-;;
+;; speedbarの設定
 (add-hook 'speedbar-mode-hook
           '(lambda ()
              (speedbar-add-supported-extension
@@ -200,7 +184,8 @@
 (define-key function-key-map [134217893] [?\M-\\])
 (define-key function-key-map [201326757] [?\C-\M-\\])
 
-
+;; ここで設定しないとうまくいかないので
+;; c++用の設定
 (setq auto-mode-alist
       (append '(("\\.C$"  . c++-mode)
                 ("\\.cc$" . c++-mode)
