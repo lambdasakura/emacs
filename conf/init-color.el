@@ -23,9 +23,19 @@
 ;; (set-face-background 'modeline "gray")
 ;; (set-cursor-color "white")
 
+
 ;; ;; ウィンドウを複数開いた時、アクティヴでない方のモードラインの色
 ;; (set-face-foreground 'mode-line-inactive "gray")
 ;; (set-face-background 'mode-line-inactive "black")
 
 ;; ;; ミニバッファのプロンプトの色
 ;; (set-face-foreground 'minibuffer-prompt "Green")
+
+;; ;; ウィンドウを複数開いた時、アクティヴでない方のモードラインの色
+;; (set-face-foreground 'mode-line-inactive "gray")
+;; (set-face-background 'mode-line-inactive "black")
+
+;; ;; ミニバッファのプロンプトの色
+;; (set-face-foreground 'minibuffer-prompt "Green")
+
+

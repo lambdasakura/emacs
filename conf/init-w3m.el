@@ -3,10 +3,11 @@
 ;;------------------------------------------
 (when run-darwin
   (add-to-list 'load-path "/opt/local/share/emacs/site-lisp/w3m")
+  (add-to-list 'load-path "~/.emacs.d/elisp/emacs-w3m/")
+  (setq w3m-command "/opt/local/bin/w3m")
+  (require 'w3m)
   (require 'w3m-load))
-
-;;(add-to-list 'load-path "~/.emacs.d/elisp/emacs-w3m/")
-;;(require 'w3m)
+(require 'w3m)
 
 (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
 ;;(setq w3m-command "/opt/local/bin/w3m")

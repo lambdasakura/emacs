@@ -209,7 +209,7 @@
 
 (defconst emacs-w3m-version
   (eval-when-compile
-    (let ((rev "$Revision: 1.1522 $"))
+    (let ((rev "$Revision: 1.1523 $"))
       (and (string-match "\\.\\([0-9]+\\) \\$\\'" rev)
 	   (setq rev (- (string-to-number (match-string 1 rev)) 1136))
 	   (format "1.4.%d" (+ rev 50)))))
@@ -1133,7 +1133,7 @@ when we implement the mailcap parser to set `w3m-content-type-alist'.")
 			    (eq 'w3m-browse-url
 				(symbol-value 'browse-url-browser-function)))
 			default
-		      (if (symbolp browse-url-browser-function)
+		      (if (functionp browse-url-browser-function)
 			  (symbol-value 'browse-url-browser-function)
 			(catch 'browser
 			  (let ((alist browse-url-browser-function))

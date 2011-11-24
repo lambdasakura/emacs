@@ -1,4 +1,6 @@
-;;Warning: `mapcar' called for effect; use `mapc' or `dolist' instead ‚ğ–h‚®
+
+;;Warning: `mapcar' called for effect; use `mapc' or `dolist' instead ã‚’é˜²ã
+(setq warning-suppress-types nil)
 (setq byte-compile-warnings '(free-vars 
 			      unresolved 
 			      callargs
@@ -10,7 +12,7 @@
 			      make-local))
 
 (defun add-to-load-path (&rest paths)
-  "ƒ[ƒhƒpƒX‚Épath‚ğ’Ç‰Á‚·‚é" 
+  "ãƒ­ãƒ¼ãƒ‰ãƒ‘ã‚¹ã«pathã‚’è¿½åŠ ã™ã‚‹" 
   (mapc '(lambda (path)
            (add-to-list 'load-path path))
         (mapcar 'expand-file-name paths)))
@@ -75,16 +77,16 @@
 (setq man-use-own-frame nil)
 
 ;; Meadow
-(when run-meadow
-  (load "init-meadow"))
+;; (when run-meadow
+;;   (load "init-meadow"))
 
-;; for Debian
-(when (boundp 'debian-emacs-flavor)
-  (defadvice find-function-search-for-symbol (around debian activate)
-    ""
-    (if (string-match (symbol-name debian-emacs-flavor) library)
-        (setq library (replace-match "emacs" nil nil library)))
-    ad-do-it))
+;; ;; for Debian
+;; (when (boundp 'debian-emacs-flavor)
+;;   (defadvice find-function-search-for-symbol (around debian activate)
+;;     ""
+;;     (if (string-match (symbol-name debian-emacs-flavor) library)
+;;         (setq library (replace-match "emacs" nil nil library)))
+;;     ad-do-it))
 
 ;; for Mac
 (when run-darwin
@@ -92,18 +94,20 @@
 
 ;; Loading elisps
 (load "init-common")
-(load "init-networking")
+;;(load "init-networking")
 
 ;; utils
 (load "init-sense-region")
 (load "init-keymap")
 (load "init-killring")
 (load "init-color")
-;;(load "init-elscreen")
+;; (load "init-elscreen")
 (load "init-anything")
-;;(load "init-migemo")
-(load "init-yasnippet")
+;; ;;(load "init-migemo")
+;; (load "init-yasnippet")
 (load "init-hatena")
+(load "init-auto-complete")
+(load "init-moccur")
 
 ;; Programming Environment
 (load "init-c")
@@ -114,30 +118,35 @@
 (load "init-javascript")
 (load "init-mmm")
 (load "init-scala")
-;;(load "init-js2")
-;; (load "init-ruby")
-;; (load "init-scheme")
+;; (load "init-js2")
+(load "init-ruby")
+(load "init-scheme")
 (load "init-python")
+
+
 (load "init-slime")
+(load "init-ac-slime")
+(load "init-popwin")
 (load "init-weblogger")
 
 ;; Extra
 ;;(load "init-skk")
-;;(load "init-dired")
-(load "init-dabbrev-ja")
+(load "init-dired")
+;;(load "init-dabbrev-ja")
 (load "init-hiki")
-;;(load "init-hilighting")
-;;(load "init-yatex")
-(load "init-w3m")
+(load "init-hilighting")
+(load "init-yatex")
+;;(load "init-w3m")
 ;;(load "init-linkd")
 ;;(load "init-caede")
 
-;;;; ƒtƒHƒ“ƒg‚Ìİ’è
+
+;;;; ãƒ•ã‚©ãƒ³ãƒˆã®è¨­å®š
 (when (and run-emacs23 run-linux)
   (when window-system
     (progn
       (set-default-font "DejaVu Sans Mono-12")
-      (set-face-font 'variable-pitch "DejaVu Sans Mono-12") ;tooltip‚Ætabbar‚ÌƒtƒHƒ“ƒg
+      (set-face-font 'variable-pitch "DejaVu Sans Mono-12") ;tooltipã¨tabbarã®ãƒ•ã‚©ãƒ³ãƒˆ
       )))
 
 (when (eq system-type 'darwin)
@@ -150,6 +159,7 @@
 			       nil
 			       'append)
 	     (add-to-list 'default-frame-alist '(font . "fontset-menlomarugo"))))))
+
 
 ;; (custom-set-faces
 ;;  '(default ((t (:inherit nil 
@@ -175,9 +185,6 @@
  '(safe-local-variable-values (quote ((package . asdf))))
  '(show-paren-mode t))
 
-
-
-
 ;;; Ä‹A“I‚Égrep
 (require 'grep)
 (setq grep-command-before-query "grep -nH -r -e ")
@@ -196,3 +203,31 @@
 (setq grep-command (cons (concat grep-command-before-query " .")
                          (+ (length grep-command-before-query) 1)))
 (define-key global-map (kbd "M-C-g") 'grep)   
+
+;; speedbarã®è¨­å®š
+(add-hook 'speedbar-mode-hook
+          '(lambda ()
+             (speedbar-add-supported-extension
+	      '("js" "as" "html" "css" "php" "lisp"))))
+
+
+;; Backslashes
+(define-key global-map [165] nil)
+(define-key global-map [67109029] nil)
+(define-key global-map [134217893] nil)
+(define-key global-map [201326757] nil)
+(define-key function-key-map [165] [?\\])
+(define-key function-key-map [67109029] [?\C-\\])
+(define-key function-key-map [134217893] [?\M-\\])
+(define-key function-key-map [201326757] [?\C-\M-\\])
+
+
+(setq auto-mode-alist
+      (append '(("\\.C$"  . c++-mode)
+                ("\\.cc$" . c++-mode)
+                ("\\.cpp$". c++-mode)
+                ("\\.hh$" . c++-mode)
+                ("\\.c$"  . c-mode)
+                ("\\.h$"  . c++-mode))
+              auto-mode-alist))
+

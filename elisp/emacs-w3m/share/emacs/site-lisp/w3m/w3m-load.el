@@ -19,7 +19,7 @@ Default bookmark handler for w3m buffers.
 
 ;;;### (autoloads (w3m-buffer w3m-region w3m-find-file w3m-browse-url
 ;;;;;;  w3m w3m-gohome w3m-goto-url-new-session w3m-goto-url w3m-download
-;;;;;;  w3m-retrieve) "w3m" "w3m.el" (19819 41148))
+;;;;;;  w3m-retrieve) "w3m" "w3m.el" (19832 26391))
 ;;; Generated autoloads from w3m.el
 
 (autoload 'w3m-retrieve "w3m" "\
