@@ -110,6 +110,7 @@
 
 ;; Programming Environment
 (load "init-c")
+(load "init-gdb")
 (load "init-global")
 (load "init-html")
 (load "init-css")
