@@ -38,7 +38,6 @@
 	`((ccl ("D:/ccl-1.7/wx86cl.exe") :coding-system utf-8-unix)
 	  (sbcl ("sbcl") :coding-system utf-8-unix)
 	  (clisp ("clisp") :coding-system utf-8-unix)
-	  (ccl ("C:/ProgramingLanguages/ccl/wx86cl.exe") :coding-system utf-8-unix)
 	  (cmucl ("lisp")))))
 (when run-darwin
   (setq slime-lisp-implementations
@@ -54,7 +53,8 @@
 ;; slime自体の設定
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 標準の処理系はSBCL
-(setq inferior-lisp-program "sbcl")
+;;(setq inferior-lisp-program "sbcl")
+(setq inferior-lisp-program 'ccl)
 ;; utf-8で通信
 (setq slime-net-coding-system 'utf-8-unix)
 ;; slimeの起動オプションの設定

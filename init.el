@@ -1,3 +1,4 @@
+
 ;;Warning: `mapcar' called for effect; use `mapc' or `dolist' instead を防ぐ
 (setq warning-suppress-types nil)
 (setq byte-compile-warnings '(free-vars 
@@ -124,8 +125,8 @@
 (load "init-python")
 
 
-(load "init-slime")
-(load "init-ac-slime")
+;;(load "init-slime")
+;;(load "init-ac-slime")
 (load "init-popwin")
 (load "init-weblogger")
 
@@ -161,12 +162,48 @@
 	     (add-to-list 'default-frame-alist '(font . "fontset-menlomarugo"))))))
 
 
-;; その他の設定
+;; (custom-set-faces
+;;  '(default ((t (:inherit nil 
+;; 			 :stipple nil
+;; 			 :background "black"
+;; 			 :foreground "#cccccc" 
+;; 			 :inverse-video nil
+;; 			 :box nil 
+;; 			 :strike-through nil 
+;; 			 :overline nil 
+;; 			 :underline nil 
+;; 			 :slant normal 
+;; 			 :weight normal
+;; 			 :height 122 
+;; 			 :width normal
+;; 			 :foundry "unknown" 
+;; 			 :family "TakaoEx�S�V�b�N")))))
+
+;; ���̑��̐ݒ�
 (custom-set-variables
  '(column-number-mode t)
  '(menu-bar-mode nil)
  '(safe-local-variable-values (quote ((package . asdf))))
  '(show-paren-mode t))
+
+;;; �ċA�I��grep
+(require 'grep)
+(setq grep-command-before-query "grep -nH -r -e ")
+(defun grep-default-command ()
+  (if current-prefix-arg
+      (let ((grep-command-before-target
+             (concat grep-command-before-query
+                     (shell-quote-argument (grep-tag-default)))))
+        (cons (if buffer-file-name
+                  (concat grep-command-before-target
+                          " *."
+                          (file-name-extension buffer-file-name))
+                (concat grep-command-before-target " ."))
+              (+ (length grep-command-before-target) 1)))
+    (car grep-command)))
+(setq grep-command (cons (concat grep-command-before-query " .")
+                         (+ (length grep-command-before-query) 1)))
+(define-key global-map (kbd "M-C-g") 'grep)   
 
 ;; speedbarの設定
 (add-hook 'speedbar-mode-hook
@@ -185,8 +222,7 @@
 (define-key function-key-map [134217893] [?\M-\\])
 (define-key function-key-map [201326757] [?\C-\M-\\])
 
-;; ここで設定しないとうまくいかないので
-;; c++用の設定
+
 (setq auto-mode-alist
       (append '(("\\.C$"  . c++-mode)
                 ("\\.cc$" . c++-mode)
@@ -195,3 +231,4 @@
                 ("\\.c$"  . c-mode)
                 ("\\.h$"  . c++-mode))
               auto-mode-alist))
+

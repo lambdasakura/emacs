@@ -1,24 +1,24 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ネットワークの設定
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defvar *network-interface-names* '("en1" "wlan0" "eth0")
-  "Candidates for the network devices.")
+;; (defvar *network-interface-names* '("en1" "wlan0" "eth0")
+;;   "Candidates for the network devices.")
 
-(defun machine-ip-address (dev)
-  "Return IP address of a network device."
-  (let ((info (network-interface-info dev)))
-    (if info
-      (format-network-address (car info) t))))
+;; (defun machine-ip-address (dev)
+;;   "Return IP address of a network device."
+;;   (let ((info (network-interface-info dev)))
+;;     (if info
+;;       (format-network-address (car info) t))))
 
-(defun networkp ()
-  "ネットワークがつながっているかどうかを判定する"
-  (let ((ip (some #'machine-ip-address *network-interface-names*)))  ip ))
+;; (defun networkp ()
+;;   "ネットワークがつながっているかどうかを判定する"
+;;   (let ((ip (some #'machine-ip-address *network-interface-names*)))  ip ))
 
-(defun officep ()
-  "職場にいるかどうかを判定する"
-  (let ((ip (some #'machine-ip-address *network-interface-names*)))
-    (and ip
-	 (eq 0 (string-match "^133\\.196\\.*" ip)))))
+;; (defun officep ()
+;;   "職場にいるかどうかを判定する"
+;;   (let ((ip (some #'machine-ip-address *network-interface-names*)))
+;;     (and ip
+;; 	 (eq 0 (string-match "^133\\.196\\.*" ip)))))
 
 (defun proxy-on ()
   "PROXY_SERVERを設定する。
@@ -47,11 +47,10 @@ NO_PROXYが正しく動作するのか未検証"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ネットワークの場所別の設定
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(if (officep)
-    (proxy-on)
-  (proxy-off))
-
-
+;; (if (officep)
+;;     (proxy-on)
+;;   (proxy-off))
+(proxy-on)
 
 ;;  なぜかうまく動いてくれなかった
 (if (networkp)
