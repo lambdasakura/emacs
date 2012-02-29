@@ -1,5 +1,12 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; emacs 設定ファイル
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;Warning: `mapcar' called for effect; use `mapc' or `dolist' instead を防ぐ
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 警告などの抑制
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;Warning: `mapcar' called for effect; use `mapc' or `dolist' instead
 (setq warning-suppress-types nil)
 (setq byte-compile-warnings '(free-vars 
 			      unresolved 
@@ -12,21 +19,23 @@
 			      make-local))
 
 (defun add-to-load-path (&rest paths)
-  "ロードパスにpathを追加する" 
   (mapc '(lambda (path)
            (add-to-list 'load-path path))
         (mapcar 'expand-file-name paths)))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Initialize auto-install
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-to-load-path "~/.emacs.d/elisp" "~/.emacs.d/conf")
 (add-to-load-path "/usr/local/share/emacs/site-lisp")
-
-;; Initialize auto-install
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/auto-install"))
 (require 'auto-install)
 (setq auto-install-directory "~/.emacs.d/auto-install/")
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Detect OS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defvar run-unix
   (or (equal system-type 'gnu/linux)
       (or (equal system-type 'usg-unix-v)
@@ -46,7 +55,9 @@
            (equal system-type 'ms-dos))))
 (defvar run-darwin (equal system-type 'darwin))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Detect Emacsen 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defvar run-emacs20
   (and (equal emacs-major-version 20)
        (null (featurep 'xemacs))))
@@ -68,7 +79,9 @@
   (and run-xemacs (not (featurep 'mule))))
 (defvar run-carbon-emacs (and run-darwin window-system))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Woman 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq woman-manpath '("/opt/local/share/man"
 		      "/usr/local/share/man"
 		      "/usr/share/man"
@@ -76,11 +89,17 @@
 (setq woman-use-own-frame nil)
 (setq man-use-own-frame nil)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Meadow
-;; (when run-meadow
-;;   (load "init-meadow"))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(when run-meadow
+  (load "init-meadow"))
 
-;; ;; for Debian
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; for Debian
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; (when (boundp 'debian-emacs-flavor)
 ;;   (defadvice find-function-search-for-symbol (around debian activate)
 ;;     ""
@@ -88,13 +107,17 @@
 ;;         (setq library (replace-match "emacs" nil nil library)))
 ;;     ad-do-it))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; for Mac
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (when run-darwin
   (load "init-mac"))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Loading elisps
-;;(load "init-common")
-;;(load "init-networking")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(load "init-common")
+(load "init-networking")
 
 ;; utils
 (load "init-sense-region")
@@ -141,52 +164,13 @@
 ;;(load "init-linkd")
 ;;(load "init-caede")
 
-
-;;;; フォントの設定
-(when (and run-emacs23 run-linux)
-  (when window-system
-    (progn
-      (set-default-font "DejaVu Sans Mono-12")
-      (set-face-font 'variable-pitch "DejaVu Sans Mono-12") ;tooltipとtabbarのフォント
-      )))
-
-(when (eq system-type 'darwin)
-  (if (>= emacs-major-version 23)
-      (cond (window-system
-	     (create-fontset-from-ascii-font "Menlo-12:weight=normal:slant=normal" nil "menlomarugo")
-	     (set-fontset-font "fontset-menlomarugo"
-			       'unicode
-			       (font-spec :family "Hiragino Maru Gothic ProN" :size 14)
-			       nil
-			       'append)
-	     (add-to-list 'default-frame-alist '(font . "fontset-menlomarugo"))))))
-
-
-;; (custom-set-faces
-;;  '(default ((t (:inherit nil 
-;; 			 :stipple nil
-;; 			 :background "black"
-;; 			 :foreground "#cccccc" 
-;; 			 :inverse-video nil
-;; 			 :box nil 
-;; 			 :strike-through nil 
-;; 			 :overline nil 
-;; 			 :underline nil 
-;; 			 :slant normal 
-;; 			 :weight normal
-;; 			 :height 122 
-;; 			 :width normal
-;; 			 :foundry "unknown" 
-;; 			 :family "TakaoEx�S�V�b�N")))))
-
-;; ���̑��̐ݒ�
 (custom-set-variables
  '(column-number-mode t)
  '(menu-bar-mode nil)
  '(safe-local-variable-values (quote ((package . asdf))))
  '(show-paren-mode t))
 
-;;; �ċA�I��grep
+
 (require 'grep)
 (setq grep-command-before-query "grep -nH -r -e ")
 (defun grep-default-command ()
@@ -205,14 +189,17 @@
                          (+ (length grep-command-before-query) 1)))
 (define-key global-map (kbd "M-C-g") 'grep)   
 
-;; speedbarの設定
 (add-hook 'speedbar-mode-hook
           '(lambda ()
              (speedbar-add-supported-extension
 	      '("js" "as" "html" "css" "php" "lisp"))))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Backslashes
+;; バックスラッシュがうまく入力できない環境があるので
+;; 強制的に対応
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define-key global-map [165] nil)
 (define-key global-map [67109029] nil)
 (define-key global-map [134217893] nil)
