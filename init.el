@@ -93,7 +93,7 @@
   (load "init-mac"))
 
 ;; Loading elisps
-(load "init-common")
+;;(load "init-common")
 ;;(load "init-networking")
 
 ;; utils
@@ -101,10 +101,10 @@
 (load "init-keymap")
 (load "init-killring")
 (load "init-color")
-;; (load "init-elscreen")
+(load "init-elscreen")
 (load "init-anything")
-;; ;;(load "init-migemo")
-;; (load "init-yasnippet")
+;;(load "init-migemo")
+(load "init-yasnippet")
 (load "init-hatena")
 (load "init-auto-complete")
 (load "init-moccur")
@@ -117,7 +117,7 @@
 (load "init-css")
 (load "init-php")
 (load "init-javascript")
-(load "init-mmm")
+;;(load "init-mmm")
 (load "init-scala")
 ;; (load "init-js2")
 (load "init-ruby")
@@ -125,18 +125,18 @@
 (load "init-python")
 
 
-;;(load "init-slime")
-;;(load "init-ac-slime")
-(load "init-popwin")
-(load "init-weblogger")
+(load "init-slime")
+(load "init-ac-slime")
+;; (load "init-popwin")
+;; (load "init-weblogger")
 
-;; Extra
-;;(load "init-skk")
-(load "init-dired")
-;;(load "init-dabbrev-ja")
-(load "init-hiki")
-(load "init-hilighting")
-(load "init-yatex")
+;; ;; Extra
+;; ;;(load "init-skk")
+;; (load "init-dired")
+;; ;;(load "init-dabbrev-ja")
+;; (load "init-hiki")
+;; (load "init-hilighting")
+;; (load "init-yatex")
 ;;(load "init-w3m")
 ;;(load "init-linkd")
 ;;(load "init-caede")

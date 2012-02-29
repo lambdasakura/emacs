@@ -94,9 +94,9 @@
 ;; (setq gnuserv-frame (selected-frame)) ; 新しくフレームを開かない
 
 
-(set-face-attribute 'default nil
-                   :family "Ricty"
-                   )
-(set-fontset-font
- nil 'japanese-jisx0208
- (font-spec :family "Ricty"))
+;; (set-face-attribute 'default nil
+;;                    :family "Ricty"
+;;                    )
+;; (set-fontset-font
+;;  nil 'japanese-jisx0208
+;;  (font-spec :family "Ricty"))
