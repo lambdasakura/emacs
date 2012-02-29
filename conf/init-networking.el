@@ -4,8 +4,7 @@
 (defvar *network-interface-names* '("en1" "wlan0" "eth0" "rl0" "rl1")
   "Candidates for the network devices.")
 
-
-(defun machine-ip-address (dev)
+defun machine-ip-address (dev)
   "Return IP address of a network device."
   (let ((info (network-interface-info dev)))
     (if info
@@ -48,10 +47,10 @@ NO_PROXYが正しく動作するのか未検証"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ネットワークの場所別の設定
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (if (officep)
-;;     (proxy-on)
-;;   (proxy-off))
-(proxy-on)
+(if (officep)
+     (proxy-on)
+   (proxy-off))
+
 
 ;;  なぜかうまく動いてくれなかった
 (if (networkp)
