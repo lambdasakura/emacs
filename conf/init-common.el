@@ -34,13 +34,17 @@
 
 ;;対応する括弧をハイライト表示させる
 (show-paren-mode 1)
+
 ;;行番号を表示
 (line-number-mode 1)
+
 ;;列番号を表示
 (column-number-mode 1)
+
 ;;メニューバーを消す
-;;(menu-bar-mode -1)
-;;(tool-bar-mode nil)
+(menu-bar-mode -1)
+(tool-bar-mode nil)
+
 ;;mode-lineにファイル名のフルパスを表示
 ;; (set-default 'mode-line-buffer-identification
 ;;  '(buffer-file-name ("%f") ("%b")))

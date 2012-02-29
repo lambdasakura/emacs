@@ -118,7 +118,7 @@
 (load "init-javascript")
 (load "init-mmm")
 (load "init-scala")
-;; (load "init-js2")
+(load "init-js2")
 (load "init-ruby")
 (load "init-scheme")
 (load "init-python")
