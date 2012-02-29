@@ -89,11 +89,11 @@
 ;;     ad-do-it))
 
 ;; for Mac
-(when run-darwin
-  (load "init-mac"))
+;; (when run-darwin
+;;   (load "init-mac"))
 
 ;; Loading elisps
-;;(load "init-common")
+(load "init-common")
 ;;(load "init-networking")
 
 ;; utils
@@ -101,7 +101,7 @@
 (load "init-keymap")
 (load "init-killring")
 (load "init-color")
-(load "init-elscreen")
+;; (load "init-elscreen")
 (load "init-anything")
 ;;(load "init-migemo")
 (load "init-yasnippet")
@@ -125,10 +125,10 @@
 (load "init-python")
 
 
-(load "init-slime")
-(load "init-ac-slime")
-;; (load "init-popwin")
-;; (load "init-weblogger")
+;; (load "init-slime")
+;;(load "init-ac-slime")
+(load "init-popwin")
+(load "init-weblogger")
 
 ;; ;; Extra
 ;; ;;(load "init-skk")
@@ -177,16 +177,16 @@
 ;; 			 :height 122 
 ;; 			 :width normal
 ;; 			 :foundry "unknown" 
-;; 			 :family "TakaoExƒSƒVƒbƒN")))))
+;; 			 :family "TakaoExã‚´ã‚·ãƒƒã‚¯")))))
 
-;; ‚»‚Ì‘¼‚Ìİ’è
+;; ãã®ä»–ã®è¨­å®š
 (custom-set-variables
  '(column-number-mode t)
  '(menu-bar-mode nil)
  '(safe-local-variable-values (quote ((package . asdf))))
  '(show-paren-mode t))
 
-;;; Ä‹A“I‚Égrep
+;;; å†å¸°çš„ã«grep
 (require 'grep)
 (setq grep-command-before-query "grep -nH -r -e ")
 (defun grep-default-command ()
@@ -205,7 +205,7 @@
                          (+ (length grep-command-before-query) 1)))
 (define-key global-map (kbd "M-C-g") 'grep)   
 
-;; speedbarã®è¨­å®š
+
 (add-hook 'speedbar-mode-hook
           '(lambda ()
              (speedbar-add-supported-extension
