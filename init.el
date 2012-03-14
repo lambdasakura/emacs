@@ -92,8 +92,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Meadow
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(when run-meadow
-  (load "init-meadow"))
+;; (when run-meadow
+;;   (load "init-meadow"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -148,8 +148,8 @@
 (load "init-python")
 
 
-;; (load "init-slime")
-;;(load "init-ac-slime")
+(load "init-slime")
+(load "init-ac-slime")
 (load "init-popwin")
 (load "init-weblogger")
 

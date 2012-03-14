@@ -4,7 +4,7 @@
 (defvar *network-interface-names* '("en1" "wlan0" "eth0" "rl0" "rl1")
   "Candidates for the network devices.")
 
-defun machine-ip-address (dev)
+(defun machine-ip-address (dev)
   "Return IP address of a network device."
   (let ((info (network-interface-info dev)))
     (if info
