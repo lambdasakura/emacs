@@ -1,14 +1,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ネットワークの設定
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defvar *network-interface-names* '("en1" "wlan0" "eth0")
+(defvar *network-interface-names* '("en1" "wlan0" "eth0" "rl0" "rl1")
   "Candidates for the network devices.")
 
 (defun machine-ip-address (dev)
   "Return IP address of a network device."
   (let ((info (network-interface-info dev)))
     (if info
-      (format-network-address (car info) t))))
+	(format-network-address (car info) t))))
 
 (defun networkp ()
   "ネットワークがつながっているかどうかを判定する"

@@ -92,8 +92,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Meadow
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(when run-meadow
-  (load "init-meadow"))
+;; (when run-meadow
+;;   (load "init-meadow"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -124,7 +124,7 @@
 (load "init-keymap")
 (load "init-killring")
 (load "init-color")
-(load "init-elscreen")
+;; (load "init-elscreen")
 (load "init-anything")
 ;;(load "init-migemo")
 (load "init-yasnippet")
@@ -150,8 +150,8 @@
 
 (load "init-slime")
 (load "init-ac-slime")
-;; (load "init-popwin")
-;; (load "init-weblogger")
+(load "init-popwin")
+(load "init-weblogger")
 
 ;; ;; Extra
 ;; ;;(load "init-skk")
@@ -164,58 +164,11 @@
 ;;(load "init-linkd")
 ;;(load "init-caede")
 
+
+;; その他の設定
 (custom-set-variables
  '(column-number-mode t)
  '(menu-bar-mode nil)
  '(safe-local-variable-values (quote ((package . asdf))))
  '(show-paren-mode t))
-
-
-(require 'grep)
-(setq grep-command-before-query "grep -nH -r -e ")
-(defun grep-default-command ()
-  (if current-prefix-arg
-      (let ((grep-command-before-target
-             (concat grep-command-before-query
-                     (shell-quote-argument (grep-tag-default)))))
-        (cons (if buffer-file-name
-                  (concat grep-command-before-target
-                          " *."
-                          (file-name-extension buffer-file-name))
-                (concat grep-command-before-target " ."))
-              (+ (length grep-command-before-target) 1)))
-    (car grep-command)))
-(setq grep-command (cons (concat grep-command-before-query " .")
-                         (+ (length grep-command-before-query) 1)))
-(define-key global-map (kbd "M-C-g") 'grep)   
-
-(add-hook 'speedbar-mode-hook
-          '(lambda ()
-             (speedbar-add-supported-extension
-	      '("js" "as" "html" "css" "php" "lisp"))))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Backslashes
-;; バックスラッシュがうまく入力できない環境があるので
-;; 強制的に対応
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define-key global-map [165] nil)
-(define-key global-map [67109029] nil)
-(define-key global-map [134217893] nil)
-(define-key global-map [201326757] nil)
-(define-key function-key-map [165] [?\\])
-(define-key function-key-map [67109029] [?\C-\\])
-(define-key function-key-map [134217893] [?\M-\\])
-(define-key function-key-map [201326757] [?\C-\M-\\])
-
-
-(setq auto-mode-alist
-      (append '(("\\.C$"  . c++-mode)
-                ("\\.cc$" . c++-mode)
-                ("\\.cpp$". c++-mode)
-                ("\\.hh$" . c++-mode)
-                ("\\.c$"  . c-mode)
-                ("\\.h$"  . c++-mode))
-              auto-mode-alist))
 

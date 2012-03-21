@@ -133,8 +133,6 @@
 ;; (gnuserv-start)
 ;; (setq gnuserv-frame (selected-frame)) ; 新しくフレームを開かない
 
-
-
 (require 'grep)
 (setq grep-command-before-query "grep -nH -r -e ")
 (defun grep-default-command ()
