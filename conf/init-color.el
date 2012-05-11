@@ -1,41 +1,22 @@
 ;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
-;; 色の設定
-;; http://norainu.net/mt/archives/2007/05/emacs_22.html
-(set-background-color "black")
-(set-foreground-color "#cccccc")
-(set-face-foreground 'font-lock-comment-face "tan1")
-(set-face-foreground 'font-lock-string-face  "OrangeRed")
-(set-face-foreground 'font-lock-keyword-face "SandyBrown")
-(set-face-foreground 'font-lock-function-name-face "DeepPink")
-(set-face-foreground 'font-lock-function-name-face "LightGoldenrod1")
-(set-face-foreground 'font-lock-variable-name-face "limegreen")
-(set-face-foreground 'font-lock-type-face "skyblue1")
-(set-face-foreground 'font-lock-warning-face "yellow")
-(set-face-foreground 'font-lock-builtin-face "goldenrod")
-;(set-face-foreground 'font-lock-builtin-face "red")
-(set-face-foreground 'font-lock-constant-face "tomato")
-(set-face-background 'highlight "yellow")
-(set-face-foreground 'highlight "black")
-(set-face-background 'region "RoyalBlue4")
-(set-face-foreground 'region "white")
-(set-face-foreground 'modeline "black")
-(set-face-background 'modeline "gray")
-(set-cursor-color "white")
-
-
-;; ウィンドウを複数開いた時、アクティヴでない方のモードラインの色
-(set-face-foreground 'mode-line-inactive "gray")
-(set-face-background 'mode-line-inactive "black")
-
-;; ミニバッファのプロンプトの色
-(set-face-foreground 'minibuffer-prompt "Green")
-
-;; ウィンドウを複数開いた時、アクティヴでない方のモードラインの色
-(set-face-foreground 'mode-line-inactive "gray")
-(set-face-background 'mode-line-inactive "black")
-
-;; ミニバッファのプロンプトの色
-(set-face-foreground 'minibuffer-prompt "Green")
-
-
+(custom-set-faces
+ '(default ((t (:background "black" :foreground "white"))))
+ '(cursor ((t (:foreground "white"))))
+ '(font-lock-builtin-face ((((class color) (min-colors 88) (background dark)) (:foreground "goldenrod"))))
+ '(font-lock-comment-face ((((class color) (min-colors 88) (background dark)) (:foreground "tan1"))))
+ '(font-lock-string-face  ((((class color) (min-colors 88) (background dark)) (:foreground "OrangeRed"))))
+ '(font-lock-keyword-face ((((class color) (min-colors 88) (background dark)) (:foreground "SandyBrown"))))
+ '(font-lock-function-name-face ((((class color) (min-colors 88) (background dark)) (:foreground "DeepPink"))))
+ '(font-lock-variable-name-face ((((class color) (min-colors 88) (background dark)) (:foreground "limegreen"))))
+ '(font-lock-type-face ((((class color) (min-colors 88) (background dark)) (:foreground "skyblue1"))))
+ '(font-lock-warning-face ((((class color) (min-colors 88) (background dark)) (:foreground "yellow"))))
+ '(font-lock-constant-face ((((class color) (min-colors 88) (background dark)) (:foreground "tomato"))))
+ '(region ((((class color) (min-colors 88) (background dark)) (:foreground "white" :background "MediumSlateBlue"))))
+ '(highlight ((((class color) (min-colors 88) (background dark)) (:foreground "white" :background "MediumSlateBlue"))))
+ '(modeline ((((class color) (min-colors 88) (background dark)) (:foreground "gray"))))
+ '(minibuffer-prompt ((((class color) (min-colors 88) (background dark)) (:foreground "Green"))))
+ '(mode-line-inactive ((((class color) (min-colors 88) (background dark)) (:foreground "black"))))
+)
+ 	
+(setq transient-mark-mode t)
