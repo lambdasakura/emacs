@@ -2,7 +2,7 @@
 ;; emacs 設定ファイル
 ;; 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+ 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 警告などの抑制
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -117,10 +117,13 @@
 ;; Loading elisps
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load "init-common")
-(load "init-networking")
+;; (load "init-networking")
 
 ;; utils
-(load "init-sense-region")
+;; (load "init-sense-region")
+(cua-mode t)
+(setq cua-enable-cua-keys nil)
+
 (load "init-keymap")
 (load "init-killring")
 (load "init-color")
@@ -150,7 +153,7 @@
 
 (load "init-slime")
 (load "init-ac-slime")
-(load "init-popwin")
+;; (load "init-popwin")
 (load "init-weblogger")
 
 ;; ;; Extra
@@ -172,3 +175,5 @@
  '(safe-local-variable-values (quote ((package . asdf))))
  '(show-paren-mode t))
 
+(setq-default truncate-partial-width-windows t)
+(setq-default truncate-lines t)
