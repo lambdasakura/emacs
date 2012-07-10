@@ -1,5 +1,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; emacs 設定ファイル
+<<<<<<< HEAD
+=======
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+>>>>>>> b1fd95235150469167afd2d54e017638823d4496
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 警告などの抑制
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -108,17 +114,15 @@
 (load "init-common")
 (load "init-color")
 
+(cua-mode t)
+(setq cua-enable-cua-keys nil)
 
 ;; (load "init-networking")
 
 ;; utils
-;; (load "init-keymap")
-
 (load "init-elscreen")
 (load "init-anything")
-;; ;;(load "init-migemo")
 (load "init-yasnippet")
-
 (load "init-auto-complete")
 (load "init-moccur")
 (load "init-popwin")
@@ -126,11 +130,10 @@
 (load "init-slime")
 (load "init-ac-slime")
 
-
 ;; ;; Programming Environment
 (load "init-c")
 (load "init-gdb")
-(load "init-global")
+(load "init-gtags")
 
 ;; Web Programming
 ;; (load "init-html")
@@ -142,8 +145,10 @@
 ;; (load "init-ruby")
 ;; (load "init-python")
 
-;; ;; ;; Extra
-;; ;; ;;(load "init-dabbrev-ja")
-;; ;; (load "init-yatex")
-;; ;;(load "init-caede")
+;; Extra
+;; (load "init-yatex")
+;;(load "init-caede")
 
+;; その他の設定
+(setq-default truncate-partial-width-windows t)
+(setq-default truncate-lines t)
