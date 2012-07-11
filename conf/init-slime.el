@@ -40,28 +40,32 @@
 ;; (setq slime-truncate-lines nil)
 ;; (setq slime-enable-evaluate-in-emacs t)
 ;; (slime-autodoc-mode)
+
 ;; slime使っていると入力モード切り替えが上手くいかない
 ;; 環境があるので、そのための対処
-;; (defun ime-onoff-slime ()
-;;   (interactive)
-;;   (if slime-mode
-;;       (progn
-;; 	(slime-mode nil)
-;; 	(toggle-input-method))
-;;     (if (string= major-mode "lisp-mode")
-;; 	(progn
-;; 	  (slime-mode t)
-;; 	  (toggle-input-method))
-;;       (toggle-input-method))))
+(defun ime-onoff-slime ()
+  (interactive)
+  (if slime-mode
+      (progn
+	(slime-mode nil)
+	(toggle-input-method))
+    (if (string= major-mode "lisp-mode")
+	(progn
+	  (slime-mode t)
+	  (toggle-input-method))
+      (toggle-input-method))))
 
 ;; emacs lisp用のlisp-modeはemacs-lisp-modeを使用する設定に
-;; (setq auto-mode-alist
-;;       (append
-;;        '(("/.el" . emacs-lisp-mode))
-;;        '(("/.emacs-*" . emacs-lisp-mode))
-;;        '(("/.wl" . emacs-lisp-mode))
-;;        auto-mode-alist))
+(setq auto-mode-alist
+      (append
+       '(("/.el" . emacs-lisp-mode))
+       '(("/.emacs-*" . emacs-lisp-mode))
+       '(("/.wl" . emacs-lisp-mode))
+       auto-mode-alist))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; hook
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun my-lisp-mode-hook-func ()
   (interactive)
   (define-key lisp-mode-map "`" 'self-insert-command)
@@ -73,55 +77,42 @@
     (setq ac-sources '(ac-source-slime-simple ac-source-words-in-same-mode-buffers))
     (auto-complete-mode t))) 
 
-;; (when (require 'slime nil t)
-;;   (setq inferior-lisp-program "sbcl")
-;;   (slime-setup '(slime-repl slime-fancy slime-banner))
-;;   (setq slime-net-coding-system 'utf-8-unix)
-;;   (require 'ac-slime)
-;;   (add-hook 'slime-mode-hook 'set-up-slime-ac)
-;;   (add-hook 'slime-repl-mode-hook 'set-up-slime-ac))
-
 
 (add-hook 'lisp-mode-hook 'my-lisp-mode-hook-func)
-;; (add-hook 'lisp-mode-hook
-;; 	  (lambda ()
-;; 	    (cond ((featurep 'slime)
-;; 		   (slime-mode t) 
-;; 		   (show-paren-mode 1)
-;; 		   auto-complete-mode
-;; 		   (local-set-key "\t" 'slime-indent-and-complete-symbol)
-;; 		   (global-set-key "\C-cH" 'hyperspec-lookup)
-;; 		   (global-set-key "\C-\\" 'ime-onoff-slime))
-;; 		  (t
-;; 		   (normal-mode)))))
+(add-hook 'lisp-mode-hook (lambda ()
+			    (cond ((featurep 'slime)
+				   (slime-mode t) 
+				   auto-complete-mode
+				   (local-set-key "\t" 'slime-indent-and-complete-symbol)
+				   (global-set-key "\C-cH" 'hyperspec-lookup)
+				   (global-set-key "\C-\\" 'ime-onoff-slime))
+				  (t
+				   (normal-mode)))))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; slime-modeのhook
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 
-;; (define-globalized-minor-mode real-global-auto-complete-mode
-;;   auto-complete-mode (lambda ()
-;;          (if (not (minibufferp (current-buffer)))
-;;       (auto-complete-mode 1))))
-;; (real-global-auto-complete-mode t)
+(define-globalized-minor-mode real-global-auto-complete-mode
+  auto-complete-mode (lambda ()
+         (if (not (minibufferp (current-buffer)))
+      (auto-complete-mode 1))))
+(real-global-auto-complete-mode t)
 
-;; (add-hook 'slime-mode-hook
-;; 	  (lambda ()
-;; 	    (setq lisp-indent-function 'common-lisp-indent-function)
-;; 	    auto-complete-mode))
+(add-hook 'slime-mode-hook
+	  (lambda ()
+	    (setq lisp-indent-function 'common-lisp-indent-function)
+	    auto-complete-mode))
 
-;; (add-hook 'slime-connected-hook
-;; 	  (lambda ()
-;; 	    (slime-cd "~")
-;; 	    auto-complete-mode))
+(add-hook 'slime-connected-hook
+	  (lambda ()
+	    (slime-cd "~")
+	    auto-complete-mode))
 
-;; (add-hook 'inferior-lisp-mode-hook
-;;           (lambda ()
-;;             (slime-mode t)
-;; 	    (inferior-slime-mode t)
-;;             (show-paren-mode)))
+(add-hook 'inferior-lisp-mode-hook
+          (lambda ()
+            (slime-mode t)
+	    (inferior-slime-mode t)
+            (show-paren-mode)))
 
 
 
@@ -129,18 +120,18 @@
 ;; インデントの設定
 ;; Additional definitions by Pierpaolo Bernardi.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (defun cl-indent (sym indent)
-;;   (put sym 'common-lisp-indent-function
-;;        (if (symbolp indent)
-;;            (get indent 'common-lisp-indent-function)
-;;          indent)))
-;; (cl-indent 'if '1)
-;; (cl-indent 'generic-flet 'flet)
-;; (cl-indent 'generic-labels 'labels)
-;; (cl-indent 'with-accessors 'multiple-value-bind)
-;; (cl-indent 'with-added-methods '((1 4 ((&whole 1))) (2 &body)))
-;; (cl-indent 'with-condition-restarts '((1 4 ((&whole 1))) (2 &body)))
-;; (cl-indent 'with-simple-restart '((1 4 ((&whole 1))) (2 &body)))
+(defun cl-indent (sym indent)
+  (put sym 'common-lisp-indent-function
+       (if (symbolp indent)
+           (get indent 'common-lisp-indent-function)
+         indent)))
+(cl-indent 'if '1)
+(cl-indent 'generic-flet 'flet)
+(cl-indent 'generic-labels 'labels)
+(cl-indent 'with-accessors 'multiple-value-bind)
+(cl-indent 'with-added-methods '((1 4 ((&whole 1))) (2 &body)))
+(cl-indent 'with-condition-restarts '((1 4 ((&whole 1))) (2 &body)))
+(cl-indent 'with-simple-restart '((1 4 ((&whole 1))) (2 &body)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; HyperSpecをw3mで見る
