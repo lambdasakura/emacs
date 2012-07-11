@@ -78,7 +78,7 @@
 (column-number-mode 1)
 
 ;;メニューバーを消す
-(menu-bar-mode -1)
+(menu-bar-mode nil)
 (tool-bar-mode nil)
 
 ;;mode-lineにファイル名のフルパスを表示

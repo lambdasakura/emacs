@@ -1,4 +1,17 @@
+;; emacs-w3m‚Ìİˆ
 (add-to-load-path "~/.emacs.d/elisp/emacs-w3m/")
+
+(when run-w32
+  ;; cygwin‚Ìw3m‚ğg‚¤‚½‚ß‚Ìİ’è
+  (dolist (dir (list "C:\\Cygwin\\bin" ))
+
+    ;; PATH ‚Æ exec-path ‚É“¯‚¶•¨‚ğ’Ç‰Á‚µ‚Ü‚·
+    (when (and (file-exists-p dir) (not (member dir exec-path)))
+      (setenv "PATH" (concat dir ":" (getenv "PATH")))
+      (setq exec-path (append (list dir) exec-path))))
+  
+  (setq w3m-command "C:\\Cygwin\\bin\\w3m"))
+
 (require 'w3m-load)
 
 (autoload 'w3m-find-file "w3m" "w3m interface function for local file." t)
