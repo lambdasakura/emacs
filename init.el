@@ -119,8 +119,9 @@
 (load "init-moccur")
 (load "init-popwin")
 
-;; (load "init-slime")
-;; (load "init-ac-slime")
+(load "init-w3m")
+(load "init-slime")
+(load "init-ac-slime")
 
 ;; ;; Programming Environment
 (load "init-c")
@@ -138,6 +139,7 @@
 ;; (load "init-python")
 
 ;; Extra
+
 ;; (load "init-yatex")
 ;;(load "init-caede")
 
