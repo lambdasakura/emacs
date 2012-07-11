@@ -3,4 +3,4 @@ session.*
 *.swp
 anything-c-adaptive-history
 ac-comphist.dat
-
+*.elc

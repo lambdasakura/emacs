@@ -1,32 +1,5 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 各種環境用にslimeの読込
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; quick-lispの環境設定
-(setf *slime-helper-path* (expand-file-name "~/quicklisp/slime-helper.el"))
-(setf *clozure-slime-helper-path* (expand-file-name "C:/Documents and Settings/f9078010/quicklisp/slime-helper.el"))
-
-;; 自前で持ってるslimeの在り処を追加
-(add-to-list 'load-path "~/.emacs.d/elisp/slime-2010-08-19")
-(when run-w32
-  ;; SBCL
-  (if (file-exists-p  *slime-helper-path*)
-      (load *slime-helper-path*))
-  ;; Clozure CL
-  (if (file-exists-p *clozure-slime-helper-path*)
-      (load *clozure-slime-helper-path*)))
-(when run-darwin
-  ;; mac ports
-  (add-to-list 'load-path "/opt/local/share/emacs/site-lisp/slime"))
-(when run-linux
-  (if (file-exists-p  *slime-helper-path*)
-      (load *slime-helper-path*)))
-
 (require 'slime-autoloads)
 (require 'slime)
-(add-to-list 'load-path
-	     "/home/sakura/quicklisp/dists/quicklisp/software/cl-annot-20110418-git/misc")
-(add-to-list 'load-path
-	     "/Users/sakura/quicklisp/dists/quicklisp/software/cl-annot-20110418-git/misc")
 (require 'slime-annot)
 (require 'ac-slime)
 
@@ -37,27 +10,27 @@
   (setq slime-lisp-implementations
 	`((ccl ("C:/Programs/ccl/wx86cl.exe") :coding-system utf-8-unix)
 	  (sbcl ("sbcl") :coding-system utf-8-unix)
-	  (clisp ("clisp") :coding-system utf-8-unix)
-	  (cmucl ("lisp")))))
+	  (clisp ("clisp") :coding-system utf-8-unix))))
 (when run-darwin
   (setq slime-lisp-implementations
-	`((sbcl ("/opt/local/bin/sbcl"))
-	  (abcl ("/opt/local/bin/abcl"))
-	  (clisp ("/opt/local/bin/clisp")))))
+	`((sbcl ("/opt/local/bin/sbcl")))))
 (when run-linux
   (setq slime-lisp-implementations
-	`((ccl ("~/bin/ccl") :coding-system utf-8-unix)
-	  (sbcl ("sbcl") :coding-system utf-8-unix)
+	`((sbcl ("sbcl") :coding-system utf-8-unix)
+	  (ccl ("~/bin/ccl") :coding-system utf-8-unix)
 	  (clisp ("clisp") :coding-system utf-8-unix))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; slime自体の設定
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 標準の処理系はSBCL
+
+;; 標準の処理系
 ;;(setq inferior-lisp-program "sbcl")
 (setq inferior-lisp-program 'ccl)
+
 ;; utf-8で通信
 (setq slime-net-coding-system 'utf-8-unix)
+
 ;; slimeの起動オプションの設定
 (slime-setup '(slime-fancy slime-banner slime-autodoc))
 
