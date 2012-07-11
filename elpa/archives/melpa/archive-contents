@@ -849,7 +849,7 @@
 	   [(20091203)
 	    nil "Diminished modes are minor modes with no modeline display [source: github]" single])
  (diff-hl .
-	  [(20120708)
+	  [(20120711)
 	   nil "VC diff fringe highlighting [source: github]" single])
  (delim-kill .
 	     [(20100517)
