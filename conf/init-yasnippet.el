@@ -1,7 +1,9 @@
-(add-to-load-path "~/.emacs.d/elisp/yasnippet/")
+;; (add-to-load-path "~/.emacs.d/elisp/yasnippet/")
 (require 'yasnippet)
-(setq yas/trigger-key " ")
+(setq yas/trigger-key "C-c i")
 (setq yas/field-highlight-face t)
+(yas/global-mode 1)
+
 
 ;; (add-hook 'yas/before-expand-snippet-hook
 ;;           (lambda ()
@@ -13,4 +15,4 @@
 
 
 (yas/initialize)
-(yas/load-directory "~/.emacs.d/snippets")
+;; (yas/load-directory "~/.emacs.d/snippets")

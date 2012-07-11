@@ -17,9 +17,11 @@
                 ("\\.c$"  . c-mode)
                 ("\\.h$"  . c++-mode))
               auto-mode-alist))
-
 (add-hook 'c-mode-common-hook
- '(lambda ()))
+            '(lambda ()
+             (progn
+               (c-toggle-hungry-state 1)
+               (setq c-basic-offset 4 indent-tabs-mode nil))))
 
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)

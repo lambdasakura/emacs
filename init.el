@@ -1,10 +1,5 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; emacs 設定ファイル
-;; 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 警告などの抑制
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;Warning: `mapcar' called for effect; use `mapc' or `dolist' instead
 (setq warning-suppress-types nil)
@@ -24,14 +19,23 @@
         (mapcar 'expand-file-name paths)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Initialize auto-install
+;; Initialize package.el
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-to-load-path "~/.emacs.d/elisp" "~/.emacs.d/conf")
 (add-to-load-path "/usr/local/share/emacs/site-lisp")
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/auto-install"))
-(require 'auto-install)
-(setq auto-install-directory "~/.emacs.d/auto-install/")
+
+(require 'package)
+
+; Add package-archives
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/")) ; ついでにmarmaladeも追加
+
+; Initialize
+(package-initialize)
+
+; melpa.el
+(require 'melpa)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Detect OS
@@ -80,23 +84,6 @@
 (defvar run-carbon-emacs (and run-darwin window-system))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Woman 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setq woman-manpath '("/opt/local/share/man"
-		      "/usr/local/share/man"
-		      "/usr/share/man"
-		      "/usr/X11/man"))
-(setq woman-use-own-frame nil)
-(setq man-use-own-frame nil)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Meadow
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (when run-meadow
-;;   (load "init-meadow"))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; for Debian
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -117,58 +104,43 @@
 ;; Loading elisps
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load "init-common")
-(load "init-networking")
+(load "init-color")
+
+(cua-mode t)
+(setq cua-enable-cua-keys nil)
+
+;; (load "init-networking")
 
 ;; utils
-(load "init-sense-region")
-(load "init-keymap")
-(load "init-killring")
-(load "init-color")
-;; (load "init-elscreen")
+(load "init-elscreen")
 (load "init-anything")
-;;(load "init-migemo")
 (load "init-yasnippet")
-(load "init-hatena")
 (load "init-auto-complete")
 (load "init-moccur")
-
-;; Programming Environment
-(load "init-c")
-(load "init-gdb")
-(load "init-global")
-(load "init-html")
-(load "init-css")
-(load "init-php")
-(load "init-javascript")
-;;(load "init-mmm")
-(load "init-scala")
-(load "init-js2")
-(load "init-ruby")
-(load "init-scheme")
-(load "init-python")
-
+(load "init-popwin")
 
 (load "init-slime")
 (load "init-ac-slime")
-(load "init-popwin")
-(load "init-weblogger")
 
-;; ;; Extra
-;; ;;(load "init-skk")
-;; (load "init-dired")
-;; ;;(load "init-dabbrev-ja")
-;; (load "init-hiki")
-;; (load "init-hilighting")
+;; ;; Programming Environment
+(load "init-c")
+(load "init-gdb")
+(load "init-gtags")
+
+;; Web Programming
+;; (load "init-html")
+;; (load "init-css")
+;; (load "init-php")
+;; (load "init-mmm")
+
+;; (load "init-scala")
+;; (load "init-ruby")
+;; (load "init-python")
+
+;; Extra
 ;; (load "init-yatex")
-;;(load "init-w3m")
-;;(load "init-linkd")
 ;;(load "init-caede")
 
-
 ;; その他の設定
-(custom-set-variables
- '(column-number-mode t)
- '(menu-bar-mode nil)
- '(safe-local-variable-values (quote ((package . asdf))))
- '(show-paren-mode t))
-
+(setq-default truncate-partial-width-windows t)
+(setq-default truncate-lines t)
