@@ -6,7 +6,7 @@
 		 [(20111231)
 		  nil "Unfold CSS-selector-like expressions to markup [source: github]" single])
  (zenburn-theme .
-		[(20120708)
+		[(20120710)
 		 nil "A low contrast color theme for Emacs. [source: github]" single])
  (zen-and-art-theme .
 		    [(20120622)
@@ -390,6 +390,9 @@
 	     ((prelude-programming
 	       (1 0 0)))
 	     "Emacs Prelude: cc-mode configuration. [source: github]" single])
+ (powershell-mode .
+		  [(20100203)
+		   nil "Mode for editing Powershell scripts [source: svn]" single])
  (powershell .
 	     [(20120709)
 	      nil "run powershell as an inferior shell in emacs [source: wiki]" single])
@@ -611,7 +614,7 @@
 		      [(20110817)
 		       nil "highlight the word the point is on [source: github]" single])
  (icicles .
-	  [(20120708)
+	  [(20120710)
 	   nil "Minibuffer input completion and cycling. [source: wiki]" tar])
  (ibuffer-vc .
 	     [(20111221)
@@ -794,7 +797,7 @@
 	 [(20120612)
 	  nil "No description available. [source: github]" tar])
  (ergoemacs-keybindings .
-			[(20120617)
+			[(20120710)
 			 nil "No description available. [source: svn]" tar])
  (enclose .
 	  [(20120618)
@@ -840,7 +843,7 @@
        [(20081128)
 	nil "simplified find-file, revert-file, save-buffer interface [source: wiki]" single])
  (dired+ .
-	 [(20120709)
+	 [(20120710)
 	  nil "Extensions to Dired. [source: wiki]" single])
  (diminish .
 	   [(20091203)
