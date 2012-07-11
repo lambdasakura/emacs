@@ -30,6 +30,8 @@
 (add-hook 'ruby-mode-hook
           '(lambda () (inf-ruby-keys)))
 
+(add-to-list 'ruby-encoding-map '(japanese-cp932 . cp932))
+
 ;;
 ;; ruby-electric
 ;;
