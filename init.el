@@ -119,8 +119,8 @@
 (load "init-moccur")
 (load "init-popwin")
 
-(load "init-slime")
-(load "init-ac-slime")
+;; (load "init-slime")
+;; (load "init-ac-slime")
 
 ;; ;; Programming Environment
 (load "init-c")
