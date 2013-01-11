@@ -23,6 +23,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-to-load-path "~/.emacs.d/elisp" "~/.emacs.d/conf")
 (add-to-load-path "/usr/local/share/emacs/site-lisp")
+(add-to-load-path "~/.emacs.d/elisp/emacs-w3m/")
+(add-to-load-path "~/.emacs.d/elisp/howm-1.4.0")
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 
 (require 'package)
@@ -104,6 +106,7 @@
 ;; Loading elisps
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load "init-common")
+(load "init-howm")
 (load "init-color")
 
 (cua-mode t)
