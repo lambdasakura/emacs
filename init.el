@@ -23,6 +23,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-to-load-path "~/.emacs.d/elisp" "~/.emacs.d/conf")
 (add-to-load-path "/usr/local/share/emacs/site-lisp")
+(add-to-load-path "~/.emacs.d/elisp/emacs-w3m/")
+(add-to-load-path "~/.emacs.d/elisp/howm-1.4.0")
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 
 (require 'package)
@@ -104,6 +106,7 @@
 ;; Loading elisps
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load "init-common")
+(load "init-howm")
 (load "init-color")
 
 (cua-mode t)
@@ -146,3 +149,14 @@
 ;; その他の設定
 (setq-default truncate-partial-width-windows t)
 (setq-default truncate-lines t)
+
+(require 'linum)
+(global-linum-mode)
+(put 'narrow-to-region 'disabled nil)
+
+
+(defun my-save-buffers-kill-emacs ()
+  (interactive)
+  (if (y-or-n-p "quit emacs? ")
+      (save-buffers-kill-emacs)))
+(global-set-key "\C-x\C-c" 'my-save-buffers-kill-emacs)
