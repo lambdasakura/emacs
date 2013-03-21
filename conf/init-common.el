@@ -87,7 +87,9 @@
 
 ;;メニューバーを消す
 ;; (menu-bar-mode nil)
+(menu-bar-mode -1)
 ;; (tool-bar-mode nil)
+(tool-bar-mode -1)
 
 ;;mode-lineにファイル名のフルパスを表示
 (set-default 'mode-line-buffer-identification

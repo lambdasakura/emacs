@@ -27,6 +27,7 @@
 (add-to-load-path "~/.emacs.d/elisp/howm-1.4.0")
 (add-to-load-path "~/.emacs.d/elisp/magit-1.2.0")
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+(add-to-load-path "~/.emacs.d/elisp/magit/")
 
 (require 'package)
 
@@ -126,6 +127,8 @@
 ;; (load "init-w3m")
 ;; (load "init-slime")
 ;; (load "init-ac-slime")
+(load "init-slime")
+(load "init-ac-slime")
 
 ;; Programming Environment
 (load "init-c")
@@ -162,7 +165,6 @@
       (save-buffers-kill-emacs)))
 (global-set-key "\C-x\C-c" 'my-save-buffers-kill-emacs)
 
-
 ; server start for emacs-client
 ;;(require 'server)
 
@@ -182,3 +184,6 @@
 (setq make-backup-files nil)
 ;;; .#* とかのバックアップファイルを作らない
 (setq auto-save-default nil)
+
+(require 'magit)
+(define-key global-map (kbd "C-x g") 'magit-status)

@@ -1,5 +1,5 @@
 ;; emacs-w3m‚Ìİˆ
-(add-to-load-path "~/.emacs.d/elisp/emacs-w3m/")
+(add-to-load-path "/Users/sakura/.emacs.d/w3m/share/emacs/site-lisp/w3m/")
 
 (when run-w32
   ;; cygwin‚Ìw3m‚ğg‚¤‚½‚ß‚Ìİ’è

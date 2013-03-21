@@ -1,3 +1,8 @@
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+;; Replace "sbcl" with the path to your implementation
+(setq inferior-lisp-program "sbcl")
+
+
 (require 'slime-autoloads)
 (require 'slime)
 (require 'slime-annot)
@@ -13,7 +18,7 @@
 	  (clisp ("clisp") :coding-system utf-8-unix))))
 (when run-darwin
   (setq slime-lisp-implementations
-	`((sbcl ("/opt/local/bin/sbcl")))))
+	`((sbcl ("/usr/local/bin/sbcl") :coding-system utf-8-unix))))
 (when run-linux
   (setq slime-lisp-implementations
 	`((sbcl ("sbcl") :coding-system utf-8-unix)
