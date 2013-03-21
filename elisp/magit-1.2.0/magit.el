@@ -2123,9 +2123,10 @@ function can be enriched by magit extension like magit-topgit and magit-svn"
 	       ;; (setq successp
 	       ;; 	     (equal (apply 'process-file cmd nil buf nil args) 0))
 	       (let* ((exec-cmd (apply #'concatenate 'string 
-				       (mapcar #'(lambda (x) (concatenate 'string " " x)) args)))
-		      (exec-cmd-output (shell-command-to-string (concatenate 'string "git " exec-cmd))))
-		 (insert exec-cmd-output))
+	       			       (mapcar #'(lambda (x) (concatenate 'string " " x)) args)))
+	       	      (message exec-cmd)
+	       	      (exec-cmd-output (shell-command-to-string (concatenate 'string "git " exec-cmd))))
+	       	 (insert exec-cmd-output))
 	       ;; (setq successp
                ;;       (equal (apply 'process-file cmd nil buf nil args) 0))
 	       (setq successp (equal "0" (shell-command-to-string "echo $?")))

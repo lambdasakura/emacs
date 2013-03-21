@@ -27,7 +27,7 @@
 (add-to-load-path "~/.emacs.d/elisp/howm-1.4.0")
 (add-to-load-path "~/.emacs.d/elisp/magit-1.2.0")
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
-(add-to-load-path "~/.emacs.d/elisp/magit/")
+;; (add-to-load-path "~/.emacs.d/elisp/magit/")
 
 (require 'package)
 
@@ -127,8 +127,8 @@
 ;; (load "init-w3m")
 ;; (load "init-slime")
 ;; (load "init-ac-slime")
-(load "init-slime")
-(load "init-ac-slime")
+;; (load "init-slime")
+;; (load "init-ac-slime")
 
 ;; Programming Environment
 (load "init-c")
@@ -138,7 +138,7 @@
 ;; Web Programming
 ;; (load "init-html")
 ;; (load "init-css")
-;; (load "init-php")
+;; (load "init-php") aaa
 ;; (load "init-mmm")
 
 ;; (load "init-scala")
@@ -187,3 +187,5 @@
 
 (require 'magit)
 (define-key global-map (kbd "C-x g") 'magit-status)
+
+

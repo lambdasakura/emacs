@@ -25,7 +25,7 @@
  '(modeline ((((class color) (min-colors 88) (background dark)) (:foreground "gray"))))
  '(minibuffer-prompt ((((class color) (min-colors 88) (background dark)) (:foreground "Green"))))
  '(mode-line-inactive ((((class color) (min-colors 88) (background dark)) (:foreground "black"))))
-)
+ '(which-func ((t (:foreground "deep sky blue")))))
 
 
  	
