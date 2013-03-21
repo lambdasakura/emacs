@@ -1,6 +1,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ネットワークの設定
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun get-ip-address () 
+  "Win32: get the IP-address of the first network interface"
+  (let ((ipconfig (shell-command-to-string "ipconfig | findstr IPv4"))) 
+    (string-match "\\(\\([0-9]+.\\)+[0-9]+\\)" ipconfig)
+    (match-string 0 ipconfig)))
+
 (defvar *network-interface-names* '("en1" "wlan0" "eth0" "rl0" "rl1")
   "Candidates for the network devices.")
 
@@ -10,15 +16,24 @@
     (if info
 	(format-network-address (car info) t))))
 
+(defun office-ip-p (ip)
+  (let ((ip-list '("^133\\.196\\.*" "^133\\.119\\.*")))
+    (member t (mapcar #'(lambda (x)
+			  (eq 0 (string-match x ip))) ip-list))))
+
 (defun networkp ()
   "ネットワークがつながっているかどうかを判定する"
-  (let ((ip (some #'machine-ip-address *network-interface-names*)))  ip ))
+  (let ((ip (if run-w32
+		(get-ip-address)
+	      (some #'machine-ip-address *network-interface-names*))))  ip ))
 
 (defun officep ()
   "職場にいるかどうかを判定する"
-  (let ((ip (some #'machine-ip-address *network-interface-names*)))
-    (and ip
-	 (eq 0 (string-match "^133\\.196\\.*" ip)))))
+  (let ((ip (if run-w32
+		(get-ip-address)
+	      (some #'machine-ip-address *network-interface-names*))))
+    (when ip
+      (car (office-ip-p ip)))))
 
 (defun proxy-on ()
   "PROXY_SERVERを設定する。
@@ -52,10 +67,5 @@ NO_PROXYが正しく動作するのか未検証"
 ;; ネットワークの場所別の設定
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (if (officep)
-     (proxy-on)
-   (proxy-off))
-
-
-;;  なぜかうまく動いてくれなかった
-(if (networkp)
-    (auto-install-update-emacswiki-package-name t))
+    (proxy-on)
+  (proxy-off))

@@ -1,7 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; emacs 設定ファイル
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;Warning: `mapcar' called for effect; use `mapc' or `dolist' instead
+
+;; Warning: `mapcar' called for effect; use `mapc' or `dolist' instead
 (setq warning-suppress-types nil)
 (setq byte-compile-warnings '(free-vars 
 			      unresolved 
@@ -27,7 +28,6 @@
 (add-to-load-path "~/.emacs.d/elisp/howm-1.4.0")
 (add-to-load-path "~/.emacs.d/elisp/magit-1.2.0")
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
-;; (add-to-load-path "~/.emacs.d/elisp/magit/")
 
 (require 'package)
 
@@ -110,11 +110,7 @@
 (load "init-common")
 (load "init-howm")
 (load "init-color")
-
-(cua-mode t)
-(setq cua-enable-cua-keys nil)
-
-;; (load "init-networking")
+(load "init-networking")
 
 ;; utils
 ;; (load "init-elscreen")
@@ -122,13 +118,6 @@
 ;; (load "init-yasnippet")
 (load "init-auto-complete")
 (load "init-moccur")
-
-
-;; (load "init-w3m")
-;; (load "init-slime")
-;; (load "init-ac-slime")
-;; (load "init-slime")
-;; (load "init-ac-slime")
 
 ;; (load "init-popwin")
 (load "init-w3m")
@@ -155,39 +144,7 @@
 ;; (load "init-yatex")
 ;;(load "init-caede")
 
-;; その他の設定
-;; (setq-default truncate-partial-width-windows t)
-;; (setq-default truncate-lines t)
-
-;; (require 'linum)
-;; (global-linum-mode)
-;; (put 'narrow-to-region 'disabled nil)
-
-;;; *.~ とかのバックアップファイルを作らない
-(setq make-backup-files nil)
-;;; .#* とかのバックアップファイルを作らない
-(setq auto-save-default nil)
-
-
-(defun my-save-buffers-kill-emacs ()
-  (interactive)
-  (if (y-or-n-p "quit emacs? ")
-      (save-buffers-kill-emacs)))
-(global-set-key "\C-x\C-c" 'my-save-buffers-kill-emacs)
-
-(require 'magit)
-
-(if (eq system-type 'windows-nt)
-    (setq magit-git-executable "C:/msysgit/msysgit/bin/git"))  
-
-(define-key global-map (kbd "C-x g") 'magit-status)
-
-(setq-default truncate-partial-width-windows t)
-(setq-default truncate-lines t)
-
 (cd "~")
 
-(require 'magit)
-(define-key global-map (kbd "C-x g") 'magit-status)
 
 

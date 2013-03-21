@@ -1,7 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; utils
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (defun my-get-date-gen (form) (insert (format-time-string form)))
 (defun my-get-date () (interactive) (my-get-date-gen "%Y年%m月%d日"))
 (defun my-get-time () (interactive) (my-get-date-gen "%H時%M分"))
@@ -19,7 +18,6 @@
 ;;日本語環境:UTF-8
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (set-language-environment "Japanese")
-
 
 (cond 
  (run-w32
@@ -44,13 +42,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; フォントの設定
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (set-fontset-font
-;;  nil 'japanese-jisx0208
-;;  (font-spec :family "Ricty"))
-;; (set-face-attribute 'default nil
-;;                    :family "Ricty"
-;;                    )
-
+;; (set-fontset-font nil 'japanese-jisx0208  (font-spec :family "Ricty"))
+;; (set-face-attribute 'default nil :family "Ricty" )
 
 (when (and run-emacs23 run-linux)
   (when window-system
@@ -108,10 +101,25 @@
 ;;emacsの画面をC-x-2などで分割したときにShift+矢印キーで分割ウィンドウの移動が可能
 (windmove-default-keybindings)
 
+;;; *.~ とかのバックアップファイルを作らない
+(setq make-backup-files nil)
+;;; .#* とかのバックアップファイルを作らない
+(setq auto-save-default nil)
+
+(setq-default truncate-partial-width-windows t)
+(setq-default truncate-lines t)
+
 ;;key-chord
 ;;2つのキーの同時押し、もしくは単一キーのダブルクリックを define-key として使用できる lisp
 (require 'key-chord)
 (key-chord-mode t)
+
+;; 終了時に聞いてくるように修正
+(defun my-save-buffers-kill-emacs ()
+  (interactive)
+  (if (y-or-n-p "quit emacs? ")
+      (save-buffers-kill-emacs)))
+(global-set-key "\C-x\C-c" 'my-save-buffers-kill-emacs)
 
 ;;key config
 (global-set-key "\C-h" 'delete-backward-char) ;C-hをbackspaseに割り当て
@@ -135,6 +143,16 @@
        auto-mode-alist))
 
 (setq comment-style 'multi-line)
+
+;; cua(矩形選択) modeを使う
+(cua-mode t)
+(setq cua-enable-cua-keys nil)
+
+;; 行数を表示する
+(require 'linum)
+(global-linum-mode)
+(put 'narrow-to-region 'disabled nil)
+
 
 ;;==============
 ;; gnuserv 設定
