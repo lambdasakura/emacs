@@ -25,6 +25,7 @@
 (add-to-load-path "/usr/local/share/emacs/site-lisp")
 (add-to-load-path "~/.emacs.d/elisp/emacs-w3m/")
 (add-to-load-path "~/.emacs.d/elisp/howm-1.4.0")
+(add-to-load-path "~/.emacs.d/elisp/magit-1.2.0")
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 
 (require 'package)
@@ -115,18 +116,18 @@
 ;; (load "init-networking")
 
 ;; utils
-(load "init-elscreen")
+;; (load "init-elscreen")
 (load "init-anything")
-(load "init-yasnippet")
+;; (load "init-yasnippet")
 (load "init-auto-complete")
 (load "init-moccur")
-(load "init-popwin")
+;; (load "init-popwin")
 
-(load "init-w3m")
-(load "init-slime")
-(load "init-ac-slime")
+;; (load "init-w3m")
+;; (load "init-slime")
+;; (load "init-ac-slime")
 
-;; ;; Programming Environment
+;; Programming Environment
 (load "init-c")
 (load "init-gdb")
 (load "init-gtags")
@@ -147,12 +148,12 @@
 ;;(load "init-caede")
 
 ;; その他の設定
-(setq-default truncate-partial-width-windows t)
-(setq-default truncate-lines t)
+;; (setq-default truncate-partial-width-windows t)
+;; (setq-default truncate-lines t)
 
-(require 'linum)
-(global-linum-mode)
-(put 'narrow-to-region 'disabled nil)
+;; (require 'linum)
+;; (global-linum-mode)
+;; (put 'narrow-to-region 'disabled nil)
 
 
 (defun my-save-buffers-kill-emacs ()
@@ -160,3 +161,24 @@
   (if (y-or-n-p "quit emacs? ")
       (save-buffers-kill-emacs)))
 (global-set-key "\C-x\C-c" 'my-save-buffers-kill-emacs)
+
+
+; server start for emacs-client
+;;(require 'server)
+
+;; (unless (server-running-p)
+;;   (server-start))
+
+(require 'magit)
+
+(setq magit-git-executable "C:/msysgit/msysgit/bin/git")
+;; (if (eq system-type 'windows-nt)
+;;     C:\msysgit\msysgit\bin
+  
+;;   (setq magit-git-executable "C:/cygwin/bin/git")
+;;   )
+
+;;; *.~ とかのバックアップファイルを作らない
+(setq make-backup-files nil)
+;;; .#* とかのバックアップファイルを作らない
+(setq auto-save-default nil)
