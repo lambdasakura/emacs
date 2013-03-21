@@ -25,3 +25,22 @@
 
 (setq w3m-favicon-cache-expire-wait nil)
 (setq w3m-home-page "http://www.google.co.jp/")
+(setq transient-mark-mode t)
+
+(eval-after-load "w3m-search"
+  '(progn
+     (add-to-list 'w3m-search-engine-alist
+                '("alc"
+                  "http://eow.alc.co.jp/%s/UTF-8/"
+                  utf-8))
+     (add-to-list 'w3m-uri-replace-alist
+                  '("\`alc:" w3m-search-uri-replace "alc"))))
+
+(require 'w3m-search)
+
+(defun w3m-search-alc (url)
+  "alcåüçıÉRÉ}ÉìÉh"
+  (interactive (list (read-from-minibuffer "alc: ")))
+  (w3m-goto-url (concat "alc:" url)))
+
+(define-key w3m-mode-map "U" 'w3m-search-alc)

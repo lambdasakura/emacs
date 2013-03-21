@@ -122,13 +122,18 @@
 ;; (load "init-yasnippet")
 (load "init-auto-complete")
 (load "init-moccur")
-;; (load "init-popwin")
+
 
 ;; (load "init-w3m")
 ;; (load "init-slime")
 ;; (load "init-ac-slime")
 ;; (load "init-slime")
 ;; (load "init-ac-slime")
+
+;; (load "init-popwin")
+(load "init-w3m")
+(load "init-slime")
+
 
 ;; Programming Environment
 (load "init-c")
@@ -158,6 +163,11 @@
 ;; (global-linum-mode)
 ;; (put 'narrow-to-region 'disabled nil)
 
+;;; *.~ とかのバックアップファイルを作らない
+(setq make-backup-files nil)
+;;; .#* とかのバックアップファイルを作らない
+(setq auto-save-default nil)
+
 
 (defun my-save-buffers-kill-emacs ()
   (interactive)
@@ -165,25 +175,17 @@
       (save-buffers-kill-emacs)))
 (global-set-key "\C-x\C-c" 'my-save-buffers-kill-emacs)
 
-; server start for emacs-client
-;;(require 'server)
-
-;; (unless (server-running-p)
-;;   (server-start))
-
 (require 'magit)
 
-(setq magit-git-executable "C:/msysgit/msysgit/bin/git")
-;; (if (eq system-type 'windows-nt)
-;;     C:\msysgit\msysgit\bin
-  
-;;   (setq magit-git-executable "C:/cygwin/bin/git")
-;;   )
+(if (eq system-type 'windows-nt)
+    (setq magit-git-executable "C:/msysgit/msysgit/bin/git"))  
 
-;;; *.~ とかのバックアップファイルを作らない
-(setq make-backup-files nil)
-;;; .#* とかのバックアップファイルを作らない
-(setq auto-save-default nil)
+(define-key global-map (kbd "C-x g") 'magit-status)
+
+(setq-default truncate-partial-width-windows t)
+(setq-default truncate-lines t)
+
+(cd "~")
 
 (require 'magit)
 (define-key global-map (kbd "C-x g") 'magit-status)
