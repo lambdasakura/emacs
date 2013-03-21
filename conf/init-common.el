@@ -20,18 +20,26 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (set-language-environment "Japanese")
 
-(cond (run-unix
-       (set-default-coding-systems 'utf-8)
-       (set-terminal-coding-system 'utf-8)
-       (set-buffer-file-coding-system 'utf-8)
-       (prefer-coding-system 'utf-8-unix)
-       (set-keyboard-coding-system 'utf-8))
-      (run-darwin
-       (set-default-coding-systems 'utf-8)
-       (set-terminal-coding-system 'utf-8)
-       (set-buffer-file-coding-system 'utf-8)
-       (prefer-coding-system 'utf-8-unix)
-       (set-keyboard-coding-system 'utf-8)))
+
+(cond 
+ (run-w32
+  (set-default-coding-systems 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (set-buffer-file-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8-unix)
+  (set-keyboard-coding-system 'utf-8))
+ (run-unix
+  (set-default-coding-systems 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (set-buffer-file-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8-unix)
+  (set-keyboard-coding-system 'utf-8))
+ (run-darwin
+  (set-default-coding-systems 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (set-buffer-file-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8-unix)
+  (set-keyboard-coding-system 'utf-8)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; フォントの設定
@@ -78,8 +86,8 @@
 (column-number-mode 1)
 
 ;;メニューバーを消す
-(menu-bar-mode nil)
-(tool-bar-mode nil)
+;; (menu-bar-mode nil)
+;; (tool-bar-mode nil)
 
 ;;mode-lineにファイル名のフルパスを表示
 (set-default 'mode-line-buffer-identification
