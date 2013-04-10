@@ -79,3 +79,13 @@
 ;; Howm ‚Å done ‚µ‚½‚ç org ‚à done
 (defadvice howm-action-lock-done-done
   (after my-org-todo-done () activate) (org-todo))
+
+ (defadvice howm-exclude-p (around howm-suffix-only (filename) activate)
+   ad-do-it
+   (setq ad-return-value
+  (or ad-return-value
+      ;; include directories and *.howm
+      (not (or (file-directory-p filename)
+	       (string-match "[.]howm$" filename))))))
+
+(setq howm-excluded-file-regexp "\\(^\|/\\)\\([.]\|CVS/\\)\|[~#]$\|\\.\\(css\|html\|txt\|bak\|elc\|gz\|aux\|toc\|idx\|dvi\|jpg\|gif\|png\\)$")

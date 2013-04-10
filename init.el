@@ -26,7 +26,7 @@
 (add-to-load-path "/usr/local/share/emacs/site-lisp")
 (add-to-load-path "~/.emacs.d/elisp/emacs-w3m/")
 (add-to-load-path "~/.emacs.d/elisp/howm-1.4.0")
-(add-to-load-path "~/.emacs.d/elisp/magit-1.2.0")
+
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 
 (require 'package)
@@ -140,11 +140,62 @@
 ;; (load "init-python")
 
 ;; Extra
-
+(load "init-magit")
 ;; (load "init-yatex")
 ;;(load "init-caede")
 
 (cd "~")
 
 
+(require 'sr-speedbar)   
+(add-hook 'speedbar-mode-hook
+          '(lambda ()
+             (speedbar-add-supported-extension '("txt" "cfg" "js" "as" "html" "css" "php"))))
 
+;; (defun my-split-window-horizontally ()
+;;   (interactive)
+;;   (split-window-horizontally 80))
+(global-set-key "\C-x3" #'(lambda ()
+			    (interactive)
+			    (split-window-horizontally 80)))
+
+(toggle-scroll-bar nil)
+
+;; 慣性スクロール
+;; (require 'inertial-scroll)
+;; (setq inertias-global-minor-mode-map
+;;       (inertias-define-keymap
+;;        '(
+;;          ("<next>"  . inertias-up)
+;;          ("<prior>" . inertias-down)
+;;          ("C-v"     . inertias-up)
+;;          ("M-v"     . inertias-down)
+;;          ) inertias-prefix-key))
+;; (inertias-global-minor-mode 1)
+
+;最小の e2wm 設定例
+(require 'e2wm)
+(global-set-key (kbd "M-+") 'e2wm:start-management)
+
+
+(e2wm:add-keymap 
+ e2wm:pst-minor-mode-keymap
+ '(("<M-left>" . e2wm:dp-code ) ; codeへ変更
+   ("<M-right>"  . e2wm:dp-two) ; twoへ変更
+   ("<M-up>"    . e2wm:dp-doc)  ; docへ変更
+   ("<M-down>"  . e2wm:dp-dashboard) ; dashboardへ変更
+   ("C-."       . e2wm:pst-history-forward-command) ; 履歴進む
+   ("C-,"       . e2wm:pst-history-back-command) ; 履歴戻る
+   ("C-M-s"     . e2wm:my-toggle-sub) ; subの表示をトグルする
+   ("prefix L"  . ielm) ; ielm を起動する（subで起動する）
+   ("M-m"       . e2wm:pst-window-select-main-command) ; メインウインドウを選択する
+   ) e2wm:prefix-key)
+
+(e2wm:add-keymap 
+ e2wm:dp-doc-minor-mode-map 
+ '(("prefix I" . info)) ; infoを起動する
+ e2wm:prefix-key)
+
+(defun e2wm:my-toggle-sub () ; Subをトグルする関数
+  (interactive)
+  (e2wm:pst-window-toggle 'sub t 'main))

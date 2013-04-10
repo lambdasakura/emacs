@@ -1,4 +1,4 @@
-;; (add-to-load-path "~/.emacs.d/elisp/yasnippet/")
+(add-to-load-path "~/.emacs.d/elisp/yasnippet/")
 (require 'yasnippet)
 (setq yas/trigger-key "C-c i")
 (setq yas/field-highlight-face t)
