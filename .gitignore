@@ -5,3 +5,4 @@ anything-c-adaptive-history
 ac-comphist.dat
 *.elc
 elpa/archives/
+elisp/psise-el/
