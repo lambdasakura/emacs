@@ -17,8 +17,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     (when run-w32
       (setq slime-lisp-implementations
-	    `((ccl ("C:/Programs/ccl/wx86cl.exe") :coding-system utf-8-unix)
-	      (sbcl ("sbcl") :coding-system utf-8-unix)
+	    `((sbcl ("sbcl") :coding-system utf-8-unix)
+	      (ccl ("C:/Programs/ccl/wx86cl.exe") :coding-system utf-8-unix)
 	      (clisp ("clisp") :coding-system utf-8-unix))))
     (when run-darwin
       (setq slime-lisp-implementations
