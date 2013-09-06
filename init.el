@@ -24,7 +24,9 @@
 		  "~/.emacs.d/conf"
 		  "/usr/local/share/emacs/site-lisp"
 		  "~/.emacs.d/elisp/emacs-w3m/"
-		  "~/.emacs.d/elisp/howm-1.4.0")
+		  "~/.emacs.d/elisp/howm-1.4.0"
+		  "~/Program/magit/"
+		  "~/Program/git-mode/")
 
 (load "init-utils")
 
@@ -40,46 +42,33 @@
 (load "init-common")
 (load "init-package")
 (load "init-color")
-
 (load "init-howm")
 (load "init-emacs-nav")
-
 (load "init-anything")
 (load "init-auto-complete")
-
-;; (load "init-networking")
+(load "init-networking")
 
 ;; utils
 (load "init-elscreen")
+(load "init-yasnippet")
+(load "init-moccur")
+(load "init-popwin")
 
-;; (load "init-yasnippet")
-
-;; (load "init-moccur")
-
-;; (load "init-popwin")
 ;; (load "init-w3m")
 ;; (load "init-slime")
 
 
 ;; Programming Environment
+(load "init-magit")
 (load "init-haskell")
+;; (load "init-ruby")
+;; (load "init-python")
 
 ;; (load "init-c")
 ;; (load "init-gdb")
 ;; (load "init-gtags")
 
-;; Web Programming
-;; (load "init-html")
-;; (load "init-css")
-;; (load "init-php") 
-;; (load "init-mmm")
-
-;; (load "init-scala")
-;; (load "init-ruby")
-;; (load "init-python")
-
 ;; Extra
-;; (load "init-magit")
-;; (load "init-yatex")
 
+;; (load "init-yatex")
 ;;(load "init-caede")
