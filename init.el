@@ -62,7 +62,7 @@
 (load "init-magit")
 (load "init-haskell")
 ;; (load "init-ruby")
-;; (load "init-python")
+(load "init-python")
 
 ;; (load "init-c")
 ;; (load "init-gdb")

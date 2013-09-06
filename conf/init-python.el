@@ -1,9 +1,13 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; for python
-(add-to-list 'load-path "~/.emacs.d/elisp/Pymacs-0.23")
-(autoload 'python-mode "python-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-to-load-path "~/.emacs.d/elisp")
+(require 'python)
+(require 'python "~/.emacs.d/elisp/python.el")
+(semantic-mode 1) 
 (add-hook 'python-mode-hook
-          '(lambda()
-             (require 'pycomplete)
-             (setq indent-tabs-mode nil)))
-;; (add-hook 'python-mode-hook (lambda () (local-set-key "\M-/" 'py-complete)))
+  (lambda ()
+    (setq imenu-create-index-function 'python-imenu-create-index)))
+(package-initialize)
+(require 'elpy)
+(elpy-enable)
