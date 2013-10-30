@@ -2,16 +2,16 @@
 ;; emacs 設定ファイル
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Warning: `mapcar' called for effect; use `mapc' or `dolist' instead
-(setq warning-suppress-types nil)
-(setq byte-compile-warnings '(free-vars 
-			      unresolved 
-			      callargs
-			      redefine 
-			      obsolete 
-			      noruntime 
-			      cl-functions 
-			      interactive-only 
-			      make-local))
+;; (setq warning-suppress-types nil)
+;; (setq byte-compile-warnings '(free-vars 
+;; 			      unresolved 
+;; 			      callargs
+;; 			      redefine 
+;; 			      obsolete 
+;; 			      noruntime 
+;; 			      cl-functions 
+;; 			      interactive-only 
+;; 			      make-local))
 
 (defun add-to-load-path (&rest paths)
   (mapc '(lambda (path)
@@ -19,50 +19,49 @@
         (mapcar 'expand-file-name paths)))
 
 (add-to-load-path "~/.emacs.d"
-		  "~/.emacs.d/elisp"
-		  "~/.emacs.d/elisp/emacs-nav"
-		  "~/.emacs.d/conf"
-		  "/usr/local/share/emacs/site-lisp"
-		  "~/.emacs.d/elisp/emacs-w3m/"
-		  "~/.emacs.d/elisp/howm-1.4.0"
-		  "~/Program/magit/"
-		  "~/Program/git-mode/")
+ 		  "~/.emacs.d/elisp"
+ 		  "~/.emacs.d/conf"
+ 		  "~/.emacs.d/elisp/howm-1.4.0")
 
-(load "init-utils")
 
-;; for Mac
-(when run-darwin
-  (load "init-mac"))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Loading elisps
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; for Mac
+;; (when run-darwin
+;;   (load "init-mac"))
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; Loading elisps
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (cd "~")
 
-(load "init-common")
 (load "init-package")
+(load "init-common")
 (load "init-color")
-(load "init-howm")
+(load "init-utils")
 (load "init-emacs-nav")
-(load "init-anything")
 (load "init-auto-complete")
-(load "init-networking")
-
-;; utils
-(load "init-elscreen")
 (load "init-yasnippet")
-(load "init-moccur")
-(load "init-popwin")
+(load "init-elscreen")
+(load "init-magit")
+(load "init-ruby")
+(load "init-python")
 
-;; (load "init-w3m")
+(require 'helm-config)
+(helm-mode 1)
+
+;; (load "init-anything")
+;; (load "init-howm")
+;; (load "init-networking")
+;; ;; utils
+;; (load "init-moccur")
+;; (load "init-popwin")
+
+;; ;; (load "init-w3m")
 ;; (load "init-slime")
 
+;; ;; Programming Environment
 
-;; Programming Environment
-(load "init-magit")
-(load "init-haskell")
-;; (load "init-ruby")
-(load "init-python")
+;; (load "init-haskell")
 
 ;; (load "init-c")
 ;; (load "init-gdb")
@@ -72,3 +71,4 @@
 
 ;; (load "init-yatex")
 ;;(load "init-caede")
+(cd "~")

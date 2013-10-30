@@ -37,8 +37,11 @@
 (column-number-mode 1)
 
 ;; menubar  & toolbar を消す
-(menu-bar-mode -1)
-(tool-bar-mode -1)
+(if (fboundp 'tool-bar-mode)
+    (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode)
+    (menu-bar-mode -1))
+
 
 
 ;; 自動インデント設定
