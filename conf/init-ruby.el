@@ -1,7 +1,7 @@
 ;;---------------------------------------------------
 ;; Ruby関連
 ;;---------------------------------------------------
-(require 'inf-ruby)
+;; (require 'inf-ruby)
 (custom-set-faces '(flymake-errline ((((class color)) (:background "firebrick")))) 
 		  '(flymake-warnline ((((class color)) (:background "IndianRed"))))) 
 
@@ -22,5 +22,5 @@
 (add-hook 'ruby-mode-hook '(lambda () (inf-ruby-keys)))
 ;; (add-to-list 'ruby-encoding-map '(japanese-cp932 . cp932))
 
-(require 'ruby-electric)
+;; (require 'ruby-electric)
 (add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))

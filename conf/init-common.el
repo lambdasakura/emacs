@@ -11,7 +11,7 @@
 (set-keyboard-coding-system 'utf-8)
 
 ;; フォントの設定
-(add-to-list 'default-frame-alist '(font . "ricty-11"))
+(add-to-list 'default-frame-alist '(font . "ricty-14"))
 
 ;; *scratch*の文字列をなくす
 (setq initial-scratch-message nil)
@@ -69,17 +69,17 @@
 (setq-default truncate-partial-width-windows t)
 (setq-default truncate-lines t)
 
-(setq auto-mode-alist
-      (append
-       '(("\\.c$"    . c-mode)
-         ("\\.h$"    . c++-mode)
-         ("\\.java$" . java-mode)
-         ("\\.m$"    . objc-mode)
-         ("\\.c\\+\\+$" . c++-mode)
-         ("\\.cpp$"  . c++-mode)
-         ("\\.cc$"   . c++-mode)
-         ("\\.hpp$"   . c++-mode))
-       auto-mode-alist))
+;; (setq auto-mode-alist
+;;       (append
+;;        '(("\\.c$"    . c-mode)
+;;          ("\\.h$"    . c++-mode)
+;;          ("\\.java$" . java-mode)
+;;          ("\\.m$"    . objc-mode)
+;;          ("\\.c\\+\\+$" . c++-mode)
+;;          ("\\.cpp$"  . c++-mode)
+;;          ("\\.cc$"   . c++-mode)
+;;          ("\\.hpp$"   . c++-mode))
+;;        auto-mode-alist))
 
 (setq comment-style 'multi-line)
 
