@@ -12,7 +12,7 @@
   
   (setq w3m-command "C:\\Cygwin\\bin\\w3m"))
 
-(require 'w3m-load)
+;; (require 'w3m-load)
 
 (autoload 'w3m-find-file "w3m" "w3m interface function for local file." t)
 (autoload 'w3m-search "w3m-search" "Search QUERY using SEARCH-ENGINE." t)
