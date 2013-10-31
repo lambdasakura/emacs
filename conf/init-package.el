@@ -30,6 +30,9 @@
     melpa
     nav
     yasnippet
+    deferred
+    color-moccur
+    w3m
 
     ;; プログラミング関連
     inf-ruby
@@ -47,6 +50,7 @@
     yaml-mode
     scala-mode    
     python
+    jedi
     ruby-block
     ruby-electric
     ruby-mode
