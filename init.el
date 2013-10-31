@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; emacs 設定ファイル
+;; emacs 險ｭ螳壹ヵ繧｡繧､繝ｫ
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun add-to-load-path (&rest paths)
   (mapc '(lambda (path)
@@ -43,9 +43,9 @@
 
 ;; Programming Environment
 
-(load "init-c")
-(load "init-gdb")
-(load "init-gtags")
+;; (load "init-c")
+;; (load "init-gdb")
+;; (load "init-gtags")
 (load "init-ruby")
 (load "init-python")
 (load "init-markdown")

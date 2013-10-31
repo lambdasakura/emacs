@@ -2,9 +2,9 @@
 ;; emacsのglobalな設定
 ;; 
 
-(setq gc-cons-threshold 134217728)
+;; (setq gc-cons-threshold 134217728)
 
-;;; 日本語環境:for UTF-8
+;; 日本語環境:for UTF-8
 (set-language-environment "Japanese")
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -34,11 +34,11 @@
 (global-set-key "\C-x\C-c" 'my-save-buffers-kill-emacs)
 
 ;;対応する括弧をハイライト表示させる
-(show-paren-mode 1)
+;; (show-paren-mode 1)
 
 ;;行番号を表示
-(line-number-mode 1)
-(column-number-mode 1)
+;; (line-number-mode 1)
+;; (column-number-mode 1)
 
 ;; menubar  & toolbar を消す
 (if (fboundp 'tool-bar-mode)
@@ -54,9 +54,9 @@
 ;; - 0 ウィンドウの縦方向でポイントが中央にくるように テキストをスクロールして再表示する。 
 ;; - 値が正の整数n ウィンドウをどちらかの方向に最大n行だけスクロールすると ポイントが見えるようになるときには、そのようにスクロールして再表示する。
 ;; - その他 ポイントが中央にくるようにする。 デフォルト値は0である。 
-(setq scroll-conservatively 1)
+;; (setq scroll-conservatively 1)
 ;;C-vなどでページ移動があってもカーソル位置を変化させない
-(setq scroll-preserve-screen-position t)
+;; (setq scroll-preserve-screen-position t)
 
 ;; mode-lineにファイル名のフルパスを表示
 (set-default 'mode-line-buffer-identification
