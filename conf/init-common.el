@@ -34,11 +34,11 @@
 (global-set-key "\C-x\C-c" 'my-save-buffers-kill-emacs)
 
 ;;対応する括弧をハイライト表示させる
-;; (show-paren-mode 1)
+(show-paren-mode 1)
 
 ;;行番号を表示
-;; (line-number-mode 1)
-;; (column-number-mode 1)
+(line-number-mode 1)
+(column-number-mode 1)
 
 ;; menubar  & toolbar を消す
 (if (fboundp 'tool-bar-mode)

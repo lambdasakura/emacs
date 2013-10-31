@@ -39,7 +39,7 @@
 
 ;; (load "init-networking")
 (load "init-howm")
-(load "init-w3m")
+;; (load "init-w3m")
 
 ;; Programming Environment
 
@@ -58,4 +58,5 @@
 ;;(load "init-caede")
 
 (load "init-helm")
+
 (cd "~")

@@ -3,5 +3,9 @@
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 (defun markdown-custom ()
   "markdown-mode-hook"
-(setq markdown-command "multimarkdown"))
+  (cond (run-darwin
+	 (setq markdown-command "multimarkdown"))
+	(run-w32
+	 (setq markdown-command "perl ~/bin/Markdown.pl"))))
 (add-hook 'markdown-mode-hook '(lambda() (markdown-custom)))
+

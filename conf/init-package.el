@@ -26,6 +26,7 @@
     magit
     helm
     helm-descbinds
+    helm-gtags
     quickrun
     melpa
     nav
