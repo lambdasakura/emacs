@@ -33,7 +33,7 @@
     deferred
     color-moccur
     w3m
-
+    all-ext
     ;; プログラミング関連
     inf-ruby
     php-mode

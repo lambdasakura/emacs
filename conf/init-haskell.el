@@ -2,9 +2,9 @@
 (require 'haskell-cabal)
 (add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
 
-
 (add-to-list 'exec-path "C:/Users/f9078010.TOSHIBA/AppData/Roaming/cabal/bin")
 (add-to-list 'load-path "C:/Users/f9078010.TOSHIBA/AppData/Roaming/cabal/ghc-mod-2.0.3")
+
 (autoload 'ghc-init "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (ghc-init) (flymake-mode)))
 

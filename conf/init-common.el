@@ -2,6 +2,8 @@
 ;; emacsのglobalな設定
 ;; 
 
+(setq gc-cons-threshold 134217728)
+
 ;;; 日本語環境:for UTF-8
 (set-language-environment "Japanese")
 (set-default-coding-systems 'utf-8)
@@ -9,6 +11,8 @@
 (set-buffer-file-coding-system 'utf-8)
 (prefer-coding-system 'utf-8-unix)
 (set-keyboard-coding-system 'utf-8)
+(when run-w32 
+  (setq default-file-name-coding-system 'japanese-shift-jis-dos))
 
 ;; フォントの設定
 (add-to-list 'default-frame-alist '(font . "ricty-14"))
@@ -42,8 +46,6 @@
 (if (fboundp 'menu-bar-mode)
     (menu-bar-mode -1))
 
-
-
 ;; 自動インデント設定
 (require 'font-lock)
 (global-font-lock-mode t)
@@ -69,18 +71,6 @@
 (setq-default truncate-partial-width-windows t)
 (setq-default truncate-lines t)
 
-;; (setq auto-mode-alist
-;;       (append
-;;        '(("\\.c$"    . c-mode)
-;;          ("\\.h$"    . c++-mode)
-;;          ("\\.java$" . java-mode)
-;;          ("\\.m$"    . objc-mode)
-;;          ("\\.c\\+\\+$" . c++-mode)
-;;          ("\\.cpp$"  . c++-mode)
-;;          ("\\.cc$"   . c++-mode)
-;;          ("\\.hpp$"   . c++-mode))
-;;        auto-mode-alist))
-
 (setq comment-style 'multi-line)
 
 ;; cua(矩形選択) modeを使う
@@ -92,16 +82,18 @@
 (global-linum-mode)
 (put 'narrow-to-region 'disabled nil)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;key config
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(global-set-key "\C-h" 'delete-backward-char) ;C-hをbackspaseに割り当て
+(global-set-key "\M-g" 'goto-line)       ;M-gをgoto-lineに割り当て
+(global-set-key "\M-r" 'replace-string) ;M-rをstring-replaceに割り当て
 
-
-;;key-chord
-;;2つのキーの同時押し、もしくは単一キーのダブルクリックを define-key として使用できる lisp
+;; key-chord
+;; 2つのキーの同時押し、もしくは単一キーのダブルクリックを define-key として使用できる lisp
 ;; (require 'key-chord)
 ;; (key-chord-mode t)
-;; ;;key config
-;; (global-set-key "\C-h" 'delete-backward-char) ;C-hをbackspaseに割り当て
-;; (global-set-key "\M-g" 'goto-line)       ;M-gをgoto-lineに割り当て
-;; (global-set-key "\M-r" 'replace-string) ;M-rをstring-replaceに割り当て
+
 ;; (key-chord-define-global "^^" 'enlarge-window)
 ;; (global-set-key "\C-xf" 'describe-function)
 ;; (global-set-key "\C-xv" 'describe-variable)
@@ -150,4 +142,5 @@
 ;; (define-key function-key-map [67109029] [?\C-\\])
 ;; (define-key function-key-map [134217893] [?\M-\\])
 ;; (define-key function-key-map [201326757] [?\C-\M-\\])
+
 

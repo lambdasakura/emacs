@@ -1,18 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; emacs 設定ファイル
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Warning: `mapcar' called for effect; use `mapc' or `dolist' instead
-;; (setq warning-suppress-types nil)
-;; (setq byte-compile-warnings '(free-vars 
-;; 			      unresolved 
-;; 			      callargs
-;; 			      redefine 
-;; 			      obsolete 
-;; 			      noruntime 
-;; 			      cl-functions 
-;; 			      interactive-only 
-;; 			      make-local))
-
 (defun add-to-load-path (&rest paths)
   (mapc '(lambda (path)
            (add-to-list 'load-path path))
@@ -22,9 +10,6 @@
  		  "~/.emacs.d/elisp"
  		  "~/.emacs.d/conf"
  		  "~/.emacs.d/elisp/howm-1.4.0")
-
-
-
 ;; ;; for Mac
 ;; (when run-darwin
 ;;   (load "init-mac"))
@@ -32,12 +17,12 @@
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; Loading elisps
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setq gc-cons-threshold 134217728)
 
+
+(load "init-utils")
 (load "init-package")
 (load "init-common")
 (load "init-color")
-(load "init-utils")
 (load "init-emacs-nav")
 (load "init-auto-complete")
 (load "init-yasnippet")
@@ -65,6 +50,7 @@
 (setq recentf-max-saved-items 100)
 (recentf-mode 1)
 
+(require 'all-ext)
 (require 'helm-config)
 (require 'helm-command)
 (require 'helm-descbinds)
@@ -94,6 +80,9 @@
   (loop for (key func) in key-and-func
         do (global-set-key key func)))
 
+(global-set-key (kbd "C-M-o") 'helm-occur) ;; helm-occurの起動
+(define-key isearch-mode-map (kbd "C-o") 'helm-occur-from-isearch) ;; isearchからhelm-occurを起動
+(define-key helm-map (kbd "C-c C-a") 'all-from-helm-occur) ;; helm-occurからall-extに受け渡し
 
 
 ;; (load "init-howm")

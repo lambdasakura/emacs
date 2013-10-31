@@ -20,6 +20,7 @@
 (add-hook 'c-mode-common-hook
             '(lambda ()
              (progn
+	       (gtags-mode)
                (c-toggle-hungry-state 1)
                (setq c-basic-offset 4 indent-tabs-mode nil))))
 
@@ -28,7 +29,7 @@
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
 ;; Flymake
-(require 'flymake)
+;; (require 'flymake)
 
 ;; ;; C++
 ;; ;; http://d.hatena.ne.jp/pyopyopyo/20070715/
