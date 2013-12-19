@@ -29,3 +29,10 @@
 (global-set-key (kbd "C-M-o") 'helm-occur) 
 (define-key isearch-mode-map (kbd "C-o") 'helm-occur-from-isearch) ;; isearchからhelm-occurを起動
 (define-key helm-map (kbd "C-c C-a") 'all-from-helm-occur) ;; helm-occurからall-extに受け渡し
+
+;; 自動補完を無効
+(custom-set-variables '(helm-ff-auto-update-initial-value nil))
+;; C-hでバックスペースと同じように文字を削除  
+(define-key helm-c-read-file-map (kbd "C-h") 'delete-backward-char)
+;; TABで任意補完。選択肢が出てきたらC-nやC-pで上下移動してから決定することも可能
+(define-key helm-c-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
