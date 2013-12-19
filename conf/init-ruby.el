@@ -1,6 +1,11 @@
 ;;---------------------------------------------------
 ;; Ruby関連
 ;;---------------------------------------------------
+(defun ruby-insert-end ()
+  (interactive)
+  (insert "end")
+  (ruby-indent-line t)
+  (end-of-line))
 ;; (require 'inf-ruby)
 (custom-set-faces '(flymake-errline ((((class color)) (:background "firebrick")))) 
 		  '(flymake-warnline ((((class color)) (:background "IndianRed"))))) 
