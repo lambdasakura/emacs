@@ -9,7 +9,7 @@
     (require 'slime-autoloads)
     (require 'slime)
     (require 'slime-annot)
-    (require 'ac-slime)
+    ;; (require 'ac-slime)
     
     
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -75,8 +75,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; hook
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    (add-hook 'slime-mode-hook 'set-up-slime-ac)
-    (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+;;    (add-hook 'slime-mode-hook 'set-up-slime-ac)
+;;    (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 
     (defun my-lisp-mode-hook-func ()
       (interactive)
@@ -85,9 +85,10 @@
       (slime-mode t)
       (show-paren-mode 1)
       (when (require 'auto-complete nil t)
-	(require 'ac-slime nil t)
-	(setq ac-sources '(ac-source-slime-simple ac-source-words-in-same-mode-buffers))
-	(auto-complete-mode t))) 
+	;; (require 'ac-slime nil t)
+	;; (setq ac-sources '(ac-source-slime-simple ac-source-words-in-same-mode-buffers))
+	;; (auto-complete-mode t)
+	)) 
 
 
     (add-hook 'lisp-mode-hook 'my-lisp-mode-hook-func)
@@ -101,8 +102,8 @@
 				      (t
 				       (normal-mode)))))
 
-    (add-hook 'slime-mode-hook 'set-up-slime-ac)
-    (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+;;    (add-hook 'slime-mode-hook 'set-up-slime-ac)
+;;    (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 
     (define-globalized-minor-mode real-global-auto-complete-mode
       auto-complete-mode (lambda ()

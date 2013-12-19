@@ -10,11 +10,9 @@
  		  "~/.emacs.d/elisp"
  		  "~/.emacs.d/conf"
  		  "~/.emacs.d/elisp/howm-1.4.0")
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Loading elisps
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; Basic Settings
 ;; (when run-darwin (load "init-mac"))
 (load "init-utils")
@@ -41,18 +39,18 @@
 
 ;; (load "init-networking")
 (load "init-howm")
-(load "init-w3m")
+;; (load "init-w3m")
 
 ;; Programming Environment
 
 ;; (load "init-c")
 ;; (load "init-gdb")
-(load "init-gtags")
+;; (load "init-gtags")
 (load "init-ruby")
 (load "init-python")
 (load "init-markdown")
 (load "init-javascript")
-;; (load "init-slime")
+(load "init-slime")
 (load "init-haskell")
 
 ;; Extra
@@ -60,9 +58,7 @@
 ;;(load "init-caede")
 
 (load "init-helm")
-
 (require 'evil)
 (evil-mode 1)
-
 
 (cd "~")

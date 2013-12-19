@@ -10,8 +10,6 @@
 
 ; Initialize
 (package-initialize)
-; melpa.el
-(require 'melpa)
 
 (require 'cl)
 
@@ -35,7 +33,6 @@
     color-moccur
     w3m
     all-ext
-    haskell-mode
     ;; プログラミング関連
     inf-ruby
     php-mode
@@ -56,7 +53,7 @@
     ruby-block
     ruby-electric
     ruby-mode
-    twittering-mode
+    
     ))
 
 (let ((not-installed (loop for x in installing-package-list
@@ -67,17 +64,5 @@
     (dolist (pkg not-installed)
         (package-install pkg))))
 
-(require 'twittering-mode)
-(setq twittering-proxy-use t)
-(setq twittering-proxy-server "proxy.rdc.toshiba.co.jp")
-(setq twittering-proxy-port 8080)
-(setq twittering-icon-mode t)
-(setq twittering-use-master-password t)
-(setq twittering-convert-fix-size 48)
-;; 起動時に以下のリストを読みこむ
-(setq twittering-initial-timeline-spec-string 
-      '("lambda_sakura/doujin-soft" 
-	"lapis_moon/byouin" 
-	":direct_messages"
-	":mentions"
-	":home"))
+; melpa.el
+(require 'melpa)
