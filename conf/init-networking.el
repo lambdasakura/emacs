@@ -40,10 +40,10 @@
 NO_PROXYが正しく動作するのか未検証"
   (interactive)
   ;; (setenv "HTTP_PROXY" "http://proxy.rdc.toshiba.co.jp:8080/")
-  (setenv "HTTP_PROXY" "http://proxy.toshiba.co.jp:8080/")
+  (setenv "HTTP_PROXY" "http://proxy.rdc.toshiba.co.jp:8080/")
   (setenv "NO_PROXY" "localhost , 127.0.0.0/8,*.toshiba.co.jp,*.toshiba.local")
-  (setq http-proxy-server "proxy.toshiba.co.jp"
-	;; http-proxy-server "proxy.rdc.toshiba.co.jp"
+  (setq ;; http-proxy-server "proxy.toshiba.co.jp"
+	http-proxy-server "proxy.rdc.toshiba.co.jp"
 	http-proxy-port "8080"
 	url-proxy-services
 	'(("no_proxy" . "localhost")
@@ -51,8 +51,8 @@ NO_PROXYが正しく動作するのか未検証"
 	  ("no_proxy" . "*.toshiba.co.jp")
 	  ;; ("http" . "proxy.rdc.toshiba.co.jp:8080")
 	  ;; ("http" . "proxy.rdc.toshiba.co.jp:8080")
-	  ("http" . "proxy.toshiba.co.jp:8080")
-	  ("https" . "proxy.toshiba.co.jp:8080"))))
+	  ("http" . "proxy.rdc.toshiba.co.jp:8080")
+	  ("https" . "proxy.rdc.toshiba.co.jp:8080"))))
 
 (defun proxy-off ()
   "PROXY_SERVERを解除する。"

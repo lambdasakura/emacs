@@ -53,7 +53,11 @@
     ruby-block
     ruby-electric
     ruby-mode
-    
+    twittering-mode
+    slime
+    slime-annot
+    ac-slime
+
     ))
 
 (let ((not-installed (loop for x in installing-package-list

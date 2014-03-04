@@ -15,7 +15,11 @@
   (setq default-file-name-coding-system 'japanese-shift-jis-dos))
 
 ;; フォントの設定
-(add-to-list 'default-frame-alist '(font . "ricty-14"))
+;;(add-to-list 'default-frame-alist '(font . ("ＭＳ ゴシック-10" 0 10 (charset cp932-2-byte))))
+(add-to-list 'default-frame-alist '(font . "ＭＳ ゴシック-10"))
+;; (set-default-font "Ricty:pixelsize=12:spacing=0")
+;; (add-to-list 'default-frame-alist '(font . "Ricty-10"))
+;; (setq-default line-spacing 2)
 
 ;; *scratch*の文字列をなくす
 (setq initial-scratch-message nil)
@@ -37,8 +41,8 @@
 (show-paren-mode 1)
 
 ;;行番号を表示
-(line-number-mode 1)
-(column-number-mode 1)
+;; (line-number-mode 0)
+;; (column-number-mode 1)
 
 ;; menubar  & toolbar を消す
 (if (fboundp 'tool-bar-mode)
@@ -78,8 +82,8 @@
 (setq cua-enable-cua-keys nil)
 
 ;; 行数を表示する
-(require 'linum)
-(global-linum-mode)
+;; (require 'linum)
+;; (global-linum-mode)
 (put 'narrow-to-region 'disabled nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

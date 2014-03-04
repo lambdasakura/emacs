@@ -19,6 +19,7 @@
 ;; (global-set-key [kanji] 'ignore) 
 ;; (global-set-key [C-S-space] 'ignore) 
 (load "init-utils")
+(load "init-networking")
 (load "init-package")
 (load "init-common")
 (load "init-color")
@@ -40,7 +41,7 @@
 ;; Magit
 (load "init-magit")
 
-;; (load "init-networking")
+
 (load "init-howm")
 ;; (load "init-w3m")
 
