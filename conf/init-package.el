@@ -54,6 +54,7 @@
     ruby-electric
     ruby-mode
     twittering-mode
+    cl-lib
     slime
     slime-annot
     ac-slime
