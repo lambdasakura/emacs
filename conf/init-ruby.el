@@ -27,5 +27,11 @@
 (add-hook 'ruby-mode-hook '(lambda () (inf-ruby-keys)))
 ;; (add-to-list 'ruby-encoding-map '(japanese-cp932 . cp932))
 
-;; (require 'ruby-electric)
-(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
+(defun ruby-insert-end ()
+  (interactive)
+  (insert "end")
+  (ruby-indent-line t)
+  (end-of-line))
+
+(add-hook 'ruby-mode-hook '(lambda () (require 'ruby-electric)
+			     (ruby-electric-mode t)))

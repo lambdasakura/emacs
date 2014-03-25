@@ -14,6 +14,7 @@
 ;; Loading elisps
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Basic Settings
+
 ;; (when run-darwin (load "init-mac"))
 ;; (global-set-key [M-kanji] 'ignore)
 ;; (global-set-key [kanji] 'ignore) 
@@ -66,3 +67,5 @@
 (evil-mode 1)
 
 (cd "~")
+(require 'evil)
+(evil-mode 1)
