@@ -58,7 +58,7 @@
     slime
     slime-annot
     ac-slime
-
+    evil
     ))
 
 (let ((not-installed (loop for x in installing-package-list

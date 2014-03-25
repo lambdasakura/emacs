@@ -16,10 +16,11 @@
 
 ;; フォントの設定
 ;;(add-to-list 'default-frame-alist '(font . ("ＭＳ ゴシック-10" 0 10 (charset cp932-2-byte))))
-(add-to-list 'default-frame-alist '(font . "ＭＳ ゴシック-10"))
+;; (add-to-list 'default-frame-alist '(font . "ＭＳ ゴシック-10"))
 ;; (set-default-font "Ricty:pixelsize=12:spacing=0")
 ;; (add-to-list 'default-frame-alist '(font . "Ricty-10"))
 ;; (setq-default line-spacing 2)
+(add-to-list 'default-frame-alist '(font . "ricty-11"))
 
 ;; *scratch*の文字列をなくす
 (setq initial-scratch-message nil)
