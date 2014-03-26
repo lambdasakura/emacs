@@ -15,12 +15,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Basic Settings
 
-;; (when run-darwin (load "init-mac"))
+(load "init-utils")
+(when run-darwin (load "init-mac"))
 ;; (global-set-key [M-kanji] 'ignore)
 ;; (global-set-key [kanji] 'ignore) 
 ;; (global-set-key [C-S-space] 'ignore) 
-(load "init-utils")
-(load "init-networking")
+
+;; (load "init-networking")
 (load "init-package")
 (load "init-common")
 (load "init-color")
