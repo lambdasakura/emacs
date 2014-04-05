@@ -93,7 +93,7 @@
 (global-set-key "\C-h" 'delete-backward-char) ;C-hをbackspaseに割り当て
 (global-set-key "\M-g" 'goto-line)       ;M-gをgoto-lineに割り当て
 (global-set-key "\M-r" 'replace-string) ;M-rをstring-replaceに割り当て
-
+(global-set-key [M-kanji] 'ignore)
 ;; key-chord
 ;; 2つのキーの同時押し、もしくは単一キーのダブルクリックを define-key として使用できる lisp
 ;; (require 'key-chord)
