@@ -21,6 +21,7 @@
 ;; (global-set-key [kanji] 'ignore) 
 ;; (global-set-key [C-S-space] 'ignore) 
 
+(load "init-utils")
 ;; (load "init-networking")
 (load "init-package")
 (load "init-common")
@@ -52,12 +53,12 @@
 ;; (load "init-c")
 ;; (load "init-gdb")
 ;; (load "init-gtags")
-(load "init-ruby")
-(load "init-python")
-(load "init-markdown")
-(load "init-javascript")
+;; (load "init-ruby")
+;; (load "init-python")
+;; (load "init-markdown")
+;; (load "init-javascript")
 (load "init-slime")
-(load "init-haskell")
+;; (load "init-haskell")
 
 ;; Extra
 ;; (load "init-yatex")
@@ -68,5 +69,5 @@
 (evil-mode 1)
 
 (cd "~")
-(require 'evil)
-(evil-mode 1)
+;; (require 'evil)
+;; (evil-mode 1)
