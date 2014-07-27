@@ -26,7 +26,6 @@
     helm-descbinds
     helm-gtags
     quickrun
-    melpa
     nav
     yasnippet
     deferred
@@ -58,6 +57,9 @@
     slime
     slime-annot
     ac-slime
+    typescript
+    go-mode
+    dart-mode
     evil
     ))
 
@@ -69,5 +71,3 @@
     (dolist (pkg not-installed)
         (package-install pkg))))
 
-; melpa.el
-(require 'melpa)
