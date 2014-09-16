@@ -19,7 +19,7 @@
   (interactive)
   (set-frame-parameter nil 'fullscreen (if (frame-parameter nil 'fullscreen)
                                            nil
-					 'fullboth)))
+                                         'fullboth)))
 (global-set-key [(meta return)] 'toggle-fullscreen)
 
 (when (eq window-system 'mac)

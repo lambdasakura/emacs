@@ -92,6 +92,6 @@
   (or ad-return-value
       ;; include directories and *.howm
       (not (or (file-directory-p filename)
-	       (string-match "[.]howm$" filename))))))
+               (string-match "[.]howm$" filename))))))
 
 (setq howm-excluded-file-regexp "\\(^\|/\\)\\([.]\|CVS/\\)\|[~#]$\|\\.\\(css\|html\|txt\|bak\|elc\|gz\|aux\|toc\|idx\|dvi\|jpg\|gif\|png\\)$")

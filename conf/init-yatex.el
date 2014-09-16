@@ -26,6 +26,5 @@
   (setq dviprint-command-format "dvipdfmx %s "))
 
 (when run-darwin
-  (setq tex-command "~/Library/TeXShop/bin/platex2pdf-utf8"   
-	dvi2-command "open -a TeXShop"))
-
+  (setq tex-command "~/Library/TeXShop/bin/platex2pdf-utf8"
+        dvi2-command "open -a TeXShop"))

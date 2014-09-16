@@ -1,6 +1,6 @@
-;; 
+;;
 ;; emacsのglobalな設定
-;; 
+;;
 
 ;; (setq gc-cons-threshold 134217728)
 
@@ -11,7 +11,7 @@
 (set-buffer-file-coding-system 'utf-8)
 (prefer-coding-system 'utf-8-unix)
 (set-keyboard-coding-system 'utf-8)
-(when run-w32 
+(when run-w32
   (setq default-file-name-coding-system 'japanese-shift-jis-dos))
 
 ;; フォントの設定
@@ -56,16 +56,16 @@
 (global-font-lock-mode t)
 
 ;; ポイントがスクリーンからはみ出したとき （あるいはスクロール時の余白に入ったとき）に どのように自動的にスクロールするかを制御する。
-;; - 0 ウィンドウの縦方向でポイントが中央にくるように テキストをスクロールして再表示する。 
+;; - 0 ウィンドウの縦方向でポイントが中央にくるように テキストをスクロールして再表示する。
 ;; - 値が正の整数n ウィンドウをどちらかの方向に最大n行だけスクロールすると ポイントが見えるようになるときには、そのようにスクロールして再表示する。
-;; - その他 ポイントが中央にくるようにする。 デフォルト値は0である。 
+;; - その他 ポイントが中央にくるようにする。 デフォルト値は0である。
 ;; (setq scroll-conservatively 1)
 ;;C-vなどでページ移動があってもカーソル位置を変化させない
 ;; (setq scroll-preserve-screen-position t)
 
 ;; mode-lineにファイル名のフルパスを表示
 (set-default 'mode-line-buffer-identification
-	     '(buffer-file-name ("%f") ("%b")))
+             '(buffer-file-name ("%f") ("%b")))
 
 ;; 選択範囲に色がつくように変更
 (transient-mark-mode t)
@@ -126,12 +126,12 @@
 ;;     (car grep-command)))
 ;; (setq grep-command (cons (concat grep-command-before-query " .")
 ;;                          (+ (length grep-command-before-query) 1)))
-;; (define-key global-map (kbd "M-C-g") 'grep)   
+;; (define-key global-map (kbd "M-C-g") 'grep)
 
 ;; (add-hook 'speedbar-mode-hook
 ;;           '(lambda ()
 ;;              (speedbar-add-supported-extension
-;; 	      '("js" "as" "html" "css" "php" "lisp"))))
+;;            '("js" "as" "html" "css" "php" "lisp"))))
 
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -147,5 +147,3 @@
 ;; (define-key function-key-map [67109029] [?\C-\\])
 ;; (define-key function-key-map [134217893] [?\M-\\])
 ;; (define-key function-key-map [201326757] [?\C-\M-\\])
-
-

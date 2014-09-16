@@ -15,18 +15,18 @@
  '(font-lock-warning-face ((((class color) (min-colors 88) (background dark)) (:foreground "red"))))
  '(font-lock-constant-face ((((class color) (min-colors 88) (background dark)) (:bold t :foreground "tomato"))))
  '(mell-region-face ((((class color) (min-colors 88) (background dark)) (:foreground "white" :background "MediumSlateBlue"))
-		     (((class color) (min-colors 88) (background light)) (:foreground "white" :background "MediumSlateBlue"))))
+                     (((class color) (min-colors 88) (background light)) (:foreground "white" :background "MediumSlateBlue"))))
  '(sense-region-face ((((class color) (min-colors 88) (background dark)) (:foreground "white" :background "MediumSlateBlue"))
-		      (((class color) (min-colors 88) (background light)) (:foreground "white" :background "MediumSlateBlue"))))
+                      (((class color) (min-colors 88) (background light)) (:foreground "white" :background "MediumSlateBlue"))))
  '(region ((((class color) (min-colors 88) (background dark)) (:foreground "white" :background "MediumSlateBlue"))
-	   (((class color) (min-colors 88) (background light)) (:foreground "white" :background "MediumSlateBlue"))))
+           (((class color) (min-colors 88) (background light)) (:foreground "white" :background "MediumSlateBlue"))))
  '(highlight ((((class color) (min-colors 88) (background light)) (:italic t :bold t :foreground "white" :background "MediumSlateBlue"))
-	      (((class color) (min-colors 88) (background dark)) (:italic t :bold t :foreground "white" :background "MediumSlateBlue"))))
+              (((class color) (min-colors 88) (background dark)) (:italic t :bold t :foreground "white" :background "MediumSlateBlue"))))
  '(modeline ((((class color) (min-colors 88) (background dark)) (:foreground "gray"))))
  '(minibuffer-prompt ((((class color) (min-colors 88) (background dark)) (:foreground "Green"))))
  '(mode-line-inactive ((((class color) (min-colors 88) (background dark)) (:foreground "black"))))
  '(which-func ((t (:foreground "deep sky blue")))))
 
 
- 	
+
 (setq transient-mark-mode t)

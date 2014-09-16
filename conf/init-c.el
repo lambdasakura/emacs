@@ -20,7 +20,7 @@
 (add-hook 'c-mode-common-hook
             '(lambda ()
              (progn
-	       (gtags-mode)
+               (gtags-mode)
                (c-toggle-hungry-state 1)
                (setq c-basic-offset 4 indent-tabs-mode nil))))
 
@@ -41,23 +41,23 @@
 ;;                        (file-name-directory buffer-file-name))))
 ;; ;;-Wall -Wextra -Wformat=2 -Wstrict-aliasing=2 -Wcast-qual -Wcast-align \
 ;; ;;-Wwrite-strings -Wconversion -Wfloat-equal -Wpointer-arith -Wswitch-enum \
-;;     (list "g++" (list 
-;; 		 "-Wall"
-;; 		 "-Wextra"
-;; 		 ;; "-Wformat=2"
-;; 		 ;; "-Wstrict-aliasing=2"
-;; 		 ;; "-Wcast-qual"
-;; 		 ;; "-Wcast-align"
-;; 		 ;; "-Wwrite-strings"
-;; 		 ;; "-Wconversion"
-;; 		 ;; "-Wfloat-equal"
-;; 		 ;; "-Wpointer-arith"
-;; 		 ;; "-Wswitch-enum"
-;; 		 ;;"-fsyntax-only"
-;; 		 "-W" 
-;; 		 "-Wall"
-;; 		 "-Wextra"
-;; 		  local-file))))
+;;     (list "g++" (list
+;;               "-Wall"
+;;               "-Wextra"
+;;               ;; "-Wformat=2"
+;;               ;; "-Wstrict-aliasing=2"
+;;               ;; "-Wcast-qual"
+;;               ;; "-Wcast-align"
+;;               ;; "-Wwrite-strings"
+;;               ;; "-Wconversion"
+;;               ;; "-Wfloat-equal"
+;;               ;; "-Wpointer-arith"
+;;               ;; "-Wswitch-enum"
+;;               ;;"-fsyntax-only"
+;;               "-W"
+;;               "-Wall"
+;;               "-Wextra"
+;;                local-file))))
 
 ;; (push '("\\.cc$" flymake-cc-init) flymake-allowed-file-name-masks)
 ;; (push '("\\.h$" flymake-cc-init) flymake-allowed-file-name-masks)
