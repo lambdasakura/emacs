@@ -8,7 +8,6 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
-; Initialize
 (package-initialize)
 
 (require 'cl)
@@ -46,7 +45,7 @@
     haskell-mode
     google-c-style
     yaml-mode
-    scala-mode    
+    scala-mode
     python
     jedi
     ruby-block
@@ -54,20 +53,22 @@
     ruby-mode
     twittering-mode
     cl-lib
-    slime
     slime-annot
     ac-slime
     typescript
     go-mode
     dart-mode
     evil
+    popwin
     ))
 
 (let ((not-installed (loop for x in installing-package-list
-                            when (not (package-installed-p x))
-                            collect x)))
+                           when (not (package-installed-p x))
+                           collect x)))
   (when not-installed
     (package-refresh-contents)
     (dolist (pkg not-installed)
-        (package-install pkg))))
+      (package-install pkg))))
 
+;; melpa.el
+;; (require 'melpa)

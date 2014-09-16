@@ -7,9 +7,10 @@
         (mapcar 'expand-file-name paths)))
 
 (add-to-load-path "~/.emacs.d"
- 		  "~/.emacs.d/elisp"
- 		  "~/.emacs.d/conf"
- 		  "~/.emacs.d/elisp/howm-1.4.0")
+                  "~/.emacs.d/lisp/skk"
+                  "~/.emacs.d/elisp"
+                  "~/.emacs.d/conf"
+                  "~/.emacs.d/elisp/howm-1.4.0")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Loading elisps
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -18,9 +19,8 @@
 (load "init-utils")
 (when run-darwin (load "init-mac"))
 ;; (global-set-key [M-kanji] 'ignore)
-;; (global-set-key [kanji] 'ignore) 
-;; (global-set-key [C-S-space] 'ignore) 
-
+;; (global-set-key [kanji] 'ignore)
+;; (global-set-key [C-S-space] 'ignore)
 (load "init-utils")
 ;; (load "init-networking")
 (load "init-package")
@@ -34,9 +34,9 @@
 (load "init-auto-complete")
 (load "init-yasnippet")
 
-;; Window Management 
+;; Window Management
 (load "init-elscreen")
-;; (load "init-popwin")
+(load "init-popwin")
 
 ;; Moccur
 (load "init-moccur")
@@ -65,9 +65,23 @@
 ;;(load "init-caede")
 
 (load "init-helm")
+(load "init-whitespace")
+
+
 (require 'evil)
 (evil-mode 1)
 
+
 (cd "~")
-;; (require 'evil)
-;; (evil-mode 1)
+(require 'evil)
+(evil-mode 1)
+(progn
+  (defun gcode-lookup ()
+    "カーソル位置のシンボルをGoogle Codeで検索(lisp決め打ち)"
+    (interactive)
+    (browse-url
+     (format "http://www.google.com/codesearch?q=%s+lang:%s+file:\\.%s$&hl=ja&num=20"
+             (thing-at-point 'symbol) "lisp" "lisp")))
+
+  (define-key slime-mode-map [(control ?c) (control ?d) ?g] 'gcode-lookup))
+>>>>>>> Stashed changes

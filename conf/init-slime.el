@@ -1,3 +1,8 @@
+;; setup load-path and autoloads
+(add-to-list 'load-path "~/App/slime")
+(require 'slime-autoloads)
+
+
 (require 'slime)
 (require 'slime-autoloads)
 ;; (require 'slime-annot)
@@ -10,7 +15,7 @@
 (when run-w32
   (setq slime-lisp-implementations
 	`((sbcl ("sbcl") :coding-system utf-8-unix)
-	  (ccl ("C:/Programs/ccl/wx86cl.exe") :coding-system utf-8-unix))))
+	  (ccl ("C:/ccl/wx86cl.exe") :coding-system utf-8-unix))))
 (when run-darwin
   (setq slime-lisp-implementations
 	`((sbcl ("/usr/local/bin/sbcl") :coding-system utf-8-unix))))

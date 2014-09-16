@@ -9,3 +9,9 @@ elisp/psise-el/
 elpa/
 url/
 abbrev_defs
+bookmarks
+etc/
+info/
+lisp/
+environment/
+semanticdb/
