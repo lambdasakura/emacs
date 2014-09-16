@@ -1,5 +1,5 @@
 ;; setup load-path and autoloads
-(add-to-list 'load-path "~/App/slime")
+(add-to-list 'load-path "~/.emacs.d/slime")
 (require 'slime-autoloads)
 
 
@@ -35,6 +35,7 @@
 
 (eval-after-load "slime"
   (lambda () (define-key evil-normal-state-map "I" 'slime-repl-bol-insert)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; slime自体の設定
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
