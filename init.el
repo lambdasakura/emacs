@@ -84,4 +84,3 @@
              (thing-at-point 'symbol) "lisp" "lisp")))
 
   (define-key slime-mode-map [(control ?c) (control ?d) ?g] 'gcode-lookup))
->>>>>>> Stashed changes
