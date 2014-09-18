@@ -7,9 +7,6 @@
     (string-match "\\(\\([0-9]+.\\)+[0-9]+\\)" ipconfig)
     (match-string 0 ipconfig)))
 
-(defvar *network-interface-names* '("en1" "wlan0" "eth0" "rl0" "rl1")
-  "Candidates for the network devices.")
-
 (defun machine-ip-address (dev)
   "Return IP address of a network device."
   (let ((info (network-interface-info dev)))
@@ -36,8 +33,7 @@
       (car (office-ip-p ip)))))
 
 (defun proxy-on ()
-  "PROXY_SERVERを設定する。
-NO_PROXYが正しく動作するのか未検証"
+  "PROXY_SERVERを設定する。NO_PROXYが正しく動作するのか未検証"
   (interactive)
   ;; (setenv "HTTP_PROXY" "http://proxy.rdc.toshiba.co.jp:8080/")
   (setenv "HTTP_PROXY" "http://proxy.rdc.toshiba.co.jp:8080/")

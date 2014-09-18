@@ -20,7 +20,7 @@
 ;; (set-default-font "Ricty:pixelsize=12:spacing=0")
 ;; (add-to-list 'default-frame-alist '(font . "Ricty-10"))
 ;; (setq-default line-spacing 2)
-(add-to-list 'default-frame-alist '(font . "ricty-11"))
+(add-to-list 'default-frame-alist '(font . "ricty-12"))
 
 ;; *scratch*の文字列をなくす
 (setq initial-scratch-message nil)
@@ -94,6 +94,23 @@
 (global-set-key "\M-g" 'goto-line)       ;M-gをgoto-lineに割り当て
 (global-set-key "\M-r" 'replace-string) ;M-rをstring-replaceに割り当て
 (global-set-key [M-kanji] 'ignore)
+
+
+;;; 言語環境の指定
+(when run-linux
+  ;;mozcの設定
+  (require 'mozc)
+  (set-language-environment "Japanese")
+  (setq default-input-method "japanese-mozc")
+
+  ;;ドル記号を入力したときに直接入力に切り替える。
+  (define-key mozc-mode-map "$" 'YaTeX-insert-dollar-or-mozc-insert)
+  (defun YaTeX-insert-dollar-or-mozc-insert ()
+    (interactive)
+    (if (eq major-mode 'yatex-mode)
+	(YaTeX-insert-dollar)
+      (mozc-insert))))
+
 ;; key-chord
 ;; 2つのキーの同時押し、もしくは単一キーのダブルクリックを define-key として使用できる lisp
 ;; (require 'key-chord)

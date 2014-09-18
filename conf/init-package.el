@@ -36,7 +36,7 @@
     php-mode
     sass-mode
     web-mode
-    haml-mode
+    ;; haml-mode
     slim-mode
     coffee-mode
     scss-mode
@@ -70,5 +70,5 @@
     (dolist (pkg not-installed)
       (package-install pkg))))
 
-;; melpa.el
+; melpa.el
 ;; (require 'melpa)

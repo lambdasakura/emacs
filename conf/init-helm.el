@@ -8,7 +8,6 @@
 (setq helm-idle-delay             0.1
       helm-input-idle-delay       0.1
       helm-candidate-number-limit 200)
-
 (let ((key-and-func
        `((,(kbd "C-r")   helm-for-files)
          (,(kbd "C-^")   helm-c-apropos)
@@ -22,7 +21,7 @@
         )))
   (loop for (key func) in key-and-func
         do (global-set-key key func)))
-
+ 
 (global-set-key (kbd "C-M-o") 'helm-occur) ;; helm-occurの起動
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
 (global-set-key (kbd "C-x rl") 'helm-bookmarks)
@@ -36,3 +35,4 @@
 (define-key helm-c-read-file-map (kbd "C-h") 'delete-backward-char)
 ;; TABで任意補完。選択肢が出てきたらC-nやC-pで上下移動してから決定することも可能
 (define-key helm-c-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
+
