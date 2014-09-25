@@ -53,8 +53,8 @@
     ruby-mode
     twittering-mode
     cl-lib
-    slime-annot
-    ac-slime
+;;    slime-annot
+;;    ac-slime
     typescript
     go-mode
     dart-mode

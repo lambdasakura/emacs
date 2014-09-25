@@ -5,7 +5,6 @@
 (global-set-key "\C-xj" 'skk-auto-fill-mode)
 (global-set-key "\C-xt" 'skk-tutorial)
 
-<<<<<<< Updated upstream
 ;;チュートリアルの場所設定
 (setq skk-tut-file "~/.emacs.d/etc/skk/SKK.tut")
 ;;辞書ファイルの位置
