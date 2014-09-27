@@ -16,8 +16,9 @@
         `((sbcl ("sbcl") :coding-system utf-8-unix)
           (ccl ("C:/ccl/wx86cl.exe") :coding-system utf-8-unix))))
 (when run-darwin
+  (setenv "SBCL_HOME" "/Users/sakura/Application/sbcl/lib/sbcl")
   (setq slime-lisp-implementations
-        `((sbcl ("/usr/local/bin/sbcl") :coding-system utf-8-unix))))
+	`((sbcl ("/Users/sakura/Application/sbcl/bin/sbcl") :coding-system utf-8-unix))))
 (when run-linux
   (setq slime-lisp-implementations
         `((sbcl ("sbcl") :coding-system utf-8-unix)

@@ -58,7 +58,7 @@
 ;; (load "init-markdown")
 ;; (load "init-javascript")
 (load "init-slime")
-;; (load "init-haskell")
+(load "init-haskell")
 
 ;; Extra
 ;; (load "init-yatex")
