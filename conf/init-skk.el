@@ -6,9 +6,9 @@
 (global-set-key "\C-xt" 'skk-tutorial)
 
 ;;チュートリアルの場所設定
-(setq skk-tut-file "~/.emacs.d/etc/skk/SKK.tut")
+;; (setq skk-tut-file "~/.emacs.d/etc/skk/SKK.tut")
 ;;辞書ファイルの位置
-(setq skk-large-jisyo "~/.emacs.d/etc/skk/SKK-JISYO.L")
+;; (setq skk-large-jisyo "~/.emacs.d/etc/skk/SKK-JISYO.L")
 ;; skk用のstickyキー設定
 (setq skk-sticky-key ";")
-
+(setq skk-egg-like-newline t)

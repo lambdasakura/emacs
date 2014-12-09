@@ -9,9 +9,8 @@
 ;;     (when (and (file-exists-p dir) (not (member dir exec-path)))
 ;;       (setenv "PATH" (concat dir ":" (getenv "PATH")))
 ;;       (setq exec-path (append (list dir) exec-path))))
-  
-;;   (setq w3m-command "C:\\Cygwin64\\bin\\w3m"))
 
+;;   (setq w3m-command "C:\\Cygwin64\\bin\\w3m"))
 ;; (require 'w3m-load)
 
 ;; (autoload 'w3m-find-file "w3m" "w3m interface function for local file." t)

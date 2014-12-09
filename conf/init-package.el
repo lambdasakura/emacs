@@ -54,7 +54,7 @@
     twittering-mode
     cl-lib
 ;;    slime-annot
-;;    ac-slime
+    ac-slime
     typescript
     go-mode
     dart-mode

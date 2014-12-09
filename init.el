@@ -31,7 +31,7 @@
 (load "init-recentf")
 
 ;; Code Completion
-;; (load "init-auto-complete")
+(load "init-auto-complete")
 ;; (load "init-yasnippet")
 
 ;; Window Management
@@ -58,16 +58,16 @@
 ;; (load "init-markdown")
 ;; (load "init-javascript")
 (load "init-slime")
-;; (load "init-haskell")
+(load "init-haskell")
 
 ;; Extra
 ;; (load "init-yatex")
 ;;(load "init-caede")
-(load "init-skk")
 (load "init-helm")
 (load "init-whitespace")
 
-
+(load "init-skk")
+(load "private")
 (require 'evil)
 (evil-mode 1)
 
