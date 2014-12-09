@@ -8,7 +8,7 @@
                          space-mark     ; 表示のマッピング
                          tab-mark
                          ))
-
+(setq-default indent-tabs-mode nil)
 (setq whitespace-display-mappings
       '((space-mark ?\u3000 [?\u25a1])
         ;; WARNING: the mapping below has a problem.
