@@ -2,8 +2,6 @@
 ;; emacs setting file
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(fset 'package-desc-vers 'package--ac-desc-version)
-
 (defun add-to-load-path (&rest paths)
   (mapc '(lambda (path)
            (add-to-list 'load-path path))
@@ -19,7 +17,6 @@
 ;; Basic Settings
 
 (load "init-utils")
-;; (load "init-networking")
 (load "init-package")
 (load "init-common")
 (load "init-color")
@@ -43,8 +40,6 @@
 
 ;; Magit
 ;; (load "init-magit")
-
-
 ;; (load "init-howm")
 (load "init-w3m")
 
@@ -67,9 +62,6 @@
 (load "init-whitespace")
 (load "init-skk")
 
-(if (file-exists-p "~/.emacs.d/conf/private.lisp")
- (load "private"))
-
-
+(if (file-exists-p "~/.emacs.d/conf/private.lisp") (load "private"))
 
 (cd "~")

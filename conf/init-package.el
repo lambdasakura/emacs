@@ -1,5 +1,11 @@
 (require 'package)
 
+;; in emacs-version@24.4
+;; 'package-desc-vers' was renamed to 'package--ac-desc-version'
+(if (and (>= emacs-major-version 24 )
+         (>= emacs-minor-version 4))
+    (fset 'package-desc-vers 'package--ac-desc-version))
+
 ;; Add package-archives
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -69,6 +75,3 @@
     (package-refresh-contents)
     (dolist (pkg not-installed)
       (package-install pkg))))
-
-; melpa.el
-;; (require 'melpa)
