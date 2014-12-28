@@ -20,7 +20,23 @@
 ;; (set-default-font "Ricty:pixelsize=12:spacing=0")
 ;; (add-to-list 'default-frame-alist '(font . "Ricty-10"))
 ;; (setq-default line-spacing 2)
-(add-to-list 'default-frame-alist '(font . "ricty-12"))
+
+(when run-linux 
+  (add-to-list 'default-frame-alist '(font . "ricty-12")))
+(when run-w32
+  ;; フォント設定
+  ;; モノスペース,等幅　
+  (add-to-list 'default-frame-alist '(font . "MeiryoKe_Console 12"))
+  ;; モノスペース,等幅　Gothic
+  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_Gothic 12"))
+  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_Gothic Bold 12"))
+  ;; プロポーショナル　Gothic
+  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_PGothic 12"))
+  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_PGothic Bold 12"))
+  ;; プロポーショナル　UI
+  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_UIGothic 12"))
+  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_UIGothic Bold 12"))
+  )
 
 ;; *scratch*の文字列をなくす
 (setq initial-scratch-message nil)
