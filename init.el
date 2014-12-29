@@ -25,7 +25,7 @@
 (evil-mode 1)
 
 (load "init-emacs-nav")
-(load "init-recentf")
+;; (load "init-recentf")
 
 ;; Code Completion
 (load "init-auto-complete")
@@ -55,13 +55,14 @@
 (load "init-slime")
 (load "init-haskell")
 
-;; Extra
-;; (load "init-yatex")
-;;(load "init-caede")
+;; ;; Extra
+;; ;; (load "init-yatex")
+;; ;;(load "init-caede")
+;; ;; (load "init-skk")
 (load "init-helm")
 (load "init-whitespace")
 (load "init-skk")
 
 (if (file-exists-p "~/.emacs.d/conf/private.lisp") (load "private"))
 
-(cd "~")
+;; (cd "~")

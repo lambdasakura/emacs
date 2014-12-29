@@ -8,8 +8,7 @@
 
 (defun slime-repl-bol-insert ()
   (interactive)
-  (slime-repl-bol)
-  (evil-insert 1))
+  (slime-repl-bol))
 
 (when run-w32
   (setq slime-lisp-implementations
@@ -18,7 +17,8 @@
 (when run-darwin
   (setenv "SBCL_HOME" "/Users/sakura/Application/sbcl/lib/sbcl")
   (setq slime-lisp-implementations
-	`((sbcl ("/Users/sakura/Application/sbcl/bin/sbcl") :coding-system utf-8-unix))))
+        `((ccl ("/Users/sakura/bin/ccl") :coding-system utf-8-unix)
+          (sbcl ("/Users/sakura/Application/sbcl/bin/sbcl") :coding-system utf-8-unix))))
 (when run-linux
   (setq slime-lisp-implementations
         `((sbcl ("sbcl") :coding-system utf-8-unix)
@@ -35,8 +35,8 @@
 (setq slime-contribs '(slime-banner slime-fancy slime-autodoc))
 (slime-setup slime-contribs)
 
-(eval-after-load "slime"
-  (lambda () (define-key evil-normal-state-map "I" 'slime-repl-bol-insert)))
+;; (eval-after-load "slime"
+;;   (lambda () (define-key evil-normal-state-map "I" 'slime-repl-bol-insert)))
 
 ;; emacs lisp用のlisp-modeはemacs-lisp-modeを使用する設定に
 (setq auto-mode-alist
@@ -56,7 +56,7 @@
       (slime-mode t)
       (toggle-input-method)
       (toggle-input-method))))
-
+(require 'ac-slime)
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 ;; --------------------------------

@@ -21,7 +21,7 @@
 ;; (add-to-list 'default-frame-alist '(font . "Ricty-10"))
 ;; (setq-default line-spacing 2)
 
-(when run-linux 
+(when run-linux
   (add-to-list 'default-frame-alist '(font . "ricty-12")))
 (when run-w32
   ;; フォント設定
