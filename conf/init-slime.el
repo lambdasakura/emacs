@@ -1,10 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; setup load-path and autoloads
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-to-list 'load-path "~/.emacs.d/slime")
 (require 'slime-autoloads)
-(require 'slime)
-;; (require 'slime-annot)
 
 (defun slime-repl-bol-insert ()
   (interactive)
@@ -19,21 +16,23 @@
   (setq slime-lisp-implementations
         `((ccl ("/Users/sakura/bin/ccl") :coding-system utf-8-unix)
           (sbcl ("/Users/sakura/Application/sbcl/bin/sbcl") :coding-system utf-8-unix))))
+
 (when run-linux
   (setq slime-lisp-implementations
         `((sbcl ("sbcl") :coding-system utf-8-unix)
           (ccl ("~/bin/ccl") :coding-system utf-8-unix)
           (clisp ("clisp") :coding-system utf-8-unix))))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; slime自体の設定
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; slime自体の設定
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq slime-net-coding-system 'utf-8-unix)
 (setq slime-truncate-lines 't)
 (setq inferior-lisp-program 'sbcl)
 
-(setq slime-contribs '(slime-banner slime-fancy slime-autodoc))
-(slime-setup slime-contribs)
+;; (setq slime-contribs '(slime-banner slime-fancy slime-autodoc))
+;; (slime-setup slime-contribs)
+(slime-setup '(slime-repl))
 
 ;; (eval-after-load "slime"
 ;;   (lambda () (define-key evil-normal-state-map "I" 'slime-repl-bol-insert)))
@@ -174,3 +173,10 @@
         (kill-buffer (current-buffer)))))
 
 (imple-hyperspec-make-symbles)
+
+;; Evilだとmacro確認の度にInsertに入るのが面倒なので
+;; evil-modeを切ってしまう
+(add-hook 'slime-mode-hook
+          (lambda ()
+            (if (member 'slime-macroexpansion-minor-mode  minor-mode-list)
+                (turn-off-evil-mode))))

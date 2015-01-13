@@ -25,15 +25,15 @@
 (evil-mode 1)
 
 (load "init-emacs-nav")
-;; (load "init-recentf")
+(load "init-recentf")
 
 ;; Code Completion
 (load "init-auto-complete")
 ;; (load "init-yasnippet")
 
 ;; Window Management
-(load "init-elscreen")
-(load "init-popwin")
+;; (load "init-elscreen")
+
 
 ;; Moccur
 ;; (load "init-moccur")
@@ -41,7 +41,7 @@
 ;; Magit
 ;; (load "init-magit")
 ;; (load "init-howm")
-(load "init-w3m")
+;; (load "init-w3m")
 
 ;; Programming Environment
 
@@ -53,15 +53,15 @@
 ;; (load "init-markdown")
 ;; (load "init-javascript")
 (load "init-slime")
-(load "init-haskell")
+(load "init-popwin")
+;; (load "init-haskell")
 
 ;; ;; Extra
 ;; ;; (load "init-yatex")
 ;; ;;(load "init-caede")
-;; ;; (load "init-skk")
+(load "init-skk")
 (load "init-helm")
 (load "init-whitespace")
-(load "init-skk")
 
 (if (file-exists-p "~/.emacs.d/conf/private.lisp") (load "private"))
 
