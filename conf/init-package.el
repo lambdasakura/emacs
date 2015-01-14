@@ -1,4 +1,5 @@
 (require 'package)
+(require 'cl)
 
 ;; in emacs-version@24.4
 ;; 'package-desc-vers' was renamed to 'package--ac-desc-version'
@@ -16,7 +17,7 @@
 
 (package-initialize)
 
-(require 'cl)
+
 
 (defvar installing-package-list
   '(

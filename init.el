@@ -1,6 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; emacs setting file
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(fset 'package-desc-vers 'package--ac-desc-version)
 
 (defun add-to-load-path (&rest paths)
   (mapc '(lambda (path)
@@ -60,9 +61,15 @@
 ;; ;; (load "init-yatex")
 ;; ;;(load "init-caede")
 (load "init-skk")
+;; (load "init-slime")
+;; (load "init-haskell")
+
+;; Extra
+;; (load "init-yatex")
+;;(load "init-caede")
 (load "init-helm")
 (load "init-whitespace")
 
 (if (file-exists-p "~/.emacs.d/conf/private.lisp") (load "private"))
 
-;; (cd "~")
+(cd "~")
