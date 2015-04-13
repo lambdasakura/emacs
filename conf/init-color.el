@@ -1,7 +1,7 @@
 ;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
 (custom-set-faces
-  '(default ((t (:background "black" :foreground "white"))))
+  '(default ((t (:background "color-232" :foreground "white"))))
  ;;'(default ((t (:background "white" :foreground "black"))))
  '(cursor ((t (:background "Green" :foreground "green"))))
  ;; '(font-lock-builtin-face ((((class color) (min-colors 88) (background dark)) (:foreground "cyan"))))
@@ -22,7 +22,7 @@
            (((class color) (min-colors 88) (background light)) (:foreground "white" :background "MediumSlateBlue"))))
  '(highlight ((((class color) (min-colors 88) (background light)) (:italic t :bold t :foreground "white" :background "MediumSlateBlue"))
               (((class color) (min-colors 88) (background dark)) (:italic t :bold t :foreground "white" :background "MediumSlateBlue"))))
- '(modeline ((((class color) (min-colors 88) (background dark)) (:foreground "gray"))))
+ '(modeline ((((class color) (min-colors 88) (background dark)) (:foreground "white"))))
  '(minibuffer-prompt ((((class color) (min-colors 88) (background dark)) (:foreground "Green"))))
  '(mode-line-inactive ((((class color) (min-colors 88) (background dark)) (:foreground "black"))))
  '(which-func ((t (:foreground "deep sky blue")))))
