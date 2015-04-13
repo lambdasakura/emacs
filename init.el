@@ -46,13 +46,14 @@
 
 ;; Programming Environment
 
-;; (load "init-c")
+(load "init-c")
 ;; (load "init-gdb")
-;; (load "init-gtags")
+(load "init-gtags")
 ;; (load "init-ruby")
 ;; (load "init-python")
 ;; (load "init-markdown")
 ;; (load "init-javascript")
+(load "init-scala")
 (load "init-slime")
 (load "init-popwin")
 ;; (load "init-haskell")
@@ -69,6 +70,8 @@
 ;;(load "init-caede")
 (load "init-helm")
 (load "init-whitespace")
+
+(load "init-automode")
 
 (if (file-exists-p "~/.emacs.d/conf/private.lisp") (load "private"))
 

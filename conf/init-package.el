@@ -52,7 +52,8 @@
     haskell-mode
     google-c-style
     yaml-mode
-    scala-mode
+    scala-mode2
+    ensime
     python
     jedi
     ruby-block
