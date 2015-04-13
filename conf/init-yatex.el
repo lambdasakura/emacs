@@ -7,7 +7,6 @@
             (setq fill-column 120)))
 
 ;;; YaTeX-mode
-(setq auto-mode-alist  (cons (cons "\\.tex$" 'yatex-mode) auto-mode-alist))
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
 (setq load-path (cons "~/.emacs.d/elisp/yatex1.74/" load-path))
 

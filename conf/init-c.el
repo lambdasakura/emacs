@@ -9,14 +9,7 @@
 ;; M - .     CTAGSで関数にジャンプ
 ;; M - +     CTAGSでジャンプしてた時に元の場所に戻る
 
-(setq auto-mode-alist
-      (append '(("\\.C$"  . c++-mode)
-                ("\\.cc$" . c++-mode)
-                ("\\.cpp$". c++-mode)
-                ("\\.hh$" . c++-mode)
-                ("\\.c$"  . c-mode)
-                ("\\.h$"  . c++-mode))
-              auto-mode-alist))
+
 (add-hook 'c-mode-common-hook
             '(lambda ()
              (progn

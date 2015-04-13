@@ -37,12 +37,7 @@
 ;; (eval-after-load "slime"
 ;;   (lambda () (define-key evil-normal-state-map "I" 'slime-repl-bol-insert)))
 
-;; emacs lisp用のlisp-modeはemacs-lisp-modeを使用する設定に
-(setq auto-mode-alist
-      (append '(("/.el" . emacs-lisp-mode))
-              '(("/.emacs-*" . emacs-lisp-mode))
-              '(("/.wl" . emacs-lisp-mode))
-              auto-mode-alist))
+
 
 ;; slime使っていると入力モード切り替えが上手くいかない
 ;; 環境があるので、そのための対処

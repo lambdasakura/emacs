@@ -13,10 +13,6 @@
 ;; ‘f‚Ì org ‚ÌŽž‚à howm
 (add-hook 'org-mode-hook 'howm-mode)
 
-;; .org ‚Í org + howm
-(add-to-list 'auto-mode-alist '("\\.org" . org-mode))
-;; .howm ‚à org + howm
-(add-to-list 'auto-mode-alist '("\\.howm$" . org-mode))
 
 (global-unset-key (kbd "C-x C-z"))
 (setq howm-prefix (kbd "C-x C-z"))

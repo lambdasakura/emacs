@@ -1,8 +1,6 @@
 (require 'haskell-mode)
 (require 'haskell-cabal)
 
-(add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
-
 (autoload 'ghc-init "ghc" nil t)
 (add-hook 'haskell-mode-hook '(lambda ()
                                 (ghc-init)))
