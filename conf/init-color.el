@@ -1,7 +1,7 @@
 ;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
 (custom-set-faces
-  '(default ((t (:background "color-232" :foreground "white"))))
+  '(default ((t (:background "black" :foreground "white"))))
  ;;'(default ((t (:background "white" :foreground "black"))))
  '(cursor ((t (:background "Green" :foreground "green"))))
  ;; '(font-lock-builtin-face ((((class color) (min-colors 88) (background dark)) (:foreground "cyan"))))

@@ -56,7 +56,7 @@
 (load "init-scala")
 (load "init-slime")
 (load "init-popwin")
-;; (load "init-haskell")
+(load "init-haskell")
 
 ;; ;; Extra
 ;; ;; (load "init-yatex")
@@ -70,8 +70,8 @@
 ;;(load "init-caede")
 (load "init-helm")
 (load "init-whitespace")
-
 (load "init-automode")
+;; (load "init-skk")
 
 (if (file-exists-p "~/.emacs.d/conf/private.lisp") (load "private"))
 
