@@ -42,7 +42,7 @@
 ;; Magit
 ;; (load "init-magit")
 ;; (load "init-howm")
-;; (load "init-w3m")
+(load "init-w3m")
 
 ;; Programming Environment
 
@@ -56,23 +56,23 @@
 (load "init-scala")
 (load "init-slime")
 (load "init-popwin")
-;; (load "init-haskell")
 
 ;; ;; Extra
 ;; ;; (load "init-yatex")
 ;; ;;(load "init-caede")
 (load "init-skk")
 ;; (load "init-slime")
-;; (load "init-haskell")
+(load "init-haskell")
+(load "init-clojure")
+
 
 ;; Extra
 ;; (load "init-yatex")
 ;;(load "init-caede")
 (load "init-helm")
 (load "init-whitespace")
-
 (load "init-automode")
 
-(if (file-exists-p "~/.emacs.d/conf/private.lisp") (load "private"))
+(if (file-exists-p "~/.emacs.d/conf/private.el") (load "private"))
 
 (cd "~")
