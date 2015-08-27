@@ -18,6 +18,7 @@
 ;; Basic Settings
 
 (load "init-utils")
+(if (file-exists-p "~/.emacs.d/conf/private.el") (load "private"))
 (load "init-package")
 (load "init-common")
 (load "init-color")
@@ -29,7 +30,7 @@
 (load "init-recentf")
 
 ;; Code Completion
-(load "init-auto-complete")
+;; (load "init-auto-complete")
 ;; (load "init-yasnippet")
 
 ;; Window Management
@@ -51,7 +52,7 @@
 (load "init-gtags")
 ;; (load "init-ruby")
 ;; (load "init-python")
-;; (load "init-markdown")
+(load "init-markdown")
 ;; (load "init-javascript")
 (load "init-scala")
 (load "init-slime")
@@ -59,20 +60,24 @@
 ;; (load "init-haskell")
 
 ;; ;; Extra
-;; ;; (load "init-yatex")
 ;; ;;(load "init-caede")
 (load "init-skk")
-;; (load "init-slime")
+(load "init-slime")
 ;; (load "init-haskell")
 
 ;; Extra
-;; (load "init-yatex")
+(load "init-yatex")
 ;;(load "init-caede")
 (load "init-helm")
 (load "init-whitespace")
-
 (load "init-automode")
 
 (if (file-exists-p "~/.emacs.d/conf/private.lisp") (load "private"))
 
 (cd "~")
+
+(add-hook 'text-mode-hook 'turn-off-auto-fill)
+(add-hook 'skk-mode-hook 'turn-off-auto-fill)
+
+(electric-indent-mode -1)
+;; (setq next-line-add-newlines nil)
