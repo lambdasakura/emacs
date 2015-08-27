@@ -2,8 +2,6 @@
 ;; emacsのglobalな設定
 ;;
 
-;; (setq gc-cons-threshold 134217728)
-
 ;; 日本語環境:for UTF-8
 (set-language-environment "Japanese")
 (set-default-coding-systems 'utf-8)
@@ -15,28 +13,10 @@
   (setq default-file-name-coding-system 'japanese-shift-jis-dos))
 
 ;; フォントの設定
-;;(add-to-list 'default-frame-alist '(font . ("ＭＳ ゴシック-10" 0 10 (charset cp932-2-byte))))
-;; (add-to-list 'default-frame-alist '(font . "ＭＳ ゴシック-10"))
-;; (set-default-font "Ricty:pixelsize=12:spacing=0")
-;; (add-to-list 'default-frame-alist '(font . "Ricty-10"))
-;; (setq-default line-spacing 2)
-
 (when run-linux
   (add-to-list 'default-frame-alist '(font . "ricty-12")))
 (when run-w32
-  ;; フォント設定
-  ;; モノスペース,等幅　
-  (add-to-list 'default-frame-alist '(font . "MeiryoKe_Console 12"))
-  ;; モノスペース,等幅　Gothic
-  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_Gothic 12"))
-  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_Gothic Bold 12"))
-  ;; プロポーショナル　Gothic
-  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_PGothic 12"))
-  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_PGothic Bold 12"))
-  ;; プロポーショナル　UI
-  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_UIGothic 12"))
-  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_UIGothic Bold 12"))
-  )
+  (add-to-list 'default-frame-alist '(font . "源ノ角ゴシック Code JP R-11")))
 
 ;; *scratch*の文字列をなくす
 (setq initial-scratch-message nil)
@@ -57,9 +37,6 @@
 ;;対応する括弧をハイライト表示させる
 (show-paren-mode 1)
 
-;;行番号を表示
-;; (line-number-mode 0)
-;; (column-number-mode 1)
 
 ;; menubar  & toolbar を消す
 (if (fboundp 'tool-bar-mode)
@@ -76,12 +53,11 @@
 ;; - 値が正の整数n ウィンドウをどちらかの方向に最大n行だけスクロールすると ポイントが見えるようになるときには、そのようにスクロールして再表示する。
 ;; - その他 ポイントが中央にくるようにする。 デフォルト値は0である。
 ;; (setq scroll-conservatively 1)
-;;C-vなどでページ移動があってもカーソル位置を変化させない
+;; C-vなどでページ移動があってもカーソル位置を変化させない
 ;; (setq scroll-preserve-screen-position t)
 
 ;; mode-lineにファイル名のフルパスを表示
-(set-default 'mode-line-buffer-identification
-             '(buffer-file-name ("%f") ("%b")))
+(set-default 'mode-line-buffer-identification '(buffer-file-name ("%f") ("%b")))
 
 ;; 選択範囲に色がつくように変更
 (transient-mark-mode t)
@@ -101,6 +77,9 @@
 ;; 行数を表示する
 ;; (require 'linum)
 ;; (global-linum-mode)
+;; 行番号を表示
+;; (line-number-mode 0)
+;; (column-number-mode 1)
 (put 'narrow-to-region 'disabled nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -124,7 +103,7 @@
   (defun YaTeX-insert-dollar-or-mozc-insert ()
     (interactive)
     (if (eq major-mode 'yatex-mode)
-	(YaTeX-insert-dollar)
+        (YaTeX-insert-dollar)
       (mozc-insert))))
 
 ;; key-chord
@@ -180,3 +159,4 @@
 ;; (define-key function-key-map [67109029] [?\C-\\])
 ;; (define-key function-key-map [134217893] [?\M-\\])
 ;; (define-key function-key-map [201326757] [?\C-\M-\\])
+(setq ring-bell-function 'ignore)

@@ -43,13 +43,13 @@
 ;; Magit
 ;; (load "init-magit")
 ;; (load "init-howm")
-;; (load "init-w3m")
+(load "init-w3m")
 
 ;; Programming Environment
 
 (load "init-c")
 ;; (load "init-gdb")
-(load "init-gtags")
+;; (load "init-gtags")
 ;; (load "init-ruby")
 ;; (load "init-python")
 (load "init-markdown")
@@ -58,21 +58,18 @@
 (load "init-slime")
 (load "init-popwin")
 ;; (load "init-haskell")
-
-;; ;; Extra
-;; ;;(load "init-caede")
-(load "init-skk")
-(load "init-slime")
-;; (load "init-haskell")
+;; (load "init-clojure")
 
 ;; Extra
-(load "init-yatex")
 ;;(load "init-caede")
+(load "init-skk")
+(load "init-yatex")
 (load "init-helm")
 (load "init-whitespace")
-(load "init-automode")
+;; (load "init-automode")
+(load "init-server")
 
-(if (file-exists-p "~/.emacs.d/conf/private.lisp") (load "private"))
+(if (file-exists-p "~/.emacs.d/conf/private.el") (load "private"))
 
 (cd "~")
 

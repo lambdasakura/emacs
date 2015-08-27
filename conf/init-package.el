@@ -59,6 +59,11 @@
     ruby-block
     ruby-electric
     ruby-mode
+    clojure-mode
+    cider
+    ac-cider
+
+
     twittering-mode
     cl-lib
     slime
