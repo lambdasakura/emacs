@@ -2,6 +2,9 @@
 ;; emacsのglobalな設定
 ;;
 
+;; エラー通知は鬱陶しいので切る
+(setq ring-bell-function 'ignore)
+
 ;; 日本語環境:for UTF-8
 (set-language-environment "Japanese")
 (set-default-coding-systems 'utf-8)
@@ -37,16 +40,18 @@
 ;;対応する括弧をハイライト表示させる
 (show-paren-mode 1)
 
-
 ;; menubar  & toolbar を消す
-(if (fboundp 'tool-bar-mode)
-    (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode)
-    (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 ;; 自動インデント設定
 (require 'font-lock)
 (global-font-lock-mode t)
+
+;; テキストの折り返しを無効にする
+(add-hook 'text-mode-hook 'turn-off-auto-fill)
+
+(electric-indent-mode -1)
 
 ;; ポイントがスクリーンからはみ出したとき （あるいはスクロール時の余白に入ったとき）に どのように自動的にスクロールするかを制御する。
 ;; - 0 ウィンドウの縦方向でポイントが中央にくるように テキストをスクロールして再表示する。
@@ -105,58 +110,3 @@
     (if (eq major-mode 'yatex-mode)
         (YaTeX-insert-dollar)
       (mozc-insert))))
-
-;; key-chord
-;; 2つのキーの同時押し、もしくは単一キーのダブルクリックを define-key として使用できる lisp
-;; (require 'key-chord)
-;; (key-chord-mode t)
-
-;; (key-chord-define-global "^^" 'enlarge-window)
-;; (global-set-key "\C-xf" 'describe-function)
-;; (global-set-key "\C-xv" 'describe-variable)
-
-;; ;;==============
-;; ;; gnuserv 設定
-;; ;;==============
-;; ;; (require 'gnuserv)
-;; ;; (gnuserv-start)
-;; ;; (setq gnuserv-frame (selected-frame)) ; 新しくフレームを開かない
-
-;; (require 'grep)
-;; (setq grep-command-before-query "grep -nH -r -e ")
-;; (defun grep-default-command ()
-;;   (if current-prefix-arg
-;;       (let ((grep-command-before-target
-;;              (concat grep-command-before-query
-;;                      (shell-quote-argument (grep-tag-default)))))
-;;         (cons (if buffer-file-name
-;;                   (concat grep-command-before-target
-;;                           " *."
-;;                           (file-name-extension buffer-file-name))
-;;                 (concat grep-command-before-target " ."))
-;;               (+ (length grep-command-before-target) 1)))
-;;     (car grep-command)))
-;; (setq grep-command (cons (concat grep-command-before-query " .")
-;;                          (+ (length grep-command-before-query) 1)))
-;; (define-key global-map (kbd "M-C-g") 'grep)
-
-;; (add-hook 'speedbar-mode-hook
-;;           '(lambda ()
-;;              (speedbar-add-supported-extension
-;;            '("js" "as" "html" "css" "php" "lisp"))))
-
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; Backslashes
-;; ;; バックスラッシュがうまく入力できない環境があるので
-;; ;; 強制的に対応
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (define-key global-map [165] nil)
-;; (define-key global-map [67109029] nil)
-;; (define-key global-map [134217893] nil)
-;; (define-key global-map [201326757] nil)
-;; (define-key function-key-map [165] [?\\])
-;; (define-key function-key-map [67109029] [?\C-\\])
-;; (define-key function-key-map [134217893] [?\M-\\])
-;; (define-key function-key-map [201326757] [?\C-\M-\\])
-(setq ring-bell-function 'ignore)

@@ -57,7 +57,7 @@
 (load "init-scala")
 (load "init-slime")
 (load "init-popwin")
-;; (load "init-haskell")
+(load "init-haskell")
 ;; (load "init-clojure")
 
 ;; Extra
@@ -73,15 +73,3 @@
 (if (file-exists-p "~/.emacs.d/conf/private.el") (load "private"))
 
 (cd "~")
-(add-hook 'text-mode-hook 'turn-off-auto-fill)
-(add-hook 'skk-mode-hook 'turn-off-auto-fill)
-
-(electric-indent-mode -1)
-;; (setq next-line-add-newlines nil)
-(load-file "~/.emacs.d/ProofGeneral/ProofGeneral-4.2/generic/proof-site.el")
-(defadvice coq-mode-config (after deactivate-holes-mode () activate)
-  "Deactivate holes-mode when coq-mode is activated."
-  (progn  (show-paren-mode -1)(holes-mode 0)))
-(add-hook 'proof-mode-hook
-   '(lambda ()
-      (define-key proof-mode-map (kbd "C-c C-j") 'proof-goto-point)))
