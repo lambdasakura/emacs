@@ -2,7 +2,8 @@
 ;; emacsのglobalな設定
 ;;
 
-;; (setq gc-cons-threshold 134217728)
+;; エラー通知は鬱陶しいので切る
+(setq ring-bell-function 'ignore)
 
 ;; 日本語環境:for UTF-8
 (set-language-environment "Japanese")
@@ -15,28 +16,10 @@
   (setq default-file-name-coding-system 'japanese-shift-jis-dos))
 
 ;; フォントの設定
-;;(add-to-list 'default-frame-alist '(font . ("ＭＳ ゴシック-10" 0 10 (charset cp932-2-byte))))
-;; (add-to-list 'default-frame-alist '(font . "ＭＳ ゴシック-10"))
-;; (set-default-font "Ricty:pixelsize=12:spacing=0")
-;; (add-to-list 'default-frame-alist '(font . "Ricty-10"))
-;; (setq-default line-spacing 2)
-
 (when run-linux
   (add-to-list 'default-frame-alist '(font . "ricty-12")))
 (when run-w32
-  ;; フォント設定
-  ;; モノスペース,等幅　
-  (add-to-list 'default-frame-alist '(font . "MeiryoKe_Console 12"))
-  ;; モノスペース,等幅　Gothic
-  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_Gothic 12"))
-  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_Gothic Bold 12"))
-  ;; プロポーショナル　Gothic
-  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_PGothic 12"))
-  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_PGothic Bold 12"))
-  ;; プロポーショナル　UI
-  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_UIGothic 12"))
-  ;; (add-to-list 'default-frame-alist '(font . "MeiryoKe_UIGothic Bold 12"))
-  )
+  (add-to-list 'default-frame-alist '(font . "源ノ角ゴシック Code JP R-11")))
 
 ;; *scratch*の文字列をなくす
 (setq initial-scratch-message nil)
@@ -57,31 +40,29 @@
 ;;対応する括弧をハイライト表示させる
 (show-paren-mode 1)
 
-;;行番号を表示
-;; (line-number-mode 0)
-;; (column-number-mode 1)
-
 ;; menubar  & toolbar を消す
-(if (fboundp 'tool-bar-mode)
-    (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode)
-    (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 ;; 自動インデント設定
 (require 'font-lock)
 (global-font-lock-mode t)
+
+;; テキストの折り返しを無効にする
+(add-hook 'text-mode-hook 'turn-off-auto-fill)
+
+(electric-indent-mode -1)
 
 ;; ポイントがスクリーンからはみ出したとき （あるいはスクロール時の余白に入ったとき）に どのように自動的にスクロールするかを制御する。
 ;; - 0 ウィンドウの縦方向でポイントが中央にくるように テキストをスクロールして再表示する。
 ;; - 値が正の整数n ウィンドウをどちらかの方向に最大n行だけスクロールすると ポイントが見えるようになるときには、そのようにスクロールして再表示する。
 ;; - その他 ポイントが中央にくるようにする。 デフォルト値は0である。
 ;; (setq scroll-conservatively 1)
-;;C-vなどでページ移動があってもカーソル位置を変化させない
+;; C-vなどでページ移動があってもカーソル位置を変化させない
 ;; (setq scroll-preserve-screen-position t)
 
 ;; mode-lineにファイル名のフルパスを表示
-(set-default 'mode-line-buffer-identification
-             '(buffer-file-name ("%f") ("%b")))
+(set-default 'mode-line-buffer-identification '(buffer-file-name ("%f") ("%b")))
 
 ;; 選択範囲に色がつくように変更
 (transient-mark-mode t)
@@ -101,6 +82,9 @@
 ;; 行数を表示する
 ;; (require 'linum)
 ;; (global-linum-mode)
+;; 行番号を表示
+;; (line-number-mode 0)
+;; (column-number-mode 1)
 (put 'narrow-to-region 'disabled nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -124,59 +108,5 @@
   (defun YaTeX-insert-dollar-or-mozc-insert ()
     (interactive)
     (if (eq major-mode 'yatex-mode)
-	(YaTeX-insert-dollar)
+        (YaTeX-insert-dollar)
       (mozc-insert))))
-
-;; key-chord
-;; 2つのキーの同時押し、もしくは単一キーのダブルクリックを define-key として使用できる lisp
-;; (require 'key-chord)
-;; (key-chord-mode t)
-
-;; (key-chord-define-global "^^" 'enlarge-window)
-;; (global-set-key "\C-xf" 'describe-function)
-;; (global-set-key "\C-xv" 'describe-variable)
-
-;; ;;==============
-;; ;; gnuserv 設定
-;; ;;==============
-;; ;; (require 'gnuserv)
-;; ;; (gnuserv-start)
-;; ;; (setq gnuserv-frame (selected-frame)) ; 新しくフレームを開かない
-
-;; (require 'grep)
-;; (setq grep-command-before-query "grep -nH -r -e ")
-;; (defun grep-default-command ()
-;;   (if current-prefix-arg
-;;       (let ((grep-command-before-target
-;;              (concat grep-command-before-query
-;;                      (shell-quote-argument (grep-tag-default)))))
-;;         (cons (if buffer-file-name
-;;                   (concat grep-command-before-target
-;;                           " *."
-;;                           (file-name-extension buffer-file-name))
-;;                 (concat grep-command-before-target " ."))
-;;               (+ (length grep-command-before-target) 1)))
-;;     (car grep-command)))
-;; (setq grep-command (cons (concat grep-command-before-query " .")
-;;                          (+ (length grep-command-before-query) 1)))
-;; (define-key global-map (kbd "M-C-g") 'grep)
-
-;; (add-hook 'speedbar-mode-hook
-;;           '(lambda ()
-;;              (speedbar-add-supported-extension
-;;            '("js" "as" "html" "css" "php" "lisp"))))
-
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; Backslashes
-;; ;; バックスラッシュがうまく入力できない環境があるので
-;; ;; 強制的に対応
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (define-key global-map [165] nil)
-;; (define-key global-map [67109029] nil)
-;; (define-key global-map [134217893] nil)
-;; (define-key global-map [201326757] nil)
-;; (define-key function-key-map [165] [?\\])
-;; (define-key function-key-map [67109029] [?\C-\\])
-;; (define-key function-key-map [134217893] [?\M-\\])
-;; (define-key function-key-map [201326757] [?\C-\M-\\])

@@ -19,3 +19,6 @@
 (setq skk-extra-jisyo-file-list nil)
 (setq skk-show-tooltip nil)
 (setq skk-show-annotation nil)
+
+;; 折り返しの動作は不要
+(add-hook 'skk-mode-hook 'turn-off-auto-fill)

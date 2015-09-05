@@ -9,11 +9,7 @@
 
 ;; Add package-archives
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
-
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 (package-initialize)
 
@@ -22,6 +18,7 @@
 (defvar installing-package-list
   '(
     ;; ここに使っているパッケージを書く。
+    flymake
     markdown-mode
     open-junk-file
     auto-complete
@@ -33,11 +30,13 @@
     helm-gtags
     quickrun
     nav
+    yatex
     yasnippet
     deferred
     color-moccur
     w3m
     all-ext
+
     ;; プログラミング関連
     inf-ruby
     php-mode
@@ -59,14 +58,14 @@
     ruby-block
     ruby-electric
     ruby-mode
+    clojure-mode
+    cider
+    ac-cider
     twittering-mode
     cl-lib
     slime
 ;;    slime-annot
     ac-slime
-    typescript
-    go-mode
-    dart-mode
     evil
     popwin
     ))

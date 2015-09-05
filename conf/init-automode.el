@@ -32,3 +32,10 @@
 (add-to-list 'auto-mode-alist '("\\.wl$" .emacs-lisp-mode))
 
 (add-to-list 'auto-mode-alist '("\\.tex$" 'yatex-mode))
+(setq auto-mode-alist
+      (append '(("\\.tex$" . yatex-mode)
+                ("\\.ltx$" . yatex-mode)
+                ("\\.cls$" . yatex-mode)
+                ("\\.sty$" . yatex-mode)
+                ("\\.clo$" . yatex-mode)
+                ("\\.bbl$" . yatex-mode)) auto-mode-alist))

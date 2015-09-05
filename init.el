@@ -18,6 +18,7 @@
 ;; Basic Settings
 
 (load "init-utils")
+(if (file-exists-p "~/.emacs.d/conf/private.el") (load "private"))
 (load "init-package")
 (load "init-common")
 (load "init-color")
@@ -29,7 +30,7 @@
 (load "init-recentf")
 
 ;; Code Completion
-(load "init-auto-complete")
+;; (load "init-auto-complete")
 ;; (load "init-yasnippet")
 
 ;; Window Management
@@ -42,37 +43,33 @@
 ;; Magit
 ;; (load "init-magit")
 ;; (load "init-howm")
-;; (load "init-w3m")
+(load "init-w3m")
 
 ;; Programming Environment
 
 (load "init-c")
 ;; (load "init-gdb")
-(load "init-gtags")
+;; (load "init-gtags")
 ;; (load "init-ruby")
 ;; (load "init-python")
-;; (load "init-markdown")
+(load "init-markdown")
 ;; (load "init-javascript")
 (load "init-scala")
 (load "init-slime")
 (load "init-popwin")
 (load "init-haskell")
-
-;; ;; Extra
-;; ;; (load "init-yatex")
-;; ;;(load "init-caede")
-(load "init-skk")
-;; (load "init-slime")
-;; (load "init-haskell")
+;; (load "init-clojure")
 
 ;; Extra
-;; (load "init-yatex")
 ;;(load "init-caede")
+(load "init-skk")
+(load "init-yatex")
+(load "init-twittering")
 (load "init-helm")
 (load "init-whitespace")
-(load "init-automode")
-;; (load "init-skk")
+;; (load "init-automode")
+(load "init-server")
 
-(if (file-exists-p "~/.emacs.d/conf/private.lisp") (load "private"))
+(if (file-exists-p "~/.emacs.d/conf/private.el") (load "private"))
 
 (cd "~")
