@@ -47,18 +47,25 @@
 
 ;; Programming Environment
 
-(load "init-c")
+;; (load "init-c")
 ;; (load "init-gdb")
 ;; (load "init-gtags")
 ;; (load "init-ruby")
 ;; (load "init-python")
 (load "init-markdown")
 ;; (load "init-javascript")
-(load "init-scala")
-(load "init-slime")
+;; (load "init-scala")
 (load "init-popwin")
 (load "init-haskell")
 ;; (load "init-clojure")
+(load "init-slime")
+;; (load "init-haskell")
+
+;; ;; Extra
+;; ;; (load "init-yatex")
+;; ;;(load "init-caede")
+(load "init-skk")
+;; (load "init-haskell")
 
 ;; Extra
 ;;(load "init-caede")
@@ -71,5 +78,7 @@
 (load "init-server")
 
 (if (file-exists-p "~/.emacs.d/conf/private.el") (load "private"))
+(load "init-automode")
+
 
 (cd "~")

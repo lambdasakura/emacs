@@ -1,5 +1,9 @@
 ;; Configure for SKK
 ;; (require 'skk-autoloads)
+
+(global-set-key "\C-x\C-j" 'skk-mode)
+(global-set-key "\C-xj" 'skk-mode)
+
 (global-set-key (kbd "C-x C-j") 'skk-mode)
 (global-set-key "\C-x\C-j" 'skk-mode)
 (global-set-key "\C-xj" 'skk-auto-fill-mode)

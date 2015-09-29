@@ -1,27 +1,30 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; setup load-path and autoloads
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(load (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el"))
+
 (require 'slime-autoloads)
 
 (defun slime-repl-bol-insert ()
   (interactive)
   (slime-repl-bol))
 
-(when run-w32
-  (setq slime-lisp-implementations
-        `((sbcl ("sbcl") :coding-system utf-8-unix)
-          (ccl ("C:/ccl/wx86cl.exe") :coding-system utf-8-unix))))
-(when run-darwin
-  (setenv "SBCL_HOME" "/Users/sakura/Application/sbcl/lib/sbcl")
-  (setq slime-lisp-implementations
-        `((ccl ("/Users/sakura/bin/ccl") :coding-system utf-8-unix)
-          (sbcl ("/Users/sakura/Application/sbcl/bin/sbcl") :coding-system utf-8-unix))))
+;; (when run-w32
+;;   (setq slime-lisp-implementations
+;;         `((sbcl ("sbcl") :coding-system utf-8-unix)
+;;           (ccl ("C:/ccl/wx86cl.exe") :coding-system utf-8-unix))))
+;; (when run-darwin
+;;   (setenv "SBCL_HOME" "/Users/sakura/Application/sbcl/lib/sbcl")
+;;   (setq slime-lisp-implementations
+;;         `((ccl ("/Users/sakura/bin/ccl") :coding-system utf-8-unix)
+;;           (sbcl ("/Users/sakura/Application/sbcl/bin/sbcl") :coding-system utf-8-unix))))
 
-(when run-linux
-  (setq slime-lisp-implementations
-        `((sbcl ("sbcl") :coding-system utf-8-unix)
-          (ccl ("~/bin/ccl") :coding-system utf-8-unix)
-          (clisp ("clisp") :coding-system utf-8-unix))))
+;; (when run-linux
+;;   (setq slime-lisp-implementations
+;;         `((sbcl ("sbcl") :coding-system utf-8-unix)
+;;           (ccl ("~/bin/ccl") :coding-system utf-8-unix)
+;;           (clisp ("clisp") :coding-system utf-8-unix))))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; slime自体の設定
@@ -29,6 +32,7 @@
 (setq slime-net-coding-system 'utf-8-unix)
 (setq slime-truncate-lines 't)
 (setq inferior-lisp-program 'sbcl)
+(setq inferior-lisp-program "ros -L ccl-bin -Q run")
 
 ;; (setq slime-contribs '(slime-banner slime-fancy slime-autodoc))
 ;; (slime-setup slime-contribs)
@@ -172,6 +176,16 @@
 ;; Evilだとmacro確認の度にInsertに入るのが面倒なので
 ;; evil-modeを切ってしまう
 (add-hook 'slime-mode-hook
-          (lambda ()
-            (if (member 'slime-macroexpansion-minor-mode  minor-mode-list)
-                (turn-off-evil-mode))))
+         (lambda ()
+           (if (member 'slime-macroexpansion-minor-mode  minor-mode-list)
+               (turn-off-evil-mode))))
+
+(when (require 'popwin nil t)
+  (push '("*slime-apropos*" :noselect t) popwin:special-display-config)
+  (push '("*slime-macroexpansion*" :noselect t) popwin:special-display-config)
+  (push '("*slime-description*" :noselect t) popwin:special-display-config)
+  (push '("*slime-compilation*" :noselect t :dedicated t) popwin:special-display-config)
+  (push '("*slime-xref*") popwin:special-display-config)
+  (push '(sldb-mode :stick t) popwin:special-display-config)
+  (push '(slime-repl-mode) popwin:special-display-config)
+  (push '(slime-connection-list-mode) popwin:special-display-config))
