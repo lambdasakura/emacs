@@ -63,7 +63,6 @@
     ac-cider
     twittering-mode
     cl-lib
-    slime
 ;;    slime-annot
     ac-slime
     evil
