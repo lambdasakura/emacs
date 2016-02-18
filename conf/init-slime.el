@@ -1,73 +1,45 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; setup load-path and autoloads
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'slime-autoloads)
-
-(defun slime-repl-bol-insert ()
-  (interactive)
-  (slime-repl-bol))
+(load (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el"))
 
 (when run-w32
   (setq slime-lisp-implementations
         `((sbcl ("sbcl") :coding-system utf-8-unix)
-          (ccl ("C:/ccl/wx86cl.exe") :coding-system utf-8-unix))))
-(when run-darwin
-  (setenv "SBCL_HOME" "/Users/sakura/Application/sbcl/lib/sbcl")
-  (setq slime-lisp-implementations
-        `((ccl ("/Users/sakura/bin/ccl") :coding-system utf-8-unix)
-          (sbcl ("/Users/sakura/Application/sbcl/bin/sbcl") :coding-system utf-8-unix))))
+          (ccl ("C:/ccl/wx86cl.exe") :coding-system utf-8-unix)))
+  (setf slime-default-lisp 'sbcl))
 
-(when run-linux
-  (setq slime-lisp-implementations
-        `((sbcl ("sbcl") :coding-system utf-8-unix)
-          (ccl ("~/bin/ccl") :coding-system utf-8-unix)
-          (clisp ("clisp") :coding-system utf-8-unix))))
+(when (or run-darwin run-linux)
+  (setf slime-lisp-implementations
+        `((sbcl    ("sbcl" "--dynamic-space-size" "2000"))
+          (roswell ("ros" "dynamic-space-size=2000" "-Q" "-l" "~/.sbclrc" "run"))))
+  (setf slime-default-lisp 'roswell))
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; slime自体の設定
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; slime自体の設定
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq slime-net-coding-system 'utf-8-unix)
 (setq slime-truncate-lines 't)
-(setq inferior-lisp-program 'sbcl)
-
-;; (setq slime-contribs '(slime-banner slime-fancy slime-autodoc))
-;; (slime-setup slime-contribs)
 (slime-setup '(slime-repl))
 
-;; (eval-after-load "slime"
-;;   (lambda () (define-key evil-normal-state-map "I" 'slime-repl-bol-insert)))
-
-
-
-;; slime使っていると入力モード切り替えが上手くいかない
-;; 環境があるので、そのための対処
-(defun ime-onoff-slime ()
-  (interactive)
-  (when slime-mode
-    (slime-mode nil)
-    (toggle-input-method)
-    (when (string= major-mode "lisp-mode")
-      (slime-mode t)
-      (toggle-input-method)
-      (toggle-input-method))))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 自動補完
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'ac-slime)
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+
 ;; --------------------------------
 ;; HyperSpec を emacs-w3m で参照する
 ;; --------------------------------
 (require 'hyperspec)
 
 ;; HyperSpecのパスを指定
-(setq
- common-lisp-hyperspec-root
- "file:///home/sakura/.emacs.d/cl-docs/HyperSpec/"
-
- common-lisp-hyperspec-symbol-table
- (expand-file-name "~/.emacs.d/cl-docs/HyperSpec/Data/Map_Sym.txt"))
+(setq common-lisp-hyperspec-root "file:///home/sakura/.emacs.d/cl-docs/HyperSpec/"
+      common-lisp-hyperspec-symbol-table (expand-file-name "~/.emacs.d/cl-docs/HyperSpec/Data/Map_Sym.txt"))
 
 (defadvice common-lisp-hyperspec
-  (around hyperspec-lookup-w3m () activate)
+    (around hyperspec-lookup-w3m () activate)
   (let* ((window-configuration (current-window-configuration))
          (browse-url-browser-function
           `(lambda (url new-window)
@@ -131,7 +103,7 @@
 
      (defun helm-hyperspec-and-cltl2 ()
        (interactive)
-        (helm '(helm-c-source-hyperspec helm-c-source-cltl2) (thing-at-point 'symbol)))))
+       (helm '(helm-c-source-hyperspec helm-c-source-cltl2) (thing-at-point 'symbol)))))
 
 (global-set-key "\C-cH" 'helm-hyperspec-and-cltl2)
 
@@ -146,7 +118,7 @@
   (let ((symbol (intern string imple-common-lisp-hyperspec-symbols)))
     (if (boundp symbol)
         (push relative-url (symbol-value symbol))
-        (set symbol (list relative-url)))))
+      (set symbol (list relative-url)))))
 
 (defun imple-hyperspec--get-one-line ()
   (prog1
