@@ -74,7 +74,7 @@
 (load "init-twittering")
 (load "init-helm")
 (load "init-whitespace")
-;; (load "init-automode")
+(load "init-automode")
 (load "init-server")
 
 (if (file-exists-p "~/.emacs.d/conf/private.el") (load "private"))

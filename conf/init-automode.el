@@ -19,6 +19,8 @@
 ;; javascript
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx$'" . js2-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx$" . js2-jsx-mode))
+
 ;; ruby
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 

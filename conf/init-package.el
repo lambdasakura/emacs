@@ -47,7 +47,6 @@
     coffee-mode
     scss-mode
     js2-mode
-    js3-mode
     haskell-mode
     google-c-style
     yaml-mode
