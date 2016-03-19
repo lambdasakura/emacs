@@ -22,7 +22,6 @@
   (add-to-list 'default-frame-alist '(font . "源ノ角ゴシック Code JP R-11")))
 (when run-darwin
   (add-to-list 'default-frame-alist '(font . "源ノ角ゴシック Code JP R-11")))
-(add-to-list 'default-frame-alist '(font . "源ノ角ゴシック Code JP R-11")))
 
 ;; *scratch*の文字列をなくす
 (setq initial-scratch-message nil)
