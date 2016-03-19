@@ -3,7 +3,7 @@
 
 ;; in emacs-version@24.4
 ;; 'package-desc-vers' was renamed to 'package--ac-desc-version'
-(if (and (>= emacs-major-version 24 )
+(if (and (>= emacs-major-version 24)
          (>= emacs-minor-version 4))
     (fset 'package-desc-vers 'package--ac-desc-version))
 
@@ -24,7 +24,7 @@
     auto-complete
     cl-lib
     elscreen
-    magit
+    ;; magit
     helm
     helm-descbinds
     helm-gtags

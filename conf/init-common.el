@@ -13,15 +13,17 @@
 (prefer-coding-system 'utf-8-unix)
 (set-keyboard-coding-system 'utf-8)
 (when run-w32
-  (setq default-file-name-coding-system 'japanese-shift-jis-dos))
+(setq default-file-name-coding-system 'japanese-shift-jis-dos))
 
 ;; フォントの設定
 (when run-linux
-  (add-to-list 'default-frame-alist '(font . "ricty-12")))
+(add-to-list 'default-frame-alist '(font . "-adobe-源ノ角ゴシック JP-normal-normal-normal-*-*-*-*-*-*-0-iso10646-1")))
 (when run-w32
   (add-to-list 'default-frame-alist '(font . "源ノ角ゴシック Code JP R-11")))
 (when run-darwin
   (add-to-list 'default-frame-alist '(font . "源ノ角ゴシック Code JP R-11")))
+(add-to-list 'default-frame-alist '(font . "源ノ角ゴシック Code JP R-11")))
+
 ;; *scratch*の文字列をなくす
 (setq initial-scratch-message nil)
 (setq inhibit-startup-message t)
@@ -33,9 +35,9 @@
 
 ;; 終了時に聞いてくるように修正
 (defun my-save-buffers-kill-emacs ()
-  (interactive)
-  (if (y-or-n-p "quit emacs? ")
-      (save-buffers-kill-emacs)))
+(interactive)
+(if (y-or-n-p "quit emacs? ")
+(save-buffers-kill-emacs)))
 (global-set-key "\C-x\C-c" 'my-save-buffers-kill-emacs)
 
 ;;対応する括弧をハイライト表示させる
@@ -98,16 +100,16 @@
 
 
 ;;; 言語環境の指定
-(when run-linux
-  ;;mozcの設定
-  (require 'mozc)
-  (set-language-environment "Japanese")
-  (setq default-input-method "japanese-mozc")
+;; (when run-linux
+;;   ;;mozcの設定
+;;   (require 'mozc)
+;;   (set-language-environment "Japanese")
+;;   (setq default-input-method "japanese-mozc")
 
-  ;;ドル記号を入力したときに直接入力に切り替える。
-  (define-key mozc-mode-map "$" 'YaTeX-insert-dollar-or-mozc-insert)
-  (defun YaTeX-insert-dollar-or-mozc-insert ()
-    (interactive)
-    (if (eq major-mode 'yatex-mode)
-        (YaTeX-insert-dollar)
-      (mozc-insert))))
+;; ;;ドル記号を入力したときに直接入力に切り替える。
+;; (define-key mozc-mode-map "$" 'YaTeX-insert-dollar-or-mozc-insert)
+;; (defun YaTeX-insert-dollar-or-mozc-insert ()
+;;   (interactive)
+;;   (if (eq major-mode 'yatex-mode)
+;;       (YaTeX-insert-dollar)
+;;     (mozc-insert))))
