@@ -13,22 +13,19 @@
 
 (package-initialize)
 
-
-
 (defvar installing-package-list
   '(
     ;; ここに使っているパッケージを書く。
     dired+
     flymake
     markdown-mode
-    open-junk-file
     auto-complete
     cl-lib
-    elscreen
-    ;; magit
     helm
     helm-descbinds
     helm-gtags
+    helm-c-moccur
+    helm-c-yasnippet
     quickrun
     nav
     yatex
@@ -43,10 +40,6 @@
     php-mode
     sass-mode
     web-mode
-    ;; haml-mode
-    slim-mode
-    coffee-mode
-    scss-mode
     js2-mode
     haskell-mode
     google-c-style
@@ -63,7 +56,6 @@
     ac-cider
     twittering-mode
     cl-lib
-;;    slime-annot
     ac-slime
     evil
     popwin
@@ -71,11 +63,7 @@
     go-autocomplete
     go-eldoc
     flycheck
-    flycheck-go
-
-
-    exec-path-from-shell
-    ))
+    exec-path-from-shell))
 
 (let ((not-installed (loop for x in installing-package-list
                            when (not (package-installed-p x))

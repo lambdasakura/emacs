@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; color-moccur
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+(require 'color-moccur)
 ;; http://www.emacswiki.org/emacs/moccur-edit.el
 (require 'moccur-edit)
 
@@ -11,5 +11,3 @@
 ;; migemo‚ªrequire‚Å‚«‚éŠÂ‹«‚È‚çmigemo‚ðŽg‚¤
 (when (require 'migemo nil t)
   (setq moccur-use-migemo t))
-
-
