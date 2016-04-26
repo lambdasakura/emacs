@@ -1,7 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; setup load-path and autoloads
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el"))
+(if (file-exists-p (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el"))
+    (load (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el")))
 
 (when run-w32
   (setq slime-lisp-implementations
@@ -20,8 +21,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq slime-net-coding-system 'utf-8-unix)
 (setq slime-truncate-lines 't)
-
-(load (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el"))
 
 (require 'slime-autoloads)
 

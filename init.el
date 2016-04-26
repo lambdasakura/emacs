@@ -18,7 +18,7 @@
 ;; Basic Settings
 
 (load "init-utils")
-(if (file-exists-p "~/.emacs.d/conf/private.el") (load "private"))
+;; (if (file-exists-p "~/.emacs.d/conf/private.el") (load "private"))
 (load "init-package")
 (load "init-common")
 (load "init-color")
@@ -44,6 +44,8 @@
 ;; (load "init-magit")
 ;; (load "init-howm")
 (load "init-w3m")
+(load "init-markdown")
+(load "init-skk")
 
 ;; Programming Environment
 
@@ -52,9 +54,9 @@
 ;; (load "init-gtags")
 ;; (load "init-ruby")
 ;; (load "init-python")
-(load "init-markdown")
-;; (load "init-javascript")
-;; (load "init-scala")
+(load "init-javascript")
+(load "init-scala")
+(load "init-slime")
 (load "init-popwin")
 (load "init-haskell")
 ;; (load "init-clojure")
@@ -64,7 +66,6 @@
 ;; ;; Extra
 ;; ;; (load "init-yatex")
 ;; ;;(load "init-caede")
-(load "init-skk")
 ;; (load "init-haskell")
 
 ;; Extra
@@ -74,11 +75,10 @@
 (load "init-twittering")
 (load "init-helm")
 (load "init-whitespace")
-;; (load "init-automode")
-(load "init-server")
-
-(if (file-exists-p "~/.emacs.d/conf/private.el") (load "private"))
 (load "init-automode")
 
+(if (file-exists-p "~/.emacs.d/conf/private.el")
+    (load "private"))
 
 (cd "~")
+(load "init-server")

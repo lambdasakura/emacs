@@ -19,6 +19,7 @@
 ;; javascript
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx$'" . js2-jsx-mode))
+
 ;; ruby
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 
@@ -27,9 +28,9 @@
 (add-to-list 'auto-mode-alist '("\\.scala$" . scala-mode))
 
 ;; emacs lisp用のlisp-modeはemacs-lisp-modeを使用する設定に
-(add-to-list 'auto-mode-alist '("\\.el$" .emacs-lisp-mode))
-(add-to-list 'auto-mode-alist '("\\.emacs-*" .emacs-lisp-mode))
-(add-to-list 'auto-mode-alist '("\\.wl$" .emacs-lisp-mode))
+(add-to-list 'auto-mode-alist '("\\.el$" . emacs-lisp-mode))
+(add-to-list 'auto-mode-alist '("\\.emacs-*" . emacs-lisp-mode))
+(add-to-list 'auto-mode-alist '("\\.wl$" . emacs-lisp-mode))
 
 (add-to-list 'auto-mode-alist '("\\.tex$" 'yatex-mode))
 (setq auto-mode-alist
