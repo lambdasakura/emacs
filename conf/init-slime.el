@@ -21,7 +21,7 @@
 (setq slime-net-coding-system 'utf-8-unix)
 (setq slime-truncate-lines 't)
 
-(load (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el"))
+;; (load (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el"))
 
 (require 'slime-autoloads)
 
