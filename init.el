@@ -30,8 +30,8 @@
 (load "init-recentf")
 
 ;; Code Completion
-;; (load "init-auto-complete")
-;; (load "init-yasnippet")
+(load "init-auto-complete")
+(load "init-yasnippet")
 
 ;; Window Management
 ;; (load "init-elscreen")
@@ -48,7 +48,7 @@
 (load "init-skk")
 
 ;; Programming Environment
-
+(load "init-go")
 ;; (load "init-c")
 ;; (load "init-gdb")
 ;; (load "init-gtags")
@@ -57,8 +57,11 @@
 (load "init-javascript")
 (load "init-scala")
 (load "init-slime")
+(load "init-markdown")
+(load "init-javascript")
+;; (load "init-scala")
 (load "init-popwin")
-(load "init-haskell")
+;; (load "init-haskell")
 ;; (load "init-clojure")
 (load "init-slime")
 ;; (load "init-haskell")
@@ -76,9 +79,16 @@
 (load "init-helm")
 (load "init-whitespace")
 (load "init-automode")
+(load "init-server")
+
+(if (file-exists-p "~/.emacs.d/conf/private.el") (load "private"))
+(load "init-automode")
 
 (if (file-exists-p "~/.emacs.d/conf/private.el")
     (load "private"))
 
 (cd "~")
 (load "init-server")
+(put 'dired-find-alternate-file 'disabled nil)
+(setq dired-listing-switches "-Fla --group-directories-first")
+(exec-path-from-shell-initialize)

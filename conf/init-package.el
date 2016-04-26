@@ -3,7 +3,7 @@
 
 ;; in emacs-version@24.4
 ;; 'package-desc-vers' was renamed to 'package--ac-desc-version'
-(if (and (>= emacs-major-version 24 )
+(if (and (>= emacs-major-version 24)
          (>= emacs-minor-version 4))
     (fset 'package-desc-vers 'package--ac-desc-version))
 
@@ -18,13 +18,14 @@
 (defvar installing-package-list
   '(
     ;; ここに使っているパッケージを書く。
+    dired+
     flymake
     markdown-mode
     open-junk-file
     auto-complete
     cl-lib
     elscreen
-    magit
+    ;; magit
     helm
     helm-descbinds
     helm-gtags
@@ -47,7 +48,6 @@
     coffee-mode
     scss-mode
     js2-mode
-    js3-mode
     haskell-mode
     google-c-style
     yaml-mode
@@ -67,6 +67,14 @@
     ac-slime
     evil
     popwin
+    go-mode
+    go-autocomplete
+    go-eldoc
+    flycheck
+    flycheck-go
+
+
+    exec-path-from-shell
     ))
 
 (let ((not-installed (loop for x in installing-package-list
