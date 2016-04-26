@@ -111,3 +111,6 @@
   (put 'dired-find-alternate-file 'disabled nil)
   (setq dired-listing-switches "-Fla --group-directories-first")
   (exec-path-from-shell-initialize))
+
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
