@@ -18,6 +18,7 @@
 (defvar installing-package-list
   '(
     ;; ここに使っているパッケージを書く。
+    dired+
     flymake
     markdown-mode
     open-junk-file
@@ -67,6 +68,14 @@
     ac-slime
     evil
     popwin
+    go-mode
+    go-autocomplete
+    go-eldoc
+    flycheck
+    flycheck-go
+
+
+    exec-path-from-shell
     ))
 
 (let ((not-installed (loop for x in installing-package-list
