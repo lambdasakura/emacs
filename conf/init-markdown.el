@@ -1,7 +1,7 @@
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
-;; (setq markdown-css-path "file://C:/Users/f9078010.TOSHIBA/markdown.css")
+(setq markdown-css-path "~/.emacs.d/markdown.css")
 (defun markdown-custom ()
   "markdown-mode-hook"
   (cond (run-darwin
