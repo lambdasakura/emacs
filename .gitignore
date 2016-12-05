@@ -18,3 +18,4 @@ lisp/
 environment/
 semanticdb/
 server/
+inits/99-private.el

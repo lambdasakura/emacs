@@ -1,23 +1,17 @@
 (require 'package)
 (require 'cl)
 
-;; in emacs-version@24.4
-;; 'package-desc-vers' was renamed to 'package--ac-desc-version'
-(if (and (>= emacs-major-version 24)
-         (>= emacs-minor-version 4))
-    (fset 'package-desc-vers 'package--ac-desc-version))
-
 ;; Add package-archives
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
-
 (package-initialize)
 
 (defvar installing-package-list
   '(
-    ;; ここに使っているパッケージを書く。
+    use-package
+    bind-key
+    init-loader
     dired+
-    flymake
     markdown-mode
     auto-complete
     cl-lib
@@ -27,7 +21,6 @@
     helm-c-moccur
     helm-c-yasnippet
     quickrun
-    nav
     yatex
     yasnippet
     deferred
@@ -63,6 +56,7 @@
     go-autocomplete
     go-eldoc
     flycheck
+    flycheck-pos-tip
     exec-path-from-shell))
 
 (let ((not-installed (loop for x in installing-package-list

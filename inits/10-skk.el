@@ -1,13 +1,12 @@
 ;; Configure for SKK
 ;; (require 'skk-autoloads)
 
-(global-set-key "\C-x\C-j" 'skk-mode)
-(global-set-key "\C-xj" 'skk-mode)
-
-(global-set-key (kbd "C-x C-j") 'skk-mode)
-(global-set-key "\C-x\C-j" 'skk-mode)
-(global-set-key "\C-xj" 'skk-auto-fill-mode)
-(global-set-key "\C-xt" 'skk-tutorial)
+(bind-keys ("C-x C-j" . skk-mode)
+           ("C-x j" . skk-mode)
+           ("C-x C-j" . skk-mode)
+           ("C-x C-j" . skk-mode)
+           ("C-x j" . skk-auto-fill-mode)
+           ("C-x t" . skk-tutorial))
 
 ;;チュートリアルの場所設定
 ;; (setq skk-tut-file "~/.emacs.d/etc/skk/SKK.tut")

@@ -1,7 +1,7 @@
-;;
-;; emacsのglobalな設定
-;;
+;;; common.el --- emacs common settings
+;;; Commentary:
 
+;;; Code:
 (defun japanese-encoding ()
   "UTF-8の日本語環境とする"
   (set-language-environment "Japanese")

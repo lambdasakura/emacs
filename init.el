@@ -1,60 +1,52 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; emacs setting file
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(fset 'package-desc-vers 'package--ac-desc-version)
+;;;  init.el --- Emacs Setting file
+;;; Commentary:
+;;; Author: lambda_sakura <lambda.sakura@gmail.com>
+
+;;; Code:
 
 (defun add-to-load-path (&rest paths)
-  (mapc '(lambda (path)
-           (add-to-list 'load-path path))
+  (mapc #'(lambda (path)
+            (add-to-list 'load-path path))
         (mapcar 'expand-file-name paths)))
 
 (add-to-load-path "~/.emacs.d/lisp/skk"
                   "~/.emacs.d/elisp"
-                  "~/.emacs.d/conf"
-                  "~/.emacs.d/elisp/howm-1.4.0")
+                  "~/.emacs.d/conf")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Loading elisps
+;; setup basic settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Basic Settings
 (load "init-utils")
 (load "init-package")
-(load "init-common")
-(load "init-color")
-(load "init-emacs-nav")
-(load "init-recentf")
-(load "init-auto-complete")
-(load "init-yasnippet")
-(load "init-moccur")
-(load "init-popwin")
-(load "init-skk")
-(load "init-helm")
-(load "init-whitespace")
-(load "init-server")
 
-;; (load "init-howm")
-(load "init-w3m")
-(load "init-yatex")
-(load "init-markdown")
+(defconst inits-dir (concat user-emacs-directory "inits"))
+(when (require 'init-loader nil t)
+  (setq init-loader-show-log-after-init 'error-only)
+  (when (file-directory-p (symbol-value 'inits-dir))
+    (init-loader-load inits-dir)))
 
-;; Programming Environment
-;; (load "init-c")
-;; (load "init-gdb")
-;; (load "init-gtags")
-;; (load "init-ruby")
-;; (load "init-python")
-;; (load "init-clojure")
-;; (load "init-haskell")
-(load "init-javascript")
-(load "init-scala")
-(load "init-slime")
-(load "init-go")
+;; ;; Programming Environment
+;; ;; (load "init-c")
+;; ;; (load "init-gdb")
+;; ;; (load "init-gtags")
+;; ;; (load "init-ruby")
+;; ;; (load "init-python")
+;; ;; (load "init-clojure")
+;; ;; (load "init-haskell")
+;; ;; (load "init-java")
+;; (load "init-javascript")
+;; ;; (load "init-scala")
+;; (load "init-slime")
+;; (load "init-go")
 
-;; Extra
-;;(load "init-caede")
-(load "init-twittering")
-(load "init-automode")
+;; ;; Extra
+;; ;;(load "init-caede")
+;; (load "init-twittering")
+;; (load "init-slack")
+;; (load "init-automode")
 
-(if (file-exists-p "~/.emacs.d/conf/private.el")
-    (load "private"))
+;; (if (file-exists-p "~/.emacs.d/conf/private.el")
+;;     (load "private"))
 
-(cd "~")
+(provide 'init)
+;;; init.el ends here
