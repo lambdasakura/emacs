@@ -30,7 +30,8 @@
 
 ;; 文字関連の設定
 (japanese-encoding)
-(japanese-font)
+(if (and (boundp 'window-system) (eq window-system 'x))
+ (japanese-font))
 
 (progn
   ;; 基本設定(不要な機能を無効にする)
@@ -41,7 +42,7 @@
   ;; menubar  & toolbar を消す
   (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
   (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-  (scroll-bar-mode 0)
+  (if (fboundp 'scroll-bar-mode) (scroll-bar-mode 0))
 
   ;; エラー通知は鬱陶しいので切る
   (setq ring-bell-function 'ignore)
