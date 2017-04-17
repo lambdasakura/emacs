@@ -14,22 +14,19 @@
     (setq default-file-name-coding-system
           'japanese-shift-jis-dos)))
 
-(defun japanese-font ()
-  "フォントの設定"
-  (when run-linux
-    (add-to-list 'default-frame-alist
-                 '(font . "-adobe-源ノ角ゴシック JP-normal-normal-normal-*-*-*-*-*-*-0-iso10646-1")))
-  (when run-w32
-    (add-to-list 'default-frame-alist '(font . "源ノ角ゴシック Code JP R-11")))
-  (when run-darwin
-    (add-to-list 'default-frame-alist '(font . "源ノ角ゴシック Code JP R-11"))))
-
 (defun my-save-buffers-kill-emacs ()
   "終了時の確認関数"
   (interactive)
   (if (y-or-n-p "quit emacs? ")
       (save-buffers-kill-emacs)))
 
+(defun japanese-font ()
+  ;; Basic font
+  (custom-set-faces
+   '(default ((t (:foundry "Source Code Pro N" :family "Source Code Pro N")))))
+
+  ;; Japanese font
+  (set-fontset-font t 'japanese-jisx0208 (font-spec :family "IPAExGothic")))
 
 ;; 文字関連の設定
 (japanese-encoding)
@@ -44,6 +41,7 @@
   ;; menubar  & toolbar を消す
   (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
   (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+  (scroll-bar-mode 0)
 
   ;; エラー通知は鬱陶しいので切る
   (setq ring-bell-function 'ignore)
