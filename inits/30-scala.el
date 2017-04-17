@@ -1,5 +1,5 @@
 ;; scala-mode2
-(require 'scala-mode2)
+(require 'scala-mode)
 
 ;; ensime
 (require 'ensime)

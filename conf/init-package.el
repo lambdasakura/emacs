@@ -39,7 +39,7 @@
     haskell-mode
     google-c-style
     yaml-mode
-    scala-mode2
+    scala-mode
     ensime
     python
     jedi
