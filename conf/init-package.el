@@ -15,6 +15,7 @@
     markdown-mode
     auto-complete
     cl-lib
+    atom-one-dark-theme
     helm
     helm-descbinds
     helm-gtags
