@@ -25,28 +25,18 @@
   (when (file-directory-p (symbol-value 'inits-dir))
     (init-loader-load inits-dir)))
 
-;; ;; Programming Environment
-;; ;; (load "init-c")
-;; ;; (load "init-gdb")
-;; ;; (load "init-gtags")
-;; ;; (load "init-ruby")
-;; ;; (load "init-python")
-;; ;; (load "init-clojure")
-;; ;; (load "init-haskell")
-;; ;; (load "init-java")
-;; (load "init-javascript")
-;; ;; (load "init-scala")
-;; (load "init-slime")
-;; (load "init-go")
-
-;; ;; Extra
-;; ;;(load "init-caede")
-;; (load "init-twittering")
-;; (load "init-slack")
-;; (load "init-automode")
-
-;; (if (file-exists-p "~/.emacs.d/conf/private.el")
-;;     (load "private"))
-
 (provide 'init)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
+ '(helm-ff-auto-update-initial-value nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:height 96 :width normal :foundry "ADBE" :family "Source Code Pro")))))
