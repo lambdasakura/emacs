@@ -24,6 +24,13 @@
 
 (setq w3m-use-cookies t)
 (setq w3m-cookie-accept-bad-cookies t)
+(defun w3m-browse-url-other-window (url &optional newwin)
+  (let ((w3m-pop-up-windows t))
+    (if (one-window-p) (split-window))
+    (other-window 1)
+    (w3m-browse-url url newwin)))
+
+
 ;; (setq w3m-favicon-cache-expire-wait nil)
 ;; (setq transient-mark-mode t)
 ;; (setq w3m-display-inline-image t)
