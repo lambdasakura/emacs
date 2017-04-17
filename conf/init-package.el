@@ -27,7 +27,7 @@
     color-moccur
     w3m
     all-ext
-
+    neotree
     ;; プログラミング関連
     inf-ruby
     php-mode
