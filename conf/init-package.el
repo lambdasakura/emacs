@@ -20,6 +20,7 @@
     helm-gtags
     helm-c-moccur
     helm-c-yasnippet
+    powerline
     quickrun
     yatex
     yasnippet
