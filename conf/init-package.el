@@ -1,3 +1,7 @@
+;;; init-package.el --- emacs package settings
+;;; Commentary:
+
+;;; Code:
 (require 'package)
 (require 'cl)
 
