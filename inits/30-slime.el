@@ -1,8 +1,8 @@
 ;;; 30-slime.el --- slime settings
 ;;; Commentary:
 ;;; Code:
-(if (file-exists-p (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el"))
-    (load (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el")))
+(if (file-exists-p (expand-file-name "~/.roswell/helper.el"))
+    (load (expand-file-name "~/.roswell/helper.el")))
 
 (when run-w32
   (setq slime-lisp-implementations
