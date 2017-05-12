@@ -3,7 +3,6 @@
 
 ;;; Code:
 (require 'package)
-(require 'cl)
 
 ;; Add package-archives
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -12,30 +11,34 @@
 (package-initialize)
 
 (defvar installing-package-list
-  '(
+  '(cl-lib
+    slack
     use-package
     bind-key
     init-loader
-    dired+
-    markdown-mode
+    exec-path-from-shell
     auto-complete
-    cl-lib
     atom-one-dark-theme
+    powerline
+    projectile
+    ag
+    wgrep
+    wgrep-ag
     helm
+    helm-ag
     helm-descbinds
     helm-gtags
-    helm-c-moccur
     helm-c-yasnippet
-    powerline
+    helm-projectile
     quickrun
     yatex
     yasnippet
-    deferred
-    color-moccur
+    wgrep
     w3m
-    all-ext
     neotree
+    magit
     ;; プログラミング関連
+    markdown-mode
     inf-ruby
     php-mode
     sass-mode
@@ -56,16 +59,17 @@
     ac-cider
     twittering-mode
     cl-lib
-    ac-slime
     evil
+    evil-magit
     popwin
     go-mode
     go-autocomplete
     go-eldoc
     flycheck
     flycheck-pos-tip
-    exec-path-from-shell))
+    ))
 
+(require 'cl)
 (let ((not-installed (loop for x in installing-package-list
                            when (not (package-installed-p x))
                            collect x)))
