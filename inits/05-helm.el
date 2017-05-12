@@ -2,7 +2,6 @@
 (require 'helm-command)
 (require 'helm-descbinds)
 (require 'helm-files)
-(require 'all-ext)
 
 (helm-mode 1)
 (helm-adaptive-mode 1)
