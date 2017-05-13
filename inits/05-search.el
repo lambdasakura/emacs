@@ -6,6 +6,11 @@
 (require 'wgrep)
 (require 'wgrep-ag)
 
+
+;; evilのマップとかぶるので削除
+;; デフォルトはclose-buffer相当の動作
+(define-key ag-mode-map (kbd "k") nil)
+
 ;;; eでwgrepモードにする
 (setf wgrep-enable-key "e")
 
